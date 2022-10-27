@@ -7,6 +7,7 @@ import ErrorPage from './error-page';
 import Leagues from './pages/Leagues';
 import Squad from './pages/Squad';
 import TopScorers from './pages/TopScorers';
+import Ranking from './pages/Ranking/';
 import ThemeContextProvider from './Utils/Context/Context';
 import TopAssits from './pages/TopAssists';
 
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/meilleurs-passeurs/:idCompetition",
     element: <TopAssits />,
+  },
+  {
+    path: "/classement/:idCompetition",
+    element: <Ranking />,
   },
 ]);
 

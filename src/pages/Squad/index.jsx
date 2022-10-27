@@ -55,20 +55,20 @@ export default function Squad() {
     const [playerId, setPlayerId] = useState(0)
     const { teamId } = useParams()
     const {competitionId, competitionName, countryCode} = useContext(ThemeContext)
-    //console.log(competitionName)
-    const {isLoading, isError, data, error} = useQuery([teamId],() => fetchTeamPlayers(teamId))
-    //console.log(data)
-    const squad = data !== undefined ? data.response : []
-    //console.log(squad)
+    // //console.log(competitionName)
+    // const {isLoading, isError, data, error} = useQuery([teamId],() => fetchTeamPlayers(teamId))
+    // //console.log(data)
+    // const squad = data !== undefined ? data.response : []
+    // //console.log(squad)
     
 
-    if(isError) {
-        return <div>Erreur: { error.message }</div>
-    }
+    // if(isError) {
+    //     return <div>Erreur: { error.message }</div>
+    // }
 
-    if(isLoading) {
-        return <div>Chargement...</div>
-    }
+    // if(isLoading) {
+    //     return <div>Chargement...</div>
+    // }
     
     const defenders = []
     const goalkeepers = []

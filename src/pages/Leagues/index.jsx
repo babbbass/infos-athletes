@@ -77,7 +77,6 @@ export default function Leagues() {
     //     }
     // ]
 
-    const {setCompetitionId} = useContext(ThemeContext)
     const {competitionId} = useParams()
     
     //const idComp = competitions.find(competition => competition.countryCode === countryCode)
@@ -102,6 +101,7 @@ export default function Leagues() {
         <>
             <Banner />
             <HeaderBody>
+                <LeaguePagesLink to={`/classement/${competitionId}`}>Classement</LeaguePagesLink>
                 <LeaguePagesLink to={`/top-scorers/${competitionId}`}>Top buteurs</LeaguePagesLink>
                 <LeaguePagesLink to={`/meilleurs-passeurs/${competitionId}`}>Meilleurs passeurs</LeaguePagesLink>
             </HeaderBody>

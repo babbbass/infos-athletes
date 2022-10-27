@@ -13,7 +13,6 @@ import {StyledSelect, RankingWrapper, RankingContainer,
    RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
    RankingTabBodyData, HeaderBody, ArrowNavigation,
    RankingPosition, LeaguePagesLink } from '../../Utils/style/Rankings'
-import colors from '../../Utils/style/colors';
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
     console.log(yearSelected)

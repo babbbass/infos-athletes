@@ -100,27 +100,6 @@ const TopAssits = () => {
                   </RankingTabBody>
                 </RankingTab>
               </RankingContainer>
-              {/* <RankingContainer>
-                  <RankingContainerTitles>
-                    <RankingRow></RankingRow>
-                    <RankingRow></RankingRow>
-                    <RankingRow>passes déc</RankingRow>
-                    <RankingRow><SpanColor>matchs</SpanColor></RankingRow>
-                    <RankingRow><SpanColor>ratio</SpanColor></RankingRow>
-                  </RankingContainerTitles>
-                  {topAssists.map((player, index) => (
-                    <RankingRowPlayerStats key={`{${player.player.name}-ranking-scorers}`}>
-                      <RankingRow>{index + 1}</RankingRow>
-                      <RankingRow>
-                        <RankingNamePlayer>{player.player.name}</RankingNamePlayer>
-                        <RankingNameTeam>{player.statistics[0].team.name}</RankingNameTeam>
-                      </RankingRow>
-                      <RankingRow>{player.statistics[0].goals.assists}</RankingRow>
-                      <RankingRow>{player.statistics[0].games.appearences}</RankingRow>
-                      <RankingRow>{Math.round(player.statistics[0].goals.assists / player.statistics[0].games.appearences*100)/100}</RankingRow>
-                    </RankingRowPlayerStats>
-                  ))}
-              </RankingContainer> */}
             </RankingWrapper>
           </>
     );

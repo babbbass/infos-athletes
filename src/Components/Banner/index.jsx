@@ -14,10 +14,11 @@ const Wrapper = styled.section`
 
 const TitleContainer = styled.div`
   width: 100%;
-  margin-bottom: 8px;
-  font-size: 2.5em;
-  color: #fff;
+  margin-bottom: 13px;
+  font-size: 1.9em;
   font-style: italic;
+  color: #fff;
+  text-align: center;
 `;
 
 const LinkContainer = styled.div`
@@ -38,12 +39,12 @@ export default function Banner() {
     
     return (
         <Wrapper>
-            <TitleContainer>Infos Athletes</TitleContainer>
+            <TitleContainer>INFOS ATHLETES</TitleContainer>
             <LinkContainer>
               <StyledLink to="/">
                   Accueil
               </StyledLink>
-              <StyledLink to="/top-scorers">
+              <StyledLink to="">
                   Top scorers
               </StyledLink>
               <StyledLink>

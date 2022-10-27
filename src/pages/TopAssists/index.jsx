@@ -7,8 +7,11 @@ import Banner from '../../Components/Banner';
 import { topAssists } from '../../Utils/datas/TopAssists'
 import { useParams } from 'react-router-dom';
 import {StyledSelect, RankingWrapper, RankingContainer,
-  RankingContainerTitles, RankingRowCase, RankingRowPlayerStats,
-  RankingNameTeam, RankingNamePlayer, SpanColor} from '../../Utils/style/Rankings'
+  RankingNameTeam, RankingNamePlayer, SpanColor, 
+  RankingTab, RankingTabHead, RankingTabHeadRow,
+  RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
+  RankingTabBodyData, HeaderBody, ArrowNavigation,
+  RankingPosition, LeaguePagesLink} from '../../Utils/style/Rankings'
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
     //console.log(yearSelected, idCompetition)
@@ -24,7 +27,11 @@ const options = [
   ]
   
 const TopAssits = () => {
-    const {yearSelected, setYearSelected} = useContext(ThemeContext)
+    // const {yearSelected, setYearSelected} = useContext(ThemeContext)
+    const {yearSelected, setYearSelected,
+            countryCode, competitionId,
+            competitionName 
+    } = useContext(ThemeContext)
     const [yearTopAssits, setYearTopAssits] = useState(yearSelected)
     const { idCompetition } = useParams();
     
@@ -52,32 +59,68 @@ const TopAssits = () => {
     return (
           <>
             <Banner />
+            <HeaderBody>
+                <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
+                  <ArrowNavigation>◄</ArrowNavigation> {competitionName}
+                </LeaguePagesLink>
+                <LeaguePagesLink to={`/top-scorers/${idCompetition}`}>
+                  Meilleurs buteurs <ArrowNavigation>►</ArrowNavigation>
+                </LeaguePagesLink>
+            </HeaderBody>
             <RankingWrapper>
               <StyledSelect placeholder={yearTopAssits} options={options} onChange={(option) => {
                     //refetchQuery(option.value)
                   }}
               />
               <RankingContainer>
+                <RankingTab>
+                  <RankingTabHead>
+                    <RankingTabHeadRow>
+                      <RankingTabHeadTitle></RankingTabHeadTitle>
+                      <RankingTabHeadTitle></RankingTabHeadTitle>
+                      <RankingTabHeadTitle>buts</RankingTabHeadTitle>
+                      <RankingTabHeadTitle><SpanColor>matchs</SpanColor></RankingTabHeadTitle>
+                      <RankingTabHeadTitle><SpanColor>ratio</SpanColor></RankingTabHeadTitle>
+                    </RankingTabHeadRow>
+                  </RankingTabHead>
+                  <RankingTabBody>
+                    {topAssists.map((scorer, index) => (
+                      <RankingTabBodyRow key={`{${scorer.player.name}-ranking-scorers}`}>
+                        <RankingTabBodyData><RankingPosition>{index + 1}</RankingPosition></RankingTabBodyData>
+                        <RankingTabBodyData>
+                          <RankingNamePlayer>
+                            {scorer.player.name}
+                          </RankingNamePlayer><br/><RankingNameTeam>{scorer.statistics[0].team.name}</RankingNameTeam>
+                        </RankingTabBodyData>
+                        <RankingTabBodyData>{scorer.statistics[0].goals.total}</RankingTabBodyData>
+                        <RankingTabBodyData>{scorer.statistics[0].games.appearences}</RankingTabBodyData>
+                        <RankingTabBodyData>{Math.round(scorer.statistics[0].goals.total / scorer.statistics[0].games.appearences*100)/100}</RankingTabBodyData>
+                      </RankingTabBodyRow>
+                    ))}
+                  </RankingTabBody>
+                </RankingTab>
+              </RankingContainer>
+              {/* <RankingContainer>
                   <RankingContainerTitles>
-                    <RankingRowCase></RankingRowCase>
-                    <RankingRowCase></RankingRowCase>
-                    <RankingRowCase>passes déc</RankingRowCase>
-                    <RankingRowCase><SpanColor>matchs</SpanColor></RankingRowCase>
-                    <RankingRowCase><SpanColor>ratio</SpanColor></RankingRowCase>
+                    <RankingRow></RankingRow>
+                    <RankingRow></RankingRow>
+                    <RankingRow>passes déc</RankingRow>
+                    <RankingRow><SpanColor>matchs</SpanColor></RankingRow>
+                    <RankingRow><SpanColor>ratio</SpanColor></RankingRow>
                   </RankingContainerTitles>
                   {topAssists.map((player, index) => (
                     <RankingRowPlayerStats key={`{${player.player.name}-ranking-scorers}`}>
-                      <RankingRowCase>{index + 1}</RankingRowCase>
-                      <RankingRowCase>
+                      <RankingRow>{index + 1}</RankingRow>
+                      <RankingRow>
                         <RankingNamePlayer>{player.player.name}</RankingNamePlayer>
                         <RankingNameTeam>{player.statistics[0].team.name}</RankingNameTeam>
-                      </RankingRowCase>
-                      <RankingRowCase>{player.statistics[0].goals.assists}</RankingRowCase>
-                      <RankingRowCase>{player.statistics[0].games.appearences}</RankingRowCase>
-                      <RankingRowCase>{Math.round(player.statistics[0].goals.assists / player.statistics[0].games.appearences*100)/100}</RankingRowCase>
+                      </RankingRow>
+                      <RankingRow>{player.statistics[0].goals.assists}</RankingRow>
+                      <RankingRow>{player.statistics[0].games.appearences}</RankingRow>
+                      <RankingRow>{Math.round(player.statistics[0].goals.assists / player.statistics[0].games.appearences*100)/100}</RankingRow>
                     </RankingRowPlayerStats>
                   ))}
-              </RankingContainer>
+              </RankingContainer> */}
             </RankingWrapper>
           </>
     );

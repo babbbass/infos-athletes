@@ -84,19 +84,19 @@ export default function Leagues() {
     //const {idCompetition} = idComp
     //console.log(idCompetition)
 
-    const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
-    console.log(data)
-    const teams = data !== undefined ? data.response : []
-    console.log(teams)
+    // const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
+    // console.log(data)
+    // const teams = data !== undefined ? data.response : []
+    // console.log(teams)
     
 
-    if(isError) {
-        return <div>Erreur: { error.message }</div>
-    }
+    // if(isError) {
+    //     return <div>Erreur: { error.message }</div>
+    // }
 
-    if(isLoading) {
-        return <div>Chargement...</div>
-    }
+    // if(isLoading) {
+    //     return <div>Chargement...</div>
+    // }
 
     return (
         <>

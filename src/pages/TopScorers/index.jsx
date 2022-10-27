@@ -8,8 +8,12 @@ import styled from 'styled-components';
 import { topScorers } from '../../Utils/datas/TopScorers';
 import { useParams } from 'react-router-dom';
 import {StyledSelect, RankingWrapper, RankingContainer,
-   RankingContainerTitles, RankingRowCase, RankingRowPlayerStats,
-   RankingNameTeam, RankingNamePlayer, SpanColor} from '../../Utils/style/Rankings'
+   RankingNameTeam, RankingNamePlayer, SpanColor, StyledLinkCard,
+   RankingTab, RankingTabHead, RankingTabHeadRow,
+   RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
+   RankingTabBodyData, HeaderBody, ArrowNavigation,
+   RankingPosition, LeaguePagesLink } from '../../Utils/style/Rankings'
+import colors from '../../Utils/style/colors';
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
     console.log(yearSelected)
@@ -25,10 +29,13 @@ const options = [
     { value: 2021, label: 2021 },
     { value: 2020, label: 2020 }
   ]
-  
 
-const TopScorers = () => {
-    const {yearSelected, setYearSelected} = useContext(ThemeContext)
+  const TopScorers = () => {
+    const {yearSelected, setYearSelected,
+            countryCode, competitionId,
+            competitionName 
+    } = useContext(ThemeContext)
+    // const {competitionId, competitionName, } = useContext(ThemeContext)
     const [yearTopScorers, setYearTopScorers] = useState(yearSelected)
     const { idCompetition } = useParams();
     
@@ -56,33 +63,48 @@ const TopScorers = () => {
     return (
           <>
             <Banner />
+            <HeaderBody>
+                <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
+                  <ArrowNavigation>◄</ArrowNavigation> {competitionName}
+                </LeaguePagesLink>
+                <LeaguePagesLink to={`/meilleurs-passeurs/${idCompetition}`}>
+                  Top Passeurs <ArrowNavigation>►</ArrowNavigation>
+                </LeaguePagesLink>
+            </HeaderBody>
             <RankingWrapper>
               <StyledSelect placeholder={yearTopScorers} options={options} onChange={(option) => {
                     //refetchQuery(option.value)
                   }}
               />
               <RankingContainer>
-                  <RankingContainerTitles>
-                    <RankingRowCase></RankingRowCase>
-                    <RankingRowCase></RankingRowCase>
-                    <RankingRowCase>buts</RankingRowCase>
-                    <RankingRowCase><SpanColor>matchs</SpanColor></RankingRowCase>
-                    <RankingRowCase><SpanColor>ratio</SpanColor></RankingRowCase>
-                  </RankingContainerTitles>
-                  {topScorers.map((scorer, index) => (
-                    <RankingRowPlayerStats key={`{${scorer.player.name}-ranking-scorers}`}>
-                      <RankingRowCase>{index + 1}</RankingRowCase>
-                      <RankingRowCase>
-                        <RankingNamePlayer>{scorer.player.name}</RankingNamePlayer>
-                        <RankingNameTeam>{scorer.statistics[0].team.name}</RankingNameTeam>
-                      </RankingRowCase>
-                      <RankingRowCase>{scorer.statistics[0].goals.total}</RankingRowCase>
-                      <RankingRowCase>{scorer.statistics[0].games.appearences}</RankingRowCase>
-                      <RankingRowCase>{Math.round(scorer.statistics[0].goals.total / scorer.statistics[0].games.appearences*100)/100}</RankingRowCase>
-                    </RankingRowPlayerStats>
-                  ))}
+                <RankingTab>
+                  <RankingTabHead>
+                    <RankingTabHeadRow>
+                      <RankingTabHeadTitle></RankingTabHeadTitle>
+                      <RankingTabHeadTitle></RankingTabHeadTitle>
+                      <RankingTabHeadTitle>buts</RankingTabHeadTitle>
+                      <RankingTabHeadTitle><SpanColor>matchs</SpanColor></RankingTabHeadTitle>
+                      <RankingTabHeadTitle><SpanColor>ratio</SpanColor></RankingTabHeadTitle>
+                    </RankingTabHeadRow>
+                  </RankingTabHead>
+                  <RankingTabBody>
+                    {topScorers.map((scorer, index) => (
+                      <RankingTabBodyRow key={`{${scorer.player.name}-ranking-scorers}`}>
+                        <RankingTabBodyData><RankingPosition>{index + 1}</RankingPosition></RankingTabBodyData>
+                        <RankingTabBodyData>
+                          <RankingNamePlayer>
+                            {scorer.player.name}
+                          </RankingNamePlayer><br/><RankingNameTeam>{scorer.statistics[0].team.name}</RankingNameTeam>
+                        </RankingTabBodyData>
+                        <RankingTabBodyData>{scorer.statistics[0].goals.total}</RankingTabBodyData>
+                        <RankingTabBodyData>{scorer.statistics[0].games.appearences}</RankingTabBodyData>
+                        <RankingTabBodyData>{Math.round(scorer.statistics[0].goals.total / scorer.statistics[0].games.appearences*100)/100}</RankingTabBodyData>
+                      </RankingTabBodyRow>
+                    ))}
+                  </RankingTabBody>
+                </RankingTab>
               </RankingContainer>
-            </RankingWrapper>
+            </RankingWrapper> 
           </>
     );
 };

@@ -21,8 +21,8 @@ const Wrapper = styled.section`
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
-  color: #000;
+  font-size: 1.8rem;
+  font-style: italic;
 `;
 
 const Presentation = styled.p`
@@ -62,10 +62,7 @@ const CountryFlagContainer = styled.div`
 const CountryFlag = styled(StyledImg)`
   margin: 10px 0;
   border-radius: 6px;
-  height: 180px
-  // @media (max-width: 425px) {
-  //   width: 280px;
-  // }
+  // height: 180px
 `
 const StyledLink = styled(Link)`
   color: ${colors.primary};
@@ -133,7 +130,7 @@ function Home() {
       <Banner />
       <Wrapper>
         <Title>
-          Infos athletes
+          INFOS ATHLETES
         </Title>
         <Presentation>
           Lorem Ipsum is simply dummy text of the printing and typesetting industry.

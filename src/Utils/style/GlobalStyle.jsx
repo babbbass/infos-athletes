@@ -53,7 +53,6 @@ export const CardNameTeamOrPlayer = styled.div`
         font-size: 1.1rem;
     }
 `
-
 export const StyledLink = styled(Link)`
     text-decoration: none;
     margin 0 15px;
@@ -63,7 +62,6 @@ export const StyledLink = styled(Link)`
         color: #fff
     }
 `
-
 export default function GlobalStyle() {
 
     const GlobalStyle = createGlobalStyle`

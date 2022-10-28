@@ -8,18 +8,13 @@ import { PlayerStatsModalBackground, PlayerStatsModalContainer, ModalContainerCa
 import { ThemeContext } from "../../../Utils/Context/Context";
 import { requestOptions } from '../../../Utils/config/QueryConfig';
 import { useQuery } from 'react-query';
+import { selectOptions } from '../../../Utils/Context/Context';
 
 const fetchPlayerDatas = async (playerId, yearSeason) => {
   const response = await fetch(`https://v3.football.api-sports.io/players?id=${playerId}&season=${yearSeason}`, requestOptions) 
   
   return await response.json()
 }
-
-const options = [
-  { value: 2022, label: 2022 },
-  { value: 2021, label: 2021 },
-  { value: 2020, label: 2020 }
-]
 
 export default function PlayerStatisticsModal({closeModalStatistics, playerStatistic}) { //
   const {yearSelected} = useContext(ThemeContext) 
@@ -48,7 +43,7 @@ export default function PlayerStatisticsModal({closeModalStatistics, playerStati
             <PlayerStatsModalContainerHeader>
               <ModalContainerTitle>{`${playerStatistics[0].player.name} statistiques`}</ModalContainerTitle>
               {/* <PlayerStatisticYear /> */}
-              <StyledSelect placeholder={yearStatisticsSelected} options={options} onChange={(option) => {
+              <StyledSelect placeholder={yearStatisticsSelected} options={selectOptions} onChange={(option) => {
                   setYearStatisticsSelected(option.value)
                 }}
               />

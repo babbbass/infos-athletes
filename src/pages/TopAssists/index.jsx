@@ -12,6 +12,7 @@ import {StyledSelect, RankingWrapper, RankingContainer,
   RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
   RankingTabBodyData, HeaderBody, ArrowNavigation,
   RankingPosition, LeaguePagesLink} from '../../Utils/style/Rankings'
+import { selectOptions } from '../../Utils/Context/Context';
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
     //console.log(yearSelected, idCompetition)
@@ -20,32 +21,18 @@ const fetchTopAssists = async (yearSelected, idCompetition) => {
     return await response.json()
 }
 
-const options = [
-    { value: 2022, label: 2022 },
-    { value: 2021, label: 2021 },
-    { value: 2020, label: 2020 }
-  ]
-  
 const TopAssits = () => {
-    // const {yearSelected, setYearSelected} = useContext(ThemeContext)
-    const {yearSelected, setYearSelected,
-            countryCode, competitionId,
-            competitionName 
+    const {yearSelected, countryCode, 
+        competitionId, competitionName 
     } = useContext(ThemeContext)
-    const [yearTopAssits, setYearTopAssits] = useState(yearSelected)
+    const [yearTopAssitsSelected, setYearTopAssitsSelected] = useState(yearSelected)
     const { idCompetition } = useParams();
     
-    // const refetchQuery = async (yearSelectSelected) => {
-    //   await setYearTopAssits(yearSelectSelected)
-    //   await refetch()
-    // }
-    
-    // const {isLoading, isError, data, error, refetch} = useQuery(
-    //   ['topAssists', [idCompetition, yearTopAssits]],
-    //   () => fetchTopAssists(yearTopAssits, idCompetition),
+    // const {isLoading, isError, data, error} = useQuery(
+    //   ['topAssists', [idCompetition, yearTopAssitsSelected]],
+    //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition),
     // )
-    // //console.log(data)
-    // // console.log(topAssists)
+    
     // if(isError) {
     //     return <div>Erreur: { error.message }</div>
     // }
@@ -54,7 +41,7 @@ const TopAssits = () => {
     //     return <div>Chargement...</div>
     // }
 
-    //const topAssists = data !== undefined ? data.response : []
+    // const topAssists = data !== undefined ? data.response : []
 
     return (
           <>
@@ -68,8 +55,8 @@ const TopAssits = () => {
                 </LeaguePagesLink>
             </HeaderBody>
             <RankingWrapper>
-              <StyledSelect placeholder={yearTopAssits} options={options} onChange={(option) => {
-                    //refetchQuery(option.value)
+              <StyledSelect placeholder={yearTopAssitsSelected} options={selectOptions} onChange={(option) => {
+                    setYearTopAssitsSelected(option.value)
                   }}
               />
               <RankingContainer>

@@ -46,31 +46,28 @@ const fetchRankingLeague = async (competitionId, yearCompetitionId) => {
 }
 
 const Ranking = () => {
-    const {yearSelected, setYearSelected,
-            countryCode, competitionId,
-            competitionName 
+    const {yearSelected,countryCode,
+       competitionId, competitionName 
     } = useContext(ThemeContext)
-
     const [yearLeagueSelected, setYearLeagueSelected] = useState(yearSelected)
     const { idCompetition } = useParams();
 
-    
+    // const {isLoading, isError, data, error} = useQuery(
+    //   ['leagueRanking', [idCompetition, yearLeagueSelected]],
+    //   () => fetchRankingLeague(idCompetition, yearLeagueSelected)
+    // )
 
-    const {isLoading, isError, data, error} = useQuery(
-      ['leagueRanking', [idCompetition, yearLeagueSelected]],
-      () => fetchRankingLeague(idCompetition, yearLeagueSelected)
-    )
+    // if(isError) {
+    //     return <div>Erreur: { error.message }</div>
+    // }
 
-    if(isError) {
-        return <div>Erreur: { error.message }</div>
-    }
+    // if(isLoading) {
+    //     return <div>Chargement...</div>
+    // }
 
-    if(isLoading) {
-        return <div>Chargement...</div>
-    }
-
-    const leagueRanking = data !== undefined ? data.response : []
-    //const leagueRanking = ranking[0].standings[0]
+    // const leagueRanking = data !== undefined ? data.response : []
+    //console.log(ranking[0].standings[0])
+    const leagueRanking = ranking[0].standings[0]
     return (
             
         <>
@@ -85,7 +82,7 @@ const Ranking = () => {
           </HeaderBody>
           <RankingWrapper>
             <StyledSelect placeholder={yearLeagueSelected} options={options} onChange={(option) => {
-                  //refetchQuery(option.value)
+                  setYearLeagueSelected(option.value)
                 }}
             />
             <RankingContainer>
@@ -103,8 +100,9 @@ const Ranking = () => {
                   </RankingTabHeadRow>
                 </RankingTabHead>
                 <RankingTabBody>
-                   {leagueRanking[0].league.standings[0].map((team, index) => (
-                      // team.team.name
+                   {/* {leagueRanking[0].league.standings[0].map((team, index) => (      */}
+                    {leagueRanking.map((team, index) => (
+                   
                       <RankingTabBodyRow key={`{${team.team.id}-ranking-league}`}>
                         <RankingTabBodyData><RankingPosition>{index + 1}</RankingPosition></RankingTabBodyData>
                         <RankingTabBodyData>

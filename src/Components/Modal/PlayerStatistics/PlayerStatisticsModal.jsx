@@ -6,12 +6,8 @@ import { PlayerStatsModalBackground, PlayerStatsModalContainer, ModalContainerCa
   H1Container, RowModalData, StyledSelect } from './PlayerStatisticsStyle' 
 //import { playerStatistics } from '../../../Utils/datas/PlayerStatistics'
 import { ThemeContext } from "../../../Utils/Context/Context";
-import PlayerStatisticYear from '../../PlayerStatisticYear'
-import { useRetrievePlayerDatas } from '../../../Utils/Queries/Players';
 import { requestOptions } from '../../../Utils/config/QueryConfig';
 import { useQuery } from 'react-query';
-import Select from 'react-select';
-import styled from 'styled-components';
 
 const fetchPlayerDatas = async (playerId, yearSeason) => {
   const response = await fetch(`https://v3.football.api-sports.io/players?id=${playerId}&season=${yearSeason}`, requestOptions) 
@@ -26,34 +22,23 @@ const options = [
 ]
 
 export default function PlayerStatisticsModal({closeModalStatistics, playerStatistic}) { //
-  //console.log(playerStatistic[0].player.id);
-  
-  const {yearSelected, setYearSelected} = useContext(ThemeContext) 
-  const [yearStatistics, setYearStatistics] = useState(yearSelected)
-
+  const {yearSelected} = useContext(ThemeContext) 
+  const [yearStatisticsSelected, setYearStatisticsSelected] = useState(yearSelected)
   const playerId = playerStatistic[0].player.id
 
-  const refetchQuery = async (yearSelectSelected) => {
-    await setYearStatistics(yearSelectSelected)
-    await refetch()
-  } 
-
-  const {isLoading, isError, data, error, refetch} = useQuery( 
-      ['player-statistics', {playerId, yearStatistics}],() => fetchPlayerDatas(playerId, yearStatistics),
-  )
-
-  // if(data === undefined) {return}
-  // const playerStatistics = data === undefined ? [] : data.response//playerStatistic
+  // const {isLoading, isError, data, error} = useQuery( 
+  //     ['player-statistics', {playerId, yearStatisticsSelected}],() => fetchPlayerDatas(playerId, yearStatisticsSelected),
+  // )
   
-  
-  if(isError) {
-      return <div>Erreur: { error.message }</div>
-  }
+  // if(isError) {
+  //     return <div>Erreur: { error.message }</div>
+  // }
 
-  if(isLoading) {
-      return <div>Chargement...</div>
-  }
+  // if(isLoading) {
+  //     return <div>Chargement...</div>
+  // }
 
+  //const playerStatistics = data === undefined ? [] : data.response
   const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
   
   return (
@@ -63,8 +48,8 @@ export default function PlayerStatisticsModal({closeModalStatistics, playerStati
             <PlayerStatsModalContainerHeader>
               <ModalContainerTitle>{`${playerStatistics[0].player.name} statistiques`}</ModalContainerTitle>
               {/* <PlayerStatisticYear /> */}
-              <StyledSelect placeholder={yearStatistics} options={options} onChange={(option) => {
-                  //refetchQuery(option.value)
+              <StyledSelect placeholder={yearStatisticsSelected} options={options} onChange={(option) => {
+                  setYearStatisticsSelected(option.value)
                 }}
               />
             </PlayerStatsModalContainerHeader>

@@ -2,7 +2,7 @@ import React, {useState}from 'react';
 import { ModalBackground, ModalContainer,
   ModalContainerTitle, ModalContainerBody,
   ModalContainerFooter, TitleCloseBtnButton,
-  ModalContainerFooterButton, StatsBtnButton,
+  ModalContainerFooterButton,
   StyledImg, RowModalContainer,
   ModalContainerHeader } from '../../../Utils/style/Modals' 
 import { StyledLink } from '../../../Utils/style/GlobalStyle';
@@ -11,19 +11,25 @@ import PlayerStatisticsModal from '../PlayerStatistics/PlayerStatisticsModal'
 import PlayerPalmaresModal from '../Player/PlayerPalmaresModal'
 import { useQuery } from 'react-query';
 import { requestOptions } from '../../../Utils/config/QueryConfig';
+import styled from 'styled-components';
+import colors from '../../../Utils/style/colors';
 
 const fetchPlayerDatas = async (playerId) => {
     const response = await fetch(`https://v3.football.api-sports.io/players?id=${playerId}&season=2022`, requestOptions) 
     
     return await response.json()
 }
-
-
-
+const LinkModal = styled(StyledLink)`
+  color: ${colors.flowerblue};
+  &:hover{
+    color: ${colors.modals};
+  }
+`
 export default function Modal({closeModal, playerId}) {
   const [openModalStatistic, setOpenModalStatistic] = useState(false)
   const [openModalPalmaresPlayer, setOpenModalPalmaresPlayer] = useState(false)
-  const {isLoading, isError, data, error} = useQuery([playerId],() => fetchPlayerDatas(playerId))
+
+  const {isLoading, isError, data, error} = useQuery([playerId], () => fetchPlayerDatas(playerId))
 
   const playerStatistics = data !== undefined ? data.response : []
 
@@ -46,16 +52,16 @@ export default function Modal({closeModal, playerId}) {
       <ModalBackground>
         <ModalContainer>
         <ModalContainerHeader>
-          <StyledLink onClick={() => {
+          <LinkModal onClick={() => {
               setOpenModalPalmaresPlayer(true)
             }}
           >Palmares
-          </StyledLink>
-          <StyledLink onClick={() => {
+          </LinkModal>
+          <LinkModal onClick={() => {
                   setOpenModalStatistic(true)
                 }}
           >Statistiques
-          </StyledLink>
+          </LinkModal>
         </ModalContainerHeader>
           <ModalContainerTitle><h1>{playerStatistics[0].player.name}</h1></ModalContainerTitle>
           <ModalContainerBody>

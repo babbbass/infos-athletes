@@ -41,11 +41,10 @@ const fetchRankingLeague = async (competitionId, yearCompetitionId) => {
 }
 
 const Ranking = () => {
-    const {yearSelected,countryCode,
-       competitionId, competitionName 
-    } = useContext(ThemeContext)
+    const {yearSelected} = useContext(ThemeContext)
     const [yearLeagueSelected, setYearLeagueSelected] = useState(yearSelected)
-    const { idCompetition } = useParams();
+    const { idCompetition, countryCode} = useParams();
+    //console.log(idCompetition)
 
     // const {isLoading, isError, data, error} = useQuery(
     //   ['leagueRanking', [idCompetition, yearLeagueSelected]],
@@ -63,15 +62,16 @@ const Ranking = () => {
     // const leagueRanking = data !== undefined ? data.response : []
     //console.log(ranking[0].standings[0])
     const leagueRanking = ranking[0].standings[0]
+    const competitionName = leagueRanking[0].group
     return (
             
         <>
           <Banner />
           <HeaderBody>
-              <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
+              <LeaguePagesLink to={`/leagues/${countryCode}/${idCompetition}`}>
                 <ArrowNavigation>◄</ArrowNavigation> {competitionName}
               </LeaguePagesLink>
-              <LeaguePagesLink to={`/meilleurs-passeurs/${idCompetition}`}>
+              <LeaguePagesLink to={`/meilleurs-passeurs/${countryCode}/${idCompetition}`}>
                 Top Passeurs <ArrowNavigation>►</ArrowNavigation>
               </LeaguePagesLink>
           </HeaderBody>

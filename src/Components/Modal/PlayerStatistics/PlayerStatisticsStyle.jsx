@@ -18,15 +18,15 @@ export const PlayerStatsModalBackground = styled.div`
     // margin-top: -100px; /* Negative half of height. */
     // margin-left: -250px; /* Negative half of width. */
     @media (max-width: 768px) {
-        width: 93%;
+        width: 100%;
     }
 `
   
 export const PlayerStatsModalContainer = styled.div`
-    width: 98%;
+    width: 90%;
     height: auto;
     border-radius: 12px;
-    background-color: #A9A9A9;
+    background-color: ${colors.blueLightColor};
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-wrap: wrap;

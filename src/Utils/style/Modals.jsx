@@ -14,7 +14,7 @@ export const ModalBackground = styled.div`
     // margin-top: -100px; /* Negative half of height. */
     // margin-left: -250px; /* Negative half of width. */
     @media (max-width: 900px) {
-        width: 85%
+        width: 100%
     }
 `
 export const ModalContainer = styled.div`
@@ -29,7 +29,7 @@ export const ModalContainer = styled.div`
     background: #fff;
     &:hover {
         cursor: pointer;
-        box-shadow: 2px 2px 10px #bbb;
+        box-shadow: 2px 2px 10px #cornflowerblue;
     }
 `
 export const ModalContainerHeader = styled.div`

@@ -4,7 +4,8 @@ import colors from '../../Utils/style/colors';
 
 const Wrapper = styled.section`
   padding: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-style: italic;
   color: #fff;
   display: flex;
   flex-wrap: no-wrap;
@@ -12,11 +13,12 @@ const Wrapper = styled.section`
   justify-content: center;
   background: #99CBFF;
   height: 80px;
+  align-items: center;
 `;
 const Footer = () => {
     return (
         <Wrapper>
-            2022
+            copyright 2022
         </Wrapper>
     );
 };

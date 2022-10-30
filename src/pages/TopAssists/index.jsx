@@ -22,11 +22,9 @@ const fetchTopAssists = async (yearSelected, idCompetition) => {
 }
 
 const TopAssits = () => {
-    const {yearSelected, countryCode, 
-        competitionId, competitionName 
-    } = useContext(ThemeContext)
+    const {yearSelected} = useContext(ThemeContext)
     const [yearTopAssitsSelected, setYearTopAssitsSelected] = useState(yearSelected)
-    const { idCompetition } = useParams();
+    const { idCompetition, countryCode} = useParams();
     
     // const {isLoading, isError, data, error} = useQuery(
     //   ['topAssists', [idCompetition, yearTopAssitsSelected]],
@@ -42,15 +40,15 @@ const TopAssits = () => {
     // }
 
     // const topAssists = data !== undefined ? data.response : []
-
+    const competitionName = topAssists[0].statistics[0].league.name
     return (
           <>
             <Banner />
             <HeaderBody>
-                <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
+                <LeaguePagesLink to={`/leagues/${countryCode}/${idCompetition}`}>
                   <ArrowNavigation>◄</ArrowNavigation> {competitionName}
                 </LeaguePagesLink>
-                <LeaguePagesLink to={`/top-scorers/${idCompetition}`}>
+                <LeaguePagesLink to={`/top-scorers/${countryCode}/${idCompetition}`}>
                   Meilleurs buteurs <ArrowNavigation>►</ArrowNavigation>
                 </LeaguePagesLink>
             </HeaderBody>

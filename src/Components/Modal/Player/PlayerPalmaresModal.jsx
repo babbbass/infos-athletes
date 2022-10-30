@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import {ThemeContext} from '../../../Utils/Context/Context'
 import {PlayerStatsModalBackground, PlayerStatsModalContainer,
     PlayerStatsModalContainerHeader, ModalContainerFooter, ModalContainerTitle,
@@ -28,6 +28,7 @@ const PlayerStatsModalContainerBodyPalmares = styled(PlayerStatsModalContainerBo
 `
 const RowModalTitlePalmares = styled(RowModalTitle)`
     width: 12%;
+    font-weight: 600;
 `
 const RowModalDataPalmares = styled(RowModalData)` 
     width: 64%;
@@ -37,21 +38,13 @@ const RowModalDataPalmares = styled(RowModalData)`
 export default function PlayerPalmaresModal({closeModalPalmaresPlayer}) {
     const {yearSelected, setYearSelected} = useContext(ThemeContext) 
     // const [yearStatistics, setYearStatistics] = useState(yearSelected)
-    const options = [
-        { value: 2022, label: 2022 },
-        { value: 2021, label: 2021 },
-        { value: 2020, label: 2020 }
-      ]
+   
     return (
         <div>
             <PlayerStatsModalBackground>
                 <PlayerStatsModalContainer>
                     <PlayerStatsModalContainerHeaderPalmares>
                         <ModalContainerTitle>Palmares</ModalContainerTitle>
-                        {/* <StyledSelect placeholder={yearStatistics} options={options} onChange={(option) => {
-                            //refetchQuery(option.value)
-                            }}
-                    /> */}
                     </PlayerStatsModalContainerHeaderPalmares>
                     <PlayerStatsModalContainerBodyPalmares>
                         {playerPalmares.map((trophie) => (

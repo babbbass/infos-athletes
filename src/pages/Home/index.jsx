@@ -18,11 +18,11 @@ const Wrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  font-style: italic;
 `;
 
 const Title = styled.h1`
   font-size: 1.8rem;
-  font-style: italic;
 `;
 
 const Presentation = styled.p`

@@ -1,7 +1,8 @@
 import {useQuery} from 'react-query'
-import {useContext, useEffect, useState} from 'react'
+import {useContext, useState} from 'react'
 import Banner from "../../Components/Banner";
-import { Link, useParams } from 'react-router-dom';
+import Footer from "../../Components/Footer";
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components'
 import { teams } from '../../Utils/datas/Teams';
 import colors from '../../Utils/style/colors';
@@ -56,32 +57,8 @@ const fetchCompetition = async (competitionId) => {
     return await response.json()
 }
 export default function Leagues() {
-    const { countryCode } = useParams()
-
-    // const competitions = [
-    //     {
-    //         countryCode: "GB",
-    //         idCompetition: 39
-    //     },
-    //     {
-    //         countryCode: "DE",
-    //         idCompetition: 78
-    //     },
-    //     {
-    //         countryCode: "FR",
-    //         idCompetition: 61
-    //     },
-    //     {
-    //         countryCode: "ES",
-    //         idCompetition: 140
-    //     }
-    // ]
-
-    const {competitionId} = useParams()
-    
-    //const idComp = competitions.find(competition => competition.countryCode === countryCode)
-    //const {idCompetition} = idComp
-    //console.log(idCompetition)
+    const { countryCode, competitionId } = useParams()
+    //const {setCountryCode} =  useContext(ThemeContext)
 
     // const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
     // console.log(data)
@@ -96,14 +73,15 @@ export default function Leagues() {
     // if(isLoading) {
     //     return <div>Chargement...</div>
     // }
-
+    
+    //setCountryCode(countryCode)
     return (
         <>
             <Banner />
             <HeaderBody>
-                <LeaguePagesLink to={`/classement/${competitionId}`}>Classement</LeaguePagesLink>
-                <LeaguePagesLink to={`/top-scorers/${competitionId}`}>Top buteurs</LeaguePagesLink>
-                <LeaguePagesLink to={`/meilleurs-passeurs/${competitionId}`}>Meilleurs passeurs</LeaguePagesLink>
+                <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>Classement</LeaguePagesLink>
+                <LeaguePagesLink to={`/top-scorers/${countryCode}/${competitionId}`}>Top buteurs</LeaguePagesLink>
+                <LeaguePagesLink to={`/meilleurs-passeurs/${countryCode}/${competitionId}`}>Meilleurs passeurs</LeaguePagesLink>
             </HeaderBody>
             
             <CardContainer>         
@@ -119,6 +97,7 @@ export default function Leagues() {
                     </InfoCardContainer>
                 ))}
             </CardContainer>
+            <Footer />
         </>
     )
 }

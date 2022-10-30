@@ -36,15 +36,15 @@ const router = createBrowserRouter([
     element: <Squad />,
   },
   {
-    path: "/top-scorers/:idCompetition",
+    path: "/top-scorers/:countryCode/:idCompetition",
     element: <TopScorers />,
   },
   {
-    path: "/meilleurs-passeurs/:idCompetition",
+    path: "/meilleurs-passeurs/:countryCode/:idCompetition",
     element: <TopAssits />,
   },
   {
-    path: "/classement/:idCompetition",
+    path: "/classement/:countryCode/:idCompetition",
     element: <Ranking />,
   },
 ]);

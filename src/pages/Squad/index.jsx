@@ -55,7 +55,7 @@ export default function Squad() {
     const [playerId, setPlayerId] = useState(0)
     const { teamId } = useParams()
     const {competitionId, competitionName, countryCode} = useContext(ThemeContext)
-    // //console.log(competitionName)
+    //console.log(competitionId, competitionName, countryCode)
     // const {isLoading, isError, data, error} = useQuery([teamId],() => fetchTeamPlayers(teamId))
     // //console.log(data)
     // const squad = data !== undefined ? data.response : []

@@ -23,6 +23,7 @@ const TitleContainer = styled.div`
 
 const LinkContainer = styled.div`
   width: 100%;
+  text-align: center;
 `
 
 const StyledLink = styled(Link)`

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import colors from '../../utils/style/colors';
 
-const Wrapper = styled.section`
+const Wrapper = styled.footer`
   padding: 1rem;
   font-size: 1.2rem;
   font-style: italic;
@@ -11,7 +11,7 @@ const Wrapper = styled.section`
   flex-wrap: no-wrap;
   flex-direction: row;
   justify-content: center;
-  background: #99CBFF;
+  background: ${colors.blueLightColor};
   height: 80px;
   align-items: center;
 `;

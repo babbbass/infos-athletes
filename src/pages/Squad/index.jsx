@@ -1,15 +1,15 @@
-import { squad } from "../../Utils/datas/Squads"
-import Banner from "../../Components/Banner"
+import { squad } from "../../utils/datas/Squads"
+import Banner from "../../components/Banner"
 import styled from "styled-components"
 import { CardContainer, StyledLinkCard, StyledImg,
-    CardNameTeamOrPlayer, InfoCardContainer } from "../../Utils/style/GlobalStyle"
-import Modal from '../../Components/Modal/PlayerCivility'
+    CardNameTeamOrPlayer, InfoCardContainer } from "../../utils/style/GlobalStyle"
+import Modal from '../../components/Modal/PlayerCivility'
 import { useContext, useState } from 'react'
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
-import { requestOptions } from "../../Utils/config/QueryConfig"
-import colors from "../../Utils/style/colors"
-import { ThemeContext } from "../../Utils/Context/Context"
+import { requestOptions } from "../../utils/config/QueryConfig"
+import colors from "../../utils/style/colors"
+import { ThemeContext } from "../../utils/Context/Context"
 
 const fetchTeamPlayers = async (teamId) => {
     console.log(teamId)

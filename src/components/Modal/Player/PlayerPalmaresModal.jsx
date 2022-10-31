@@ -1,11 +1,11 @@
 import React, {useContext} from 'react'
-import {ThemeContext} from '../../../Utils/Context/Context'
+import {ThemeContext} from '../../../utils/Context/Context'
 import {PlayerStatsModalBackground, PlayerStatsModalContainer,
     PlayerStatsModalContainerHeader, ModalContainerFooter, ModalContainerTitle,
     ModalContainerFooterButton, TitleCloseBtnButton,
     StyledSelect, PlayerStatsModalContainerBody, RowStatsModalContainer,
     ModalContainerCard, RowModalData, RowModalTitle } from '../PlayerStatistics/PlayerStatisticsStyle'
-import { playerPalmares } from '../../../Utils/datas/PlayerPalmares'    
+import { playerPalmares } from '../../../utils/datas/PlayerPalmares'    
 import styled from 'styled-components'
 
 const RowStatsModalContainerPalamares = styled(RowStatsModalContainer)`

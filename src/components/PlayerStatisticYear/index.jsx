@@ -1,7 +1,7 @@
-import { playerStatistics } from "../../Utils/datas/PlayerStatistics";
+import { playerStatistics } from "../../utils/datas/PlayerStatistics";
 import React, {useContext} from 'react'
 import Select from 'react-select'
-import { ThemeContext } from "../../Utils/Context/Context";
+import { ThemeContext } from "../../utils/Context/Context";
 import { useQuery } from 'react-query';
 
 const options = [

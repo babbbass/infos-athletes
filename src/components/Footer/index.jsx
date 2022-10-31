@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import colors from '../../Utils/style/colors';
+import colors from '../../utils/style/colors';
 
 const Wrapper = styled.section`
   padding: 1rem;

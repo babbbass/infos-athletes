@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import colors from '../../../Utils/style/colors'
+import colors from '../../../utils/style/colors'
 import Select  from 'react-select'
 
 export const PlayerStatsModalBackground = styled.div`

@@ -1,13 +1,13 @@
-import Banner from "../../Components/Banner";
-import Footer from "../../Components/Footer";
+import Banner from "../../components/Banner";
+import Footer from "../../components/Footer";
 import styled from "styled-components";
-import colors from "../../Utils/style/colors"
-import {StyledImg} from "../../Utils/style/GlobalStyle"
+import colors from "../../utils/style/colors"
+import {StyledImg} from "../../utils/style/GlobalStyle"
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { requestOptions } from "../../Utils/config/QueryConfig";
-import { ThemeContext } from "../../Utils/Context/Context";
+import { requestOptions } from "../../utils/config/QueryConfig";
+import { ThemeContext } from "../../utils/Context/Context";
 
 const Wrapper = styled.section`
   padding: 1rem;

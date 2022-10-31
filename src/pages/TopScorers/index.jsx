@@ -1,17 +1,17 @@
 import React, {useContext, useState} from 'react';
-import { ThemeContext } from "../../Utils/Context/Context";
-import { requestOptions } from '../../Utils/config/QueryConfig';
+import { ThemeContext } from "../../utils/Context/Context";
+import { requestOptions } from '../../utils/config/QueryConfig';
 import { useQuery } from 'react-query';
-import Banner from '../../Components/Banner';
-import { topScorers } from '../../Utils/datas/TopScorers';
+import Banner from '../../components/Banner';
+import { topScorers } from '../../utils/datas/TopScorers';
 import { useParams } from 'react-router-dom';
 import {StyledSelect, RankingWrapper, RankingContainer,
    RankingNameTeam, RankingNamePlayer, SpanColor, StyledLinkCard,
    RankingTab, RankingTabHead, RankingTabHeadRow,
    RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
    RankingTabBodyData, HeaderBody, ArrowNavigation,
-   RankingPosition, LeaguePagesLink } from '../../Utils/style/Rankings'
-import { selectOptions } from '../../Utils/Context/Context';
+   RankingPosition, LeaguePagesLink } from '../../utils/style/Rankings'
+import { selectOptions } from '../../utils/Context/Context';
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
     const response = await fetch(`https://v3.football.api-sports.io/players/topscorers?season=${yearSelected}&league=${idCompetition}`, requestOptions) 

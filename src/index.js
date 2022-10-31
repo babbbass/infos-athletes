@@ -8,7 +8,7 @@ import Leagues from './pages/Leagues';
 import Squad from './pages/Squad';
 import TopScorers from './pages/TopScorers';
 import Ranking from './pages/Ranking/';
-import ThemeContextProvider from './Utils/Context/Context';
+import ThemeContextProvider from './utils/Context/Context';
 import TopAssits from './pages/TopAssists';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

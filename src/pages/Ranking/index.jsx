@@ -1,19 +1,19 @@
 import React, {useContext, useState} from 'react';
-import { ThemeContext } from "../../Utils/Context/Context";
-import { requestOptions } from '../../Utils/config/QueryConfig';
+import { ThemeContext } from "../../utils/Context/Context";
+import { requestOptions } from '../../utils/config/QueryConfig';
 import { useQuery } from 'react-query';
 import Select from 'react-select';
-import Banner from '../../Components/Banner';
+import Banner from '../../components/Banner';
 import styled from 'styled-components';
-import { ranking } from '../../Utils/datas/Ranking';
+import { ranking } from '../../utils/datas/Ranking';
 import { useParams } from 'react-router-dom';
 import {StyledSelect, RankingWrapper, RankingContainer,
    RankingNameTeam, RankingNamePlayer, SpanColor, StyledLinkCard,
    RankingTab, RankingTabHead, RankingTabHeadRow,
    RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
    RankingTabBodyData, HeaderBody, ArrowNavigation,
-   RankingPosition, LeaguePagesLink } from '../../Utils/style/Rankings'
-import { selectOptions } from '../../Utils/Context/Context';
+   RankingPosition, LeaguePagesLink } from '../../utils/style/Rankings'
+import { selectOptions } from '../../utils/Context/Context';
 
 const LeagueRankingNamePlayer = styled(RankingNamePlayer)`
   font-size: 0.9rem;

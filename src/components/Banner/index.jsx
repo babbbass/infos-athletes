@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import colors from '../../Utils/style/colors'
+import colors from '../../utils/style/colors'
 import {BrowserRouter as Router, Link} from 'react-router-dom'
 
 const Wrapper = styled.section`

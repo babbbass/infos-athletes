@@ -1,18 +1,18 @@
 import React, {useContext, useState} from 'react';
-import { ThemeContext } from "../../Utils/Context/Context";
-import { requestOptions } from '../../Utils/config/QueryConfig';
+import { ThemeContext } from "../../utils/Context/Context";
+import { requestOptions } from '../../utils/config/QueryConfig';
 import { useQuery } from 'react-query';
 import Select from 'react-select';
-import Banner from '../../Components/Banner';
-import { topAssists } from '../../Utils/datas/TopAssists'
+import Banner from '../../components/Banner';
+import { topAssists } from '../../utils/datas/TopAssists'
 import { useParams } from 'react-router-dom';
 import {StyledSelect, RankingWrapper, RankingContainer,
   RankingNameTeam, RankingNamePlayer, SpanColor, 
   RankingTab, RankingTabHead, RankingTabHeadRow,
   RankingTabHeadTitle, RankingTabBody, RankingTabBodyRow, 
   RankingTabBodyData, HeaderBody, ArrowNavigation,
-  RankingPosition, LeaguePagesLink} from '../../Utils/style/Rankings'
-import { selectOptions } from '../../Utils/Context/Context';
+  RankingPosition, LeaguePagesLink} from '../../utils/style/Rankings'
+import { selectOptions } from '../../utils/Context/Context';
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
     //console.log(yearSelected, idCompetition)

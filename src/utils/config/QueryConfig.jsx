@@ -9,3 +9,4 @@ export const requestOptions = {
     redirect: 'follow'
 };
 
+export const baseUrl = `https://v3.football.api-sports.io`

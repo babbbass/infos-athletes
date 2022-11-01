@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "utils/Context/Context";
-import { requestOptions } from "utils/config/QueryConfig";
+import { baseUrl, requestOptions } from "utils/config/QueryConfig";
 import { useQuery } from "react-query";
 import Select from "react-select";
 import Header from "components/Header";
@@ -30,7 +30,7 @@ import { selectOptions } from "utils/Context/Context";
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)
   const response = await fetch(
-    `https://v3.football.api-sports.io/players/topassists?season=${yearSelected}&league=${idCompetition}`,
+    `${baseUrl}/players/topassists?season=${yearSelected}&league=${idCompetition}`,
     requestOptions
   );
 

@@ -12,14 +12,14 @@ import Modal from "components/Modal/PlayerCivility";
 import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { requestOptions } from "utils/config/QueryConfig";
+import { baseUrl,requestOptions } from "utils/config/QueryConfig";
 import colors from "utils/style/colors";
 import { ThemeContext } from "utils/Context/Context";
 import { squad as squadConfig } from "utils/config/squad";
 
 const fetchTeamPlayers = async (teamId) => {
   const response = await fetch(
-    `https://v3.football.api-sports.io/players/squads?team=${teamId}`,
+    `${baseUrl}/players/squads?team=${teamId}`,
     requestOptions
   );
 
@@ -65,9 +65,7 @@ export default function Squad() {
     useContext(ThemeContext);
   
   // const {isLoading, isError, data, error} = useQuery([teamId],() => fetchTeamPlayers(teamId))
-  // //console.log(data)
   // const squad = data !== undefined ? data.response : []
-  // //console.log(squad)
 
   // if(isError) {
   //     return <div>Erreur: { error.message }</div>

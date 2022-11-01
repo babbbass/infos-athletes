@@ -6,12 +6,12 @@ import { PlayerStatsModalBackground, PlayerStatsModalContainer, ModalContainerCa
   H1Container, RowModalData, StyledSelect } from './PlayerStatisticsStyle' 
 //import { playerStatistics } from 'utils/datas/PlayerStatistics'
 import { ThemeContext } from "utils/Context/Context";
-import { requestOptions } from 'utils/config/QueryConfig';
+import { requestOptions, baseUrl } from 'utils/config/QueryConfig';
 import { useQuery } from 'react-query';
 import { selectOptions } from 'utils/Context/Context';
 
 const fetchPlayerDatas = async (playerId, yearSeason) => {
-  const response = await fetch(`https://v3.football.api-sports.io/players?id=${playerId}&season=${yearSeason}`, requestOptions) 
+  const response = await fetch(`${baseUrl}/players?id=${playerId}&season=${yearSeason}`, requestOptions) 
   
   return await response.json()
 }

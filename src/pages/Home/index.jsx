@@ -7,7 +7,7 @@ import { StyledImg } from "utils/style/GlobalStyle";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { requestOptions } from "utils/config/QueryConfig";
+import { baseUrl, requestOptions } from "utils/config/QueryConfig";
 import { ThemeContext } from "utils/Context/Context";
 
 const Wrapper = styled.section`
@@ -73,7 +73,7 @@ const StyledLink = styled(Link)`
 
 const fetchCountries = async () => {
   const response = await fetch(
-    "https://v3.football.api-sports.io/countries",
+    `${baseUrl}/countries`,
     requestOptions
   );
   return await response.json();

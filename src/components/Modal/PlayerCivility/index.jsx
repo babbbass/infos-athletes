@@ -10,12 +10,12 @@ import { playerStatistics } from 'utils/datas/PlayerStatistics'
 import PlayerStatisticsModal from '../PlayerStatistics/PlayerStatisticsModal'
 import PlayerPalmaresModal from '../Player/PlayerPalmaresModal'
 import { useQuery } from 'react-query';
-import { requestOptions } from 'utils/config/QueryConfig';
+import { requestOptions, baseUrl } from 'utils/config/QueryConfig';
 import styled from 'styled-components';
 import colors from 'utils/style/colors';
 
 const fetchPlayerDatas = async (playerId) => {
-    const response = await fetch(`https://v3.football.api-sports.io/players?id=${playerId}&season=2022`, requestOptions) 
+    const response = await fetch(`${baseUrl}/players?id=${playerId}&season=2022`, requestOptions) 
     
     return await response.json()
 }

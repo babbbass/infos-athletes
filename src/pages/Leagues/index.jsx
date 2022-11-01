@@ -13,7 +13,7 @@ import {
   StyledImg,
   CardNameTeamOrPlayer,
 } from "utils/style/GlobalStyle";
-import { requestOptions } from "utils/config/QueryConfig";
+import { baseUrl, requestOptions } from "utils/config/QueryConfig";
 import { ThemeContext } from "utils/Context/Context";
 
 const InfoCardContainer = styled.div`
@@ -56,10 +56,8 @@ const LeaguePagesLink = styled(StyledLink)`
   }
 `;
 const fetchCompetition = async (competitionId) => {
-  console.log(competitionId);
-  //const id = parseInt(idCompetition)
   const response = await fetch(
-    `https://v3.football.api-sports.io/teams?league=${competitionId}&season=2022`,
+    `${baseUrl}/teams?league=${competitionId}&season=2022`,
     requestOptions
   );
 
@@ -70,9 +68,7 @@ export default function Leagues() {
   //const {setCountryCode} =  useContext(ThemeContext)
 
   // const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
-  // console.log(data)
   // const teams = data !== undefined ? data.response : []
-  // console.log(teams)
 
   // if(isError) {
   //     return <div>Erreur: { error.message }</div>

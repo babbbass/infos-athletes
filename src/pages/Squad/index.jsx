@@ -15,10 +15,9 @@ import { useParams } from "react-router-dom";
 import { requestOptions } from "utils/config/QueryConfig";
 import colors from "utils/style/colors";
 import { ThemeContext } from "utils/Context/Context";
+import { squad as squadConfig } from "utils/config/squad";
 
 const fetchTeamPlayers = async (teamId) => {
-  console.log(teamId);
-  //const id = parseInt(idCompetition)
   const response = await fetch(
     `https://v3.football.api-sports.io/players/squads?team=${teamId}`,
     requestOptions
@@ -64,7 +63,7 @@ export default function Squad() {
   const { teamId } = useParams();
   const { competitionId, competitionName, countryCode } =
     useContext(ThemeContext);
-  //console.log(competitionId, competitionName, countryCode)
+  
   // const {isLoading, isError, data, error} = useQuery([teamId],() => fetchTeamPlayers(teamId))
   // //console.log(data)
   // const squad = data !== undefined ? data.response : []
@@ -86,16 +85,16 @@ export default function Squad() {
   squad[0].players.forEach((player) => {
     const position = player.position.toLowerCase();
 
-    if (position === "goalkeeper") {
+    if (position === squadConfig.goalkeeper) {
       goalkeepers.push(player);
     }
-    if (position === "defender") {
+    if (position === squadConfig.defender) {
       defenders.push(player);
     }
-    if (position === "midfielder") {
+    if (position === squadConfig.midfielder) {
       midfielders.push(player);
     }
-    if (position === "attacker") {
+    if (position === squadConfig.attacker) {
       attackers.push(player);
     }
   });

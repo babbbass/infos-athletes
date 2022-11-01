@@ -1,20 +1,20 @@
 import { useQuery } from "react-query";
 import { useContext, useState } from "react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
+import Header from "components/Header";
+import Footer from "components/Footer";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { teams } from "../../utils/datas/Teams";
-import colors from "../../utils/style/colors";
+import { teams } from "utils/datas/Teams";
+import colors from "utils/style/colors";
 import {
   CardContainer,
   StyledLink,
   StyledLinkCard,
   StyledImg,
   CardNameTeamOrPlayer,
-} from "../../utils/style/GlobalStyle";
-import { requestOptions } from "../../utils/config/QueryConfig";
-import { ThemeContext } from "../../utils/Context/Context";
+} from "utils/style/GlobalStyle";
+import { requestOptions } from "utils/config/QueryConfig";
+import { ThemeContext } from "utils/Context/Context";
 
 const InfoCardContainer = styled.div`
   width: 25%;

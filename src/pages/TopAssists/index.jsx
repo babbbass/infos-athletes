@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../../utils/Context/Context";
-import { requestOptions } from "../../utils/config/QueryConfig";
+import { ThemeContext } from "utils/Context/Context";
+import { requestOptions } from "utils/config/QueryConfig";
 import { useQuery } from "react-query";
 import Select from "react-select";
-import Header from "../../components/Header";
-import { topAssists } from "../../utils/datas/TopAssists";
+import Header from "components/Header";
+import { topAssists } from "utils/datas/TopAssists";
 import { useParams } from "react-router-dom";
 import {
   StyledSelect,
@@ -24,8 +24,8 @@ import {
   ArrowNavigation,
   RankingPosition,
   LeaguePagesLink,
-} from "../../utils/style/Rankings";
-import { selectOptions } from "../../utils/Context/Context";
+} from "utils/style/Rankings";
+import { selectOptions } from "utils/Context/Context";
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
-import { ThemeContext } from "../../utils/Context/Context";
-import { requestOptions } from "../../utils/config/QueryConfig";
+import { ThemeContext } from "utils/Context/Context";
+import { requestOptions } from "utils/config/QueryConfig";
 import { useQuery } from "react-query";
-import Header from "../../components/Header";
-import { topScorers } from "../../utils/datas/TopScorers";
+import Header from "components/Header";
+import { topScorers } from "utils/datas/TopScorers";
 import { useParams } from "react-router-dom";
 import {
   StyledSelect,
@@ -24,8 +24,8 @@ import {
   ArrowNavigation,
   RankingPosition,
   LeaguePagesLink,
-} from "../../utils/style/Rankings";
-import { selectOptions } from "../../utils/Context/Context";
+} from "utils/style/Rankings";
+import { selectOptions } from "utils/Context/Context";
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
   const response = await fetch(

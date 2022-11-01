@@ -1,14 +1,14 @@
-import Header from "../../components/Header";
+import Header from "components/Header";
 import Footer from "components/Footer";
 import styled from "styled-components";
-import colors from "../../utils/style/colors";
-import  { countries } from "../../utils/datas/Countries";
-import { StyledImg } from "../../utils/style/GlobalStyle";
+import colors from "utils/style/colors";
+import  { countries } from "utils/datas/Countries";
+import { StyledImg } from "utils/style/GlobalStyle";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { requestOptions } from "../../utils/config/QueryConfig";
-import { ThemeContext } from "../../utils/Context/Context";
+import { requestOptions } from "utils/config/QueryConfig";
+import { ThemeContext } from "utils/Context/Context";
 
 const Wrapper = styled.section`
   padding: 1rem;

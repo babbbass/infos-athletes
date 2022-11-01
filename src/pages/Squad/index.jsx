@@ -1,5 +1,5 @@
-import { squad } from "../../utils/datas/Squads";
-import Header from "../../components/Header";
+import { squad } from "utils/datas/Squads";
+import Header from "components/Header";
 import styled from "styled-components";
 import {
   CardContainer,
@@ -7,14 +7,14 @@ import {
   StyledImg,
   CardNameTeamOrPlayer,
   InfoCardContainer,
-} from "../../utils/style/GlobalStyle";
-import Modal from "../../components/Modal/PlayerCivility";
+} from "utils/style/GlobalStyle";
+import Modal from "components/Modal/PlayerCivility";
 import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
-import { requestOptions } from "../../utils/config/QueryConfig";
-import colors from "../../utils/style/colors";
-import { ThemeContext } from "../../utils/Context/Context";
+import { requestOptions } from "utils/config/QueryConfig";
+import colors from "utils/style/colors";
+import { ThemeContext } from "utils/Context/Context";
 
 const fetchTeamPlayers = async (teamId) => {
   console.log(teamId);

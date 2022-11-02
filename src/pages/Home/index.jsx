@@ -81,13 +81,10 @@ const fetchCountries = async () => {
 
 function Home() {
   const {
-    competitionName,
     setCompetitionName,
-    countryCode,
     setCountryCode,
     setCompetitionId,
   } = useContext(ThemeContext);
-  console.log(competitionName, countryCode);
   // const {isLoading, isError, data, error} = useQuery("countries", fetchCountries)
 
   // if(isError) {

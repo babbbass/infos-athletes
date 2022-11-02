@@ -10,6 +10,7 @@ import TopScorers from './pages/TopScorers';
 import Ranking from './pages/Ranking/';
 import ThemeContextProvider from './utils/Context/Context';
 import TopAssits from './pages/TopAssists';
+import Games from 'pages/Games'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient({
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
     element: <Squad />,
   },
   {
-    path: "/top-scorers/:countryCode/:idCompetition",
+    path: "/meilleurs-buteurs/:countryCode/:idCompetition",
     element: <TopScorers />,
   },
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/classement/:countryCode/:idCompetition",
     element: <Ranking />,
+  },
+  {
+    path: "/prochains-matchs",
+    element: <Games />,
   },
 ]);
 

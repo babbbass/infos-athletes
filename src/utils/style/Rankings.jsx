@@ -73,7 +73,7 @@ export const RankingNamePlayer = styled.span`
 export const SpanColor = styled.span`
   color: #bbb;
 `
-export const HeaderBody = styled.div`
+export const HeaderBody = styled.nav`
     display: flex;
     text-align: center;
     padding: 12px 0 0 0;
@@ -88,7 +88,7 @@ export const RankingPosition = styled.span`
 export const RankingTab = styled.table`
   border-collapse: collapse;
   width: 100%;
-  box-shadow: 0 5px 50px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 50px rgba(153,203,255,0.35);
 `
 export const RankingTabHead = styled.thead`
   font-style: italic;

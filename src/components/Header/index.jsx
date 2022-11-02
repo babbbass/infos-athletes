@@ -42,7 +42,7 @@ export default function Header() {
       <TitleContainer>INFOS ATHLETES</TitleContainer>
       <LinkContainer>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="">Top scorers</StyledLink>
+        <StyledLink to="/prochains-matchs">Prochains matchs</StyledLink>
         <StyledLink>Equipes</StyledLink>
       </LinkContainer>
     </Wrapper>

@@ -86,7 +86,7 @@ export default function Leagues() {
         <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
           Classement
         </LeaguePagesLink>
-        <LeaguePagesLink to={`/top-scorers/${countryCode}/${competitionId}`}>
+        <LeaguePagesLink to={`/meilleurs-buteurs/${countryCode}/${competitionId}`}>
           Top buteurs
         </LeaguePagesLink>
         <LeaguePagesLink

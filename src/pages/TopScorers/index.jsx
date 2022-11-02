@@ -12,7 +12,6 @@ import {
   RankingNameTeam,
   RankingNamePlayer,
   SpanColor,
-  StyledLinkCard,
   RankingTab,
   RankingTabHead,
   RankingTabHeadRow,
@@ -21,11 +20,10 @@ import {
   RankingTabBodyRow,
   RankingTabBodyData,
   HeaderBody,
-  ArrowNavigation,
   RankingPosition,
-  LeaguePagesLink,
-} from "utils/style/Rankings";
+  } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
+import NavLink from "components/NavLink";
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
   const response = await fetch(
@@ -57,18 +55,12 @@ const TopScorers = () => {
 
   // const topScorers = data !== undefined ? data.response : []
   const competitionName = topScorers[0].statistics[0].league.name;
+  const theBestOfLeague = 'passeurs'
   return (
     <>
       <Header />
       <HeaderBody>
-        <LeaguePagesLink to={`/leagues/${countryCode}/${idCompetition}`}>
-          <ArrowNavigation>◄</ArrowNavigation> {competitionName}
-        </LeaguePagesLink>
-        <LeaguePagesLink
-          to={`/meilleurs-passeurs/${countryCode}/${idCompetition}`}
-        >
-          Top Passeurs <ArrowNavigation>►</ArrowNavigation>
-        </LeaguePagesLink>
+        <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} />
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

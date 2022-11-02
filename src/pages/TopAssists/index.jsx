@@ -26,6 +26,7 @@ import {
   LeaguePagesLink,
 } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
+import NavLink from "components/NavLink";
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)
@@ -58,16 +59,12 @@ const TopAssits = () => {
 
   // const topAssists = data !== undefined ? data.response : []
   const competitionName = topAssists[0].statistics[0].league.name;
+  const theBestOfLeague = 'buteurs'
   return (
     <>
       <Header />
       <HeaderBody>
-        <LeaguePagesLink to={`/leagues/${countryCode}/${idCompetition}`}>
-          <ArrowNavigation>◄</ArrowNavigation> {competitionName}
-        </LeaguePagesLink>
-        <LeaguePagesLink to={`/top-scorers/${countryCode}/${idCompetition}`}>
-          Meilleurs buteurs <ArrowNavigation>►</ArrowNavigation>
-        </LeaguePagesLink>
+      <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} />
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

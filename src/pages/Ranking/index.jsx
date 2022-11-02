@@ -28,6 +28,7 @@ import {
   LeaguePagesLink,
 } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
+import NavLink from "components/NavLink";
 
 const LeagueRankingNamePlayer = styled(RankingNamePlayer)`
   font-size: 0.9rem;
@@ -80,18 +81,12 @@ const Ranking = () => {
   //console.log(ranking[0].standings[0])
   const leagueRanking = ranking[0].standings[0];
   const competitionName = leagueRanking[0].group;
+  const theBestOfLeague = 'buteurs'
   return (
     <>
       <Header />
       <HeaderBody>
-        <LeaguePagesLink to={`/leagues/${countryCode}/${idCompetition}`}>
-          <ArrowNavigation>◄</ArrowNavigation> {competitionName}
-        </LeaguePagesLink>
-        <LeaguePagesLink
-          to={`/meilleurs-passeurs/${countryCode}/${idCompetition}`}
-        >
-          Top Passeurs <ArrowNavigation>►</ArrowNavigation>
-        </LeaguePagesLink>
+        <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} />
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

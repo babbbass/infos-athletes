@@ -11,6 +11,7 @@ import Ranking from './pages/Ranking/';
 import ThemeContextProvider from './utils/Context/Context';
 import TopAssits from './pages/TopAssists';
 import Games from 'pages/Games'
+import Player from 'pages/Player'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient({
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/prochains-matchs",
     element: <Games />,
+  },
+  {
+    path: "/player/:playerId",
+    element: <Player />,
   },
 ]);
 

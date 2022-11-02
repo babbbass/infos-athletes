@@ -62,20 +62,27 @@ export const StyledLink = styled(Link)`
         color: #fff
     }
 `
-export default function GlobalStyle() {
-
-    const GlobalStyle = createGlobalStyle`
-        * {
-            font-family: 'Trebuchet MS', Helvetica, sans-serif;
-        }
-    
-        .App {
-            margin: 0;
-            color: green;
-        }
-    `
-    return (
-        <GlobalStyle />
-    )
-}
-
+export const ButtonSiteContainer = styled.div`
+    display: flex;
+`
+export const ButtonSite = styled.button`
+    background-color: ${colors.blueLightColor};
+    width: auto;
+    border-radius: 26px;
+    transition-duration: 0.4s;
+    border: none;
+    color: ${colors.primary};
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: 500;
+    margin: 4px 2px;
+    cursor: pointer;
+    &:hover {
+        background-color: ${colors.primary};
+        color: #fff
+    }
+`

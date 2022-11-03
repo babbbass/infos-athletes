@@ -51,11 +51,10 @@ export const ModalContainerBody = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    fnt-size: 1.7rem;
     text-align: center;
 `
 export const StyledImg = styled.img`
-    margin: 5px 0;
+    margin: 25px 0;
     @media (max-width: 390px) {
         width: 105px;
     }
@@ -66,7 +65,7 @@ export const RowModalContainer = styled.div`
     justify-content: space-evenly;
     margin: 3px auto;
     color: ${colors.modals};
-    font-weight: 600;
+    font-weight: 500;
     font-style: italic;
     @media (max-width: 375px) {
         width: 150px;

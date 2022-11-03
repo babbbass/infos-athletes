@@ -7,6 +7,7 @@ import {PlayerStatsModalBackground, PlayerStatsModalContainer,
     ModalContainerCard, RowModalData, RowModalTitle } from '../PlayerStatistics/PlayerStatisticsStyle'
 import { playerPalmares } from 'utils/datas/PlayerPalmares'    
 import styled from 'styled-components'
+import colors from 'utils/style/colors'
 
 const RowStatsModalContainerPalamares = styled(RowStatsModalContainer)`
     width: auto;
@@ -20,7 +21,7 @@ const ModalContainerCardPalmares = styled(ModalContainerCard)`
 `
 const PlayerStatsModalContainerHeaderPalmares = styled(PlayerStatsModalContainerHeader)`
     background: none;
-    color: #000;
+    color: ${colors.whitesmoke};
 `
 const PlayerStatsModalContainerBodyPalmares = styled(PlayerStatsModalContainerBody)`
     flex-direction: column;
@@ -37,7 +38,6 @@ const RowModalDataPalmares = styled(RowModalData)`
 
 export default function PlayerPalmaresModal({closeModalPalmaresPlayer}) {
     const {yearSelected, setYearSelected} = useContext(ThemeContext) 
-    // const [yearStatistics, setYearStatistics] = useState(yearSelected)
    
     return (
         <div>

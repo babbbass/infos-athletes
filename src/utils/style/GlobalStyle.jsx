@@ -5,10 +5,10 @@ import colors from "../../utils/style/colors"
 
 export const CardContainer = styled.div`
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
     flex-wrap: wrap;
+    margin: 20px auto;
 `
 export const InfoCardContainer = styled.div`
     width: 25%;

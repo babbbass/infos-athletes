@@ -26,18 +26,18 @@ export const PlayerStatsModalContainer = styled.div`
     width: 90%;
     height: auto;
     border-radius: 12px;
-    background-color: ${colors.blueLightColor};
+    background-color: ${colors.primary};
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     padding: 0 1rem;
-    color: #fff;
+    color: ${colors.whitesmoke};
     font-style: italic
 `
 export const PlayerStatsModalContainerHeader = styled.div`
     width: 60%;
-    background: cornflowerblue;
+    background: ${colors.primary};
     margin: 20px auto;
     @media (max-width: 425px) {
         width: 93%;
@@ -54,7 +54,7 @@ export const ModalContainerTitle = styled.div`
 export const StyledSelect = styled(Select)`
   width: 50%;
   margin: 20px auto;
-  color: #000;
+  color: ${colors.primary};
   text-align: center;
 `
 export const PlayerStatsModalContainerBody = styled.div`
@@ -64,7 +64,6 @@ export const PlayerStatsModalContainerBody = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    fnt-size: 1.7rem;
     text-align: center;
 `
 export const ModalContainerCard = styled.div`
@@ -76,7 +75,6 @@ export const ModalContainerCard = styled.div`
     }
 `
 export const ModalContainerCardHeader = styled.div`
-//   background: blue;
   max-height: 250px;
 `
 export const ImgContainer = styled.img`
@@ -102,14 +100,14 @@ export const RowStatsModalContainer = styled.div`
     justify-content: space-evenly;
     margin: 10px auto;
     text-align: -webkit-left;
-    color: ${colors.primary};
+    color: ${colors.blueLightColor};
     font-weight: 500;
     @media (max-width: 375px) {
         width: 150px;
     }
 `
 export const RowModalTitle = styled.div`
-    color: #fff;
+    color: ${colors.whitesmoke};
     font-size: 1rem;
     display: inline-block;
     width: 40%;
@@ -147,7 +145,7 @@ export const ModalContainerFooterButton = styled.button`
     margin: 10px;
     border: none;
     background-color: cornflowerblue;
-    color: white;
+    color: ${colors.whitesmoke};
     border-radius: 8px;
     font-size: 20px;
     cursor: pointer;

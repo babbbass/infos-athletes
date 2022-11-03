@@ -115,9 +115,8 @@ export default function Squad() {
         <H2container>Gardiens</H2container>
         {goalkeepers.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
-            <StyledLinkCard
+            <StyledLinkCard to={`/player/${player.id}`}
               onClick={() => {
-                setOpenModal(true);
                 setPlayerId(player.id);
               }}
             >
@@ -131,9 +130,8 @@ export default function Squad() {
         <H2container>Défenseurs</H2container>
         {defenders.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
-            <StyledLinkCard
+            <StyledLinkCard to={`/player/${player.id}`}
               onClick={() => {
-                setOpenModal(true);
                 setPlayerId(player.id);
               }}
             >
@@ -147,9 +145,8 @@ export default function Squad() {
         <H2container>Milieux</H2container>
         {midfielders.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
-            <StyledLinkCard
+            <StyledLinkCard to={`/player/${player.id}`}
               onClick={() => {
-                setOpenModal(true);
                 setPlayerId(player.id);
               }}
             >
@@ -163,9 +160,8 @@ export default function Squad() {
         <H2container>Attaquants</H2container>
         {attackers.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
-            <StyledLinkCard
+            <StyledLinkCard to={`/player/${player.id}`}
               onClick={() => {
-                setOpenModal(true);
                 setPlayerId(player.id);
               }}
             >

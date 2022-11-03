@@ -41,8 +41,7 @@ export default function PlayerStatisticsModal({closeModalStatistics, playerStati
         <PlayerStatsModalBackground>
           <PlayerStatsModalContainer>
             <PlayerStatsModalContainerHeader>
-              <ModalContainerTitle>{`${playerStatistics[0].player.name} statistiques`}</ModalContainerTitle>
-              {/* <PlayerStatisticYear /> */}
+              <ModalContainerTitle>{`${playerStatistics[0].player.name.toUpperCase()}`}</ModalContainerTitle>
               <StyledSelect placeholder={yearStatisticsSelected} options={selectOptions} onChange={(option) => {
                   setYearStatisticsSelected(option.value)
                 }}

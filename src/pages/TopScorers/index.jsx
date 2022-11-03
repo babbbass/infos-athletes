@@ -4,7 +4,7 @@ import { baseUrl, requestOptions } from "utils/config/QueryConfig";
 import { useQuery } from "react-query";
 import Header from "components/Header";
 import { topScorers } from "utils/datas/TopScorers";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   StyledSelect,
   RankingWrapper,
@@ -94,7 +94,7 @@ const TopScorers = () => {
                     <RankingPosition>{index + 1}</RankingPosition>
                   </RankingTabBodyData>
                   <RankingTabBodyData>
-                    <RankingNamePlayer>{scorer.player.name}</RankingNamePlayer>
+                    <RankingNamePlayer><Link to={`/player/${scorer.player.id}`}>{scorer.player.name}</Link></RankingNamePlayer>
                     <br />
                     <RankingNameTeam>
                       {scorer.statistics[0].team.name}

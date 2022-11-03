@@ -5,6 +5,7 @@ import colors from "../../utils/style/colors"
 
 export const CardContainer = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
     flex-wrap: wrap;
@@ -64,6 +65,9 @@ export const StyledLink = styled(Link)`
 `
 export const ButtonSiteContainer = styled.div`
     display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0; 
 `
 export const ButtonSite = styled.button`
     background-color: ${colors.blueLightColor};
@@ -86,3 +90,12 @@ export const ButtonSite = styled.button`
         color: #fff
     }
 `
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Mont-Serrat, Helvetica, Sans-Serif;
+  }
+`
+
+export default GlobalStyle

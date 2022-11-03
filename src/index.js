@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Home from './pages/Home';
+import Home from 'pages/Home';
 import { QueryClient, QueryClientProvider} from 'react-query'
 import { createBrowserRouter, RouterProvider} from 'react-router-dom'
-import ErrorPage from './error-page';
-import Leagues from './pages/Leagues';
-import Squad from './pages/Squad';
-import TopScorers from './pages/TopScorers';
-import Ranking from './pages/Ranking/';
-import ThemeContextProvider from './utils/Context/Context';
-import TopAssits from './pages/TopAssists';
+import ErrorPage from 'error-page';
+import Leagues from 'pages/Leagues';
+import Squad from 'pages/Squad';
+import TopScorers from 'pages/TopScorers';
+import Ranking from 'pages/Ranking/';
+import ThemeContextProvider from 'utils/Context/Context';
+import TopAssits from 'pages/TopAssists';
 import Games from 'pages/Games'
 import Player from 'pages/Player'
+import GlobalStyle from 'utils/style/GlobalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient({
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
+    <GlobalStyle />
     <QueryClientProvider client={queryClient} >
       <ThemeContextProvider>
         <RouterProvider router={router} />

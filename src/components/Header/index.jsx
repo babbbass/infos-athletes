@@ -3,13 +3,13 @@ import colors from "../../utils/style/colors";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const Wrapper = styled.header`
+  height: 80px;
   padding: 1em;
   display: flex;
   flex-wrap: no-wrap;
   flex-direction: column;
   justify-content: left;
   background: #99cbff;
-  height: 80px;
 `;
 
 const TitleContainer = styled.div`
@@ -23,7 +23,8 @@ const TitleContainer = styled.div`
 
 const LinkContainer = styled.div`
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 `;
 
 const StyledLink = styled(Link)`
@@ -42,7 +43,7 @@ export default function Header() {
       <TitleContainer>INFOS ATHLETES</TitleContainer>
       <LinkContainer>
         <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/prochains-matchs">Prochains matchs</StyledLink>
+        <StyledLink to="/prochains-matchs">Matchs</StyledLink>
         <StyledLink>Equipes</StyledLink>
       </LinkContainer>
     </Wrapper>

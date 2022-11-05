@@ -14,7 +14,6 @@ import {
   CardNameTeamOrPlayer,
 } from "utils/style/GlobalStyle";
 import { baseUrl, requestOptions } from "utils/config/QueryConfig";
-//import 'pages/Leagues/style.css'
 
 const InfoCardContainer = styled.div`
   width: 25%;
@@ -131,17 +130,6 @@ const ToggleButtonLine2 = styled(ToggleButtonLine)`
   return await response.json();
 };
 
-const isDisplayNavMenu = (active) => {
-  console.log(active);
-  if(active) {
-    //document.querySelector('nav').style.transition = 'translate 1s'
-    //document.querySelector('nav').style.display = 'flex'
-  } else {
-    console.log('close')
-    //document.querySelector('nav').style.transition = 'opacity 1s'
-    
-  }
-}
 export default function Leagues() {
   const { countryCode, competitionId } = useParams();
   const [active, setActive] = useState(false);
@@ -162,7 +150,6 @@ export default function Leagues() {
   return (
     <>
       <Header />
-      
         <ToggleButton onClick={() => setActive(!active)} aria-label="toogle curtain navigation">
               <ToggleButtonLine1 active={active}></ToggleButtonLine1>
               <ToggleButtonLine2 active={active}></ToggleButtonLine2>

@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 import colors from "../../utils/style/colors"
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.section`
     display: flex;
     justify-content: space-evenly;
     width: 100%;
     flex-wrap: wrap;
-    margin: 20px auto;
 `
 export const InfoCardContainer = styled.div`
     width: 25%;
@@ -92,8 +91,10 @@ export const ButtonSite = styled.button`
 `
 const GlobalStyle = createGlobalStyle`
   body {
-    margin: 0;
+    margin: auto;
     padding: 0;
+    color: ${colors.primary}
+    font-size: 1rem;
     font-family: Mont-Serrat, Helvetica, Sans-Serif;
   }
 `

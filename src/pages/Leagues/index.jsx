@@ -14,7 +14,7 @@ import {
   CardNameTeamOrPlayer,
 } from "utils/style/GlobalStyle";
 import { baseUrl, requestOptions } from "utils/config/QueryConfig";
-import { ThemeContext } from "utils/Context/Context";
+//import 'pages/Leagues/style.css'
 
 const InfoCardContainer = styled.div`
   width: 25%;
@@ -45,26 +45,106 @@ const TeamHistory = styled.div`
 const SpanVenueTeam = styled.span`
   font-weight: bold;
 `;
-const HeaderBody = styled.div`
-  text-align: center;
-  padding: 12px 0;
+const HeaderBody = styled.nav`
+  width: 100vw;
+  min-height: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom:  1px solid #cfcfcf;
+  @media (max-width: 767px) {
+    //display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: 1s cubic-bezier(0.73, 0.11,0.67, 0.99);
+    ${( {active} ) => active && `
+      transform: translate(0);
+      opacity: 1;
+    `};
+  };
 `;
-const LeaguePagesLink = styled(StyledLink)`
-  color: #000;
-  &:hover {
-    color: #bbb;
+const ToggleButton = styled.button`
+  position: absolute;
+  z-index: 10;
+  //top: 0;
+  right: 10px;
+  height: 38px;
+  width: 38px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  @media (min-width: 768px) {
+      display:none;
   }
-`;
-const fetchCompetition = async (competitionId) => {
-  const response = await fetch(
+`
+
+const ToggleButtonLine = styled.span`
+  position: absolute;
+  display: block;
+  width: 80%;
+  height: 2px;
+  background: ${colors.flowerblue};
+  transition: transform 0.3s ease-out,
+  opacity: 0.1s ease-out;
+  `
+  const ToggleButtonLine1 = styled(ToggleButtonLine)`
+  transform: translateY(-10px);
+  ${( {active} ) => active && `
+      transform: translateY(0) rotate(135deg);  
+      `}
+`
+const ToggleButtonLine2 = styled(ToggleButtonLine)`
+  ${( {active} ) => active && `
+      opacity: 0;  
+  `}
+  `
+  const ToggleButtonLine3 = styled(ToggleButtonLine)`
+  transform: translateY(10px);
+  ${( {active} ) => active && `
+    transform: translateY(0) rotate(-135deg);  
+  `}
+  `
+  const LeaguePagesLink = styled(StyledLink)`
+    margin: 10px 10px;
+    color: ${colors.blueLightColor};
+    &:hover {
+      color: #bbb;
+    }
+  `
+  const CardContainerTeam = styled(CardContainer)`
+    transform: translateY(-80px);
+    transition: transform 1s cubic-bezier(0.73, 0.11,0.67, 0.99);
+    ${( {active} ) => active && `
+        transform: translateY(0px);
+    `}
+  `
+  const fetchCompetition = async (competitionId) => {
+    const response = await fetch(
     `${baseUrl}/teams?league=${competitionId}&season=2022`,
     requestOptions
   );
 
   return await response.json();
 };
+
+const isDisplayNavMenu = (active) => {
+  console.log(active);
+  if(active) {
+    //document.querySelector('nav').style.transition = 'translate 1s'
+    //document.querySelector('nav').style.display = 'flex'
+  } else {
+    console.log('close')
+    //document.querySelector('nav').style.transition = 'opacity 1s'
+    
+  }
+}
 export default function Leagues() {
   const { countryCode, competitionId } = useParams();
+  const [active, setActive] = useState(false);
   //const {setCountryCode} =  useContext(ThemeContext)
 
   // const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
@@ -82,7 +162,13 @@ export default function Leagues() {
   return (
     <>
       <Header />
-      <HeaderBody>
+      
+        <ToggleButton onClick={() => setActive(!active)} aria-label="toogle curtain navigation">
+              <ToggleButtonLine1 active={active}></ToggleButtonLine1>
+              <ToggleButtonLine2 active={active}></ToggleButtonLine2>
+              <ToggleButtonLine3 active={active}></ToggleButtonLine3>
+        </ToggleButton>
+      <HeaderBody active={active}>
         <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
           Classement
         </LeaguePagesLink>
@@ -94,9 +180,9 @@ export default function Leagues() {
         >
           Meilleurs passeurs
         </LeaguePagesLink>
+        
       </HeaderBody>
-
-      <CardContainer>
+      <CardContainerTeam active={active}>
         {teams.map((team) => (
           <InfoCardContainer key={team.team.id}>
             <StyledLinkCard to={`/team/${team.team.id}`}>
@@ -112,7 +198,7 @@ export default function Leagues() {
             </StyledLinkCard>
           </InfoCardContainer>
         ))}
-      </CardContainer>
+      </CardContainerTeam>
       <Footer />
     </>
   );

@@ -28,7 +28,9 @@ import {
   LeaguePagesLink,
 } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
-import NavLink from "components/NavLink";
+import PreviousLink from "components/NavLink/Previous";
+import NextLink from "components/NavLink/Next";
+import { stepsUrl } from "utils/config/variablesConfig";
 
 const LeagueRankingNamePlayer = styled(RankingNamePlayer)`
   font-size: 0.9rem;
@@ -82,11 +84,23 @@ const Ranking = () => {
   const leagueRanking = ranking[0].standings[0];
   const competitionName = leagueRanking[0].group;
   const theBestOfLeague = 'buteurs'
+
+  const previousStep1 = stepsUrl.leagues
+  const previousStep2 = countryCode
+  const previousStep3 = idCompetition
+  const previousLinkName = competitionName
+
+  const nextUrlStep1 = stepsUrl.topScorers
+  const nextUrlStep2 = countryCode
+  const nextUrlStep3 = idCompetition
+  const nextLinkName = 'meilleurs buteurs'
   return (
     <>
       <Header />
       <HeaderBody>
-        <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} />
+        <PreviousLink previousPageDatas={{previousStep1, previousStep2, previousStep3, previousLinkName }} />
+        <NextLink nextPageDatas={{ nextUrlStep1, nextUrlStep2, nextUrlStep3, nextLinkName }} />
+        {/* <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} /> */}
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

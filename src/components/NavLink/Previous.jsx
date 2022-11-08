@@ -9,7 +9,7 @@ export default function PreviousLink({previousPageDatas}) {
           <ArrowNavigation>◄</ArrowNavigation> {previousPageDatas.previousLinkName}
         </NavigationLink>
           : 
-        <NavigationLink to={`/${previousPageDatas.step1}/${previousPageDatas.previousStep2}`}>
+        <NavigationLink to={`/${previousPageDatas.previousStep1}/${previousPageDatas.previousStep2}`}>
             <ArrowNavigation>◄</ArrowNavigation> {previousPageDatas.previousLinkName}
         </NavigationLink>
       }

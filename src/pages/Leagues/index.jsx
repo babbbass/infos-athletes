@@ -47,6 +47,8 @@ const SpanVenueTeam = styled.span`
 const HeaderBody = styled.nav`
   width: 100vw;
   min-height: 10vw;
+  position: relative;
+  z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,6 +62,7 @@ const HeaderBody = styled.nav`
     ${( {active} ) => active && `
       transform: translate(0);
       opacity: 1;
+      z-index: 2;
     `};
   };
 `;

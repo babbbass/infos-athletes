@@ -57,7 +57,9 @@ export default function PlayerCivility() {
     // }
     const teamId = playerStatistics[0].statistics[0].team.id
     const teamName = playerStatistics[0].statistics[0].team.name
-    const link = "team"
+    const previousStep1 = "team"
+    const previousStep2 = teamId
+    const previousLinkName = teamName
     return (
       <>
         {openModalStatistic &&
@@ -68,7 +70,7 @@ export default function PlayerCivility() {
         }
         <Header />
         <HeaderBody>
-          <PreviousLink previousPageDatas={{teamId, teamName, link}} />
+          <PreviousLink previousPageDatas={{previousStep1, previousStep2, previousLinkName}} />
         </HeaderBody>
         <CardContainer>
             <H1Container>{playerStatistics[0].player.name}</H1Container>

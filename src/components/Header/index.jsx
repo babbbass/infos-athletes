@@ -9,7 +9,7 @@ const Wrapper = styled.header`
   flex-wrap: no-wrap;
   flex-direction: column;
   justify-content: left;
-  background: #99cbff;
+  background: ${colors.DarkBackgroundSiteColor};
 `;
 
 const TitleContainer = styled.div`
@@ -17,7 +17,7 @@ const TitleContainer = styled.div`
   margin-bottom: 13px;
   font-size: 1.9em;
   font-style: italic;
-  color: #fff;
+  color: ${colors.whitesmoke};
   text-align: center;
 `;
 
@@ -31,9 +31,9 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   margin 0 15px;
   font-style: italic;
-  color: ${colors.primary};
+  color: ${colors.whitesmoke};
   &:hover{
-    color: #fff
+    text-decoration: underline;
   } 
 `;
 

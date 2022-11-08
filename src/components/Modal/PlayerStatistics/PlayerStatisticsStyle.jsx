@@ -100,7 +100,7 @@ export const RowStatsModalContainer = styled.div`
     justify-content: space-evenly;
     margin: 10px auto;
     text-align: -webkit-left;
-    color: ${colors.blueLightColor};
+    color: ${colors.DarkBackgroundSiteColor};
     font-weight: 500;
     @media (max-width: 375px) {
         width: 150px;

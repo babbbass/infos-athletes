@@ -69,12 +69,12 @@ export const ButtonSiteContainer = styled.div`
     margin: 10px 0; 
 `
 export const ButtonSite = styled.button`
-    background-color: ${colors.blueLightColor};
+    background-color: ${colors.DarkBackgroundSiteColor};
     width: auto;
     border-radius: 26px;
     transition-duration: 0.4s;
     border: none;
-    color: ${colors.primary};
+    color: ${colors.whitesmoke};
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -85,8 +85,9 @@ export const ButtonSite = styled.button`
     margin: 4px 2px;
     cursor: pointer;
     &:hover {
-        background-color: ${colors.primary};
-        color: #fff
+        background-color: ${colors.whitesmoke};
+        color: ${colors.primary};
+        border: 1px solid ${colors.primary};
     }
 `
 const GlobalStyle = createGlobalStyle`
@@ -95,7 +96,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     color: ${colors.primary}
     font-size: 1rem;
-    font-family: Mont-Serrat, Helvetica, Sans-Serif;
+    font-family: Lato, Roboto, Sans-Serif;
   }
 `
 

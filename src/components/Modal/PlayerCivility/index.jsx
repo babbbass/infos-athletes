@@ -22,7 +22,7 @@ const fetchPlayerDatas = async (playerId) => {
 const LinkModal = styled(StyledLink)`
   color: ${colors.flowerblue};
   &:hover{
-    color: ${colors.modals};
+    color: ${colors.primary};
   }
 `
 export default function Modal({closeModal, playerId}) {

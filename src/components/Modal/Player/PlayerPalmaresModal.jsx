@@ -3,7 +3,7 @@ import {ThemeContext} from 'utils/Context/Context'
 import {PlayerStatsModalBackground, PlayerStatsModalContainer,
     PlayerStatsModalContainerHeader, ModalContainerFooter, ModalContainerTitle,
     ModalContainerFooterButton, TitleCloseBtnButton,
-    StyledSelect, PlayerStatsModalContainerBody, RowStatsModalContainer,
+    PlayerStatsModalContainerBody, RowStatsModalContainer,
     ModalContainerCard, RowModalData, RowModalTitle } from '../PlayerStatistics/PlayerStatisticsStyle'
 import { playerPalmares } from 'utils/datas/PlayerPalmares'    
 import styled from 'styled-components'
@@ -34,6 +34,7 @@ const RowModalTitlePalmares = styled(RowModalTitle)`
 const RowModalDataPalmares = styled(RowModalData)` 
     width: 64%;
     margin: 0 0 0 5%;
+    color: ${colors.whitesmoke}
 `
 
 export default function PlayerPalmaresModal({closeModalPalmaresPlayer}) {

@@ -42,7 +42,7 @@ export const ModalContainerTitle = styled.div`
     display: inline-block;
     text-align: center;
     margin-top: 10px;
-    color: ${colors.modals};
+    color: ${colors.primary};
     font-style: italic;
 `
 export const ModalContainerBody = styled.div`
@@ -64,7 +64,7 @@ export const RowModalContainer = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     margin: 3px auto;
-    color: ${colors.modals};
+    color: ${colors.primary};
     font-weight: 500;
     font-style: italic;
     @media (max-width: 375px) {
@@ -102,7 +102,7 @@ export const ModalContainerFooterButton = styled.button`
     height: 45px;
     margin: 10px;
     border: none;
-    background-color: ${colors.modals};
+    background-color: ${colors.primary};
     color: white;
     border-radius: 8px;
     font-size: 20px;

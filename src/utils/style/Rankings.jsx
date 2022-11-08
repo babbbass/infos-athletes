@@ -79,7 +79,7 @@ export const HeaderBody = styled.nav`
     padding: 12px 0 0 0;
 `
 export const ArrowNavigation = styled.span`
-  color: ${colors.blueLightColor};
+  color: ${colors.DarkBackgroundSiteColor};
 `
 
 export const RankingPosition = styled.span`

@@ -11,15 +11,14 @@ import { baseUrl, requestOptions } from "utils/config/QueryConfig";
 import { ThemeContext } from "utils/Context/Context";
 
 const Wrapper = styled.section`
-  padding: 1rem;
-  background: #fff;
-  color: ${colors.primary}
+  padding: 1.2rem;
+  background: ${colors.lightGrey};
+  color: ${colors.primary};
   text-align: center;
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  font-style: italic;
 `;
 
 const Title = styled.h1`
@@ -63,7 +62,6 @@ const CountryFlagContainer = styled.div`
 const CountryFlag = styled(StyledImg)`
   margin: 10px 0;
   border-radius: 6px;
-  // height: 180px
 `;
 const StyledLink = styled(Link)`
   color: ${colors.primary};

@@ -24,9 +24,9 @@ const fetchPlayerDatas = async (playerId) => {
     return await response.json()
 }
 const LinkModal = styled(StyledLink)`
-  color: ${colors.flowerblue};
+  color: ${colors.whitesmoke};
   &:hover{
-    color: ${colors.modals};
+    color: ${colors.primary};
   }
 `
 const H1Container = styled.div`
@@ -37,7 +37,7 @@ const H1Container = styled.div`
   text-align: center;
   margin: 10px auto;
   text-transform: uppercase;
-  color: ${colors.flowerblue};
+  color: ${colors.primary};
 `;
 
 export default function PlayerCivility() {

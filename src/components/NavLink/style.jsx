@@ -14,5 +14,5 @@ export const NavigationLink = styled(Link)`
     }
 `
 export const ArrowNavigation = styled.span`
-  color: ${colors.blueLightColor};
+  color: ${colors.flowerblue};
 `

@@ -6,12 +6,12 @@ const Wrapper = styled.footer`
   padding: 1rem;
   font-size: 1.2rem;
   font-style: italic;
-  color: #fff;
+  color: ${colors.whitesmoke};
   display: flex;
   flex-wrap: no-wrap;
   flex-direction: row;
   justify-content: center;
-  background: ${colors.blueLightColor};
+  background: ${colors.DarkBackgroundSiteColor};
   height: 80px;
   align-items: center;
 `;

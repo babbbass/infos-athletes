@@ -109,7 +109,7 @@ const ToggleButtonLine2 = styled(ToggleButtonLine)`
   `
   const LeaguePagesLink = styled(StyledLink)`
     margin: 10px 10px;
-    color: ${colors.blueLightColor};
+    color: ${colors.DarkBackgroundSiteColor};
     &:hover {
       color: #bbb;
     }

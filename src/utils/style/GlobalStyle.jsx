@@ -98,6 +98,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1rem;
     font-family: Lato, Roboto, Sans-Serif;
   }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 export default GlobalStyle

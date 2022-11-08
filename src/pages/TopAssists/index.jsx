@@ -2,10 +2,9 @@ import React, { useContext, useState } from "react";
 import { ThemeContext } from "utils/Context/Context";
 import { baseUrl, requestOptions } from "utils/config/QueryConfig";
 import { useQuery } from "react-query";
-import Select from "react-select";
 import Header from "components/Header";
 import { topAssists } from "utils/datas/TopAssists";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   StyledSelect,
   RankingWrapper,
@@ -21,12 +20,12 @@ import {
   RankingTabBodyRow,
   RankingTabBodyData,
   HeaderBody,
-  ArrowNavigation,
   RankingPosition,
-  LeaguePagesLink,
 } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
-import NavLink from "components/NavLink";
+import PreviousLink from "components/NavLink/Previous";
+import NextLink from "components/NavLink/Next";
+import { BestOfLeague } from "utils/config/variablesConfig";
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)
@@ -59,12 +58,23 @@ const TopAssits = () => {
 
   // const topAssists = data !== undefined ? data.response : []
   const competitionName = topAssists[0].statistics[0].league.name;
-  const theBestOfLeague = 'buteurs'
+
+  const previousStep1 = 'leagues'
+  const previousStep2 = countryCode
+  const previousStep3 = idCompetition
+  const previousLinkName = competitionName
+
+  const nextUrlStep1 = 'meilleurs-buteurs'
+  const nextUrlStep2 = countryCode
+  const nextUrlStep3 = idCompetition
+  const nextLinkName = 'meilleurs buteurs'
+  
   return (
     <>
       <Header />
       <HeaderBody>
-      <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} />
+        <PreviousLink previousPageDatas={{previousStep1, previousStep2, previousStep3, previousLinkName }} />
+        <NextLink nextPageDatas={{ nextUrlStep1, nextUrlStep2, nextUrlStep3, nextLinkName }} />
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect
@@ -98,8 +108,10 @@ const TopAssits = () => {
                     <RankingPosition>{index + 1}</RankingPosition>
                   </RankingTabBodyData>
                   <RankingTabBodyData>
-                    <RankingNamePlayer>{scorer.player.name}</RankingNamePlayer>
-                    <br />
+                    <Link to={`/player/${scorer.player.id}`}>
+                      <RankingNamePlayer>{scorer.player.name}</RankingNamePlayer>
+                    </Link>  
+                      <br />
                     <RankingNameTeam>
                       {scorer.statistics[0].team.name}
                     </RankingNameTeam>

@@ -71,15 +71,15 @@ export const RankingNamePlayer = styled.span`
   font-style: italic;
 `
 export const SpanColor = styled.span`
-  color: #bbb;
+  color: ${colors.veryLightGrey};
 `
 export const HeaderBody = styled.nav`
     display: flex;
-    text-align: center;
-    padding: 12px 0 0 0;
+    justify-content: space-evenly;
+    padding: 10px 0;
 `
 export const ArrowNavigation = styled.span`
-  color: ${colors.DarkBackgroundSiteColor};
+  color: ${colors.blueLightColor};
 `
 
 export const RankingPosition = styled.span`

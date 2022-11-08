@@ -5,6 +5,7 @@ const colors = {
     backgroundDark: '#A9A9A9',
     DarkBackgroundSiteColor: '#0A0A0A',
     lightGrey: "#F4F3EE",
+    veryLightGrey: "#bbb",
     middleGrey: "#BCB8B1",
     flowerblue: 'cornflowerblue',
 }

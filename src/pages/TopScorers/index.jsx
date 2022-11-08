@@ -24,6 +24,9 @@ import {
   } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
 import NavLink from "components/NavLink";
+import { BestOfLeague } from "utils/config/variablesConfig";
+import PreviousLink from "components/NavLink/Previous";
+import NextLink from "components/NavLink/Next";
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
   const response = await fetch(
@@ -39,7 +42,16 @@ const TopScorers = () => {
   const [yearTopScorersSelected, setYearTopScorersSelected] =
     useState(yearSelected);
   const { idCompetition, countryCode } = useParams();
+  
+  const previousStep1 = 'leagues'
+  const previousStep2 = countryCode
+  const previousStep3 = idCompetition
 
+  const nextUrlStep1 = 'meilleurs-passeurs'
+  const nextUrlStep2 = countryCode
+  const nextUrlStep3 = idCompetition
+  const nextLinkName = 'meilleurs passeurs'
+  
   // const {isLoading, isError, data, error} = useQuery(
   //   ['topScorers', [idCompetition, yearTopScorersSelected]],
   //   () => fetchTopScorers(yearTopScorersSelected, idCompetition),
@@ -55,12 +67,15 @@ const TopScorers = () => {
 
   // const topScorers = data !== undefined ? data.response : []
   const competitionName = topScorers[0].statistics[0].league.name;
-  const theBestOfLeague = 'passeurs'
+  const theBestOfLeague = BestOfLeague.assists
+  const previousLinkName = competitionName
   return (
     <>
       <Header />
       <HeaderBody>
-        <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} />
+      <PreviousLink previousPageDatas={{previousStep1, previousStep2, previousStep3, previousLinkName }} />
+      <NextLink nextPageDatas={{nextUrlStep1, nextUrlStep2, nextUrlStep3, nextLinkName }} />
+        {/* <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} /> */}
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

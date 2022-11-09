@@ -85,6 +85,11 @@ function Home() {
   } = useContext(ThemeContext);
   // const {isLoading, isError, data, error} = useQuery("countries", fetchCountries)
 
+  // if((isError === false && data === undefined) || (data.errors.requests)) {
+    //   return (
+    //     <RequestsLimit />
+    //   )
+    // }   
   // if(isError) {
   //     return <div>Erreur: { error.message }</div>
   // }

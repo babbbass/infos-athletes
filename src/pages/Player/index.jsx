@@ -47,7 +47,11 @@ export default function PlayerCivility() {
     // const {isLoading, isError, data, error} = useQuery([playerId], () => fetchPlayerDatas(playerId))
   
     //const playerStatistics = data !== undefined ? data.response : []
-  
+    // if((isError === false && data === undefined) || (data.errors.requests)) {
+      //   return (
+      //     <RequestsLimit />
+      //   )
+      // }   
     // if(isError) {
     //     return <div>Erreur: { error.message }</div>
     // }

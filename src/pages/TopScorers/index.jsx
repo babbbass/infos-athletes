@@ -57,6 +57,11 @@ const TopScorers = () => {
   //   () => fetchTopScorers(yearTopScorersSelected, idCompetition),
   // )
 
+  // if((isError === false && data === undefined) || (data.errors.requests)) {
+    //   return (
+    //     <RequestsLimit />
+    //   )
+    // }   
   // if(isError) {
   //     return <div>Erreur: { error.message }</div>
   // }
@@ -67,8 +72,8 @@ const TopScorers = () => {
 
   // const topScorers = data !== undefined ? data.response : []
   const competitionName = topScorers[0].statistics[0].league.name;
-  const theBestOfLeague = BestOfLeague.assists
   const previousLinkName = competitionName
+  
   return (
     <>
       <Header />

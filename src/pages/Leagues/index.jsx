@@ -14,6 +14,7 @@ import {
   CardNameTeamOrPlayer,
 } from "utils/style/GlobalStyle";
 import { baseUrl, requestOptions } from "utils/config/QueryConfig";
+import RequestsLimit from "components/Error/RequestsLimit";
 
 const InfoCardContainer = styled.div`
   width: 25%;
@@ -48,13 +49,12 @@ const HeaderBody = styled.nav`
   width: 100vw;
   min-height: 10vw;
   position: relative;
-  z-index: -1;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom:  1px solid #cfcfcf;
   @media (max-width: 767px) {
-    //display: flex;
+    z-index: -1;
     flex-direction: column;
     opacity: 0;
     transform: translateY(-100%);
@@ -118,11 +118,13 @@ const ToggleButtonLine2 = styled(ToggleButtonLine)`
     }
   `
   const CardContainerTeam = styled(CardContainer)`
-    transform: translateY(-80px);
-    transition: transform 1s cubic-bezier(0.73, 0.11,0.67, 0.99);
-    ${( {active} ) => active && `
+    @media (max-width: 767px) {
+      transform: translateY(-80px);
+      transition: transform 1s cubic-bezier(0.73, 0.11,0.67, 0.99);
+      ${( {active} ) => active && `
         transform: translateY(0px);
-    `}
+      `}
+    }
   `
   const fetchCompetition = async (competitionId) => {
     const response = await fetch(
@@ -136,12 +138,18 @@ const ToggleButtonLine2 = styled(ToggleButtonLine)`
 export default function Leagues() {
   const { countryCode, competitionId } = useParams();
   const [active, setActive] = useState(false);
-  //const {setCountryCode} =  useContext(ThemeContext)
+  const {setCountryCode} =  useState()
 
   // const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
   // const teams = data !== undefined ? data.response : []
 
-  // if(isError) {
+  // if((isError === false && data === undefined) || (data.errors.requests)) {
+  //   return (
+  //     <RequestsLimit />
+  //   )
+  // }   
+  
+  //   if(isError) {
   //     return <div>Erreur: { error.message }</div>
   // }
 
@@ -149,7 +157,7 @@ export default function Leagues() {
   //     return <div>Chargement...</div>
   // }
 
-  //setCountryCode(countryCode)
+  setCountryCode(countryCode)
   return (
     <>
       <Header />

@@ -47,7 +47,11 @@ const TopAssits = () => {
   //   ['topAssists', [idCompetition, yearTopAssitsSelected]],
   //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition),
   // )
-
+  // if((isError === false && data === undefined) || (data.errors.requests)) {
+    //   return (
+    //     <RequestsLimit />
+    //   )
+    // }   
   // if(isError) {
   //     return <div>Erreur: { error.message }</div>
   // }

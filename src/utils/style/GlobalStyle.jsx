@@ -68,6 +68,11 @@ export const ButtonSiteContainer = styled.div`
     justify-content: center;
     margin: 10px 0; 
 `
+export const Wrapper = styled.section`
+    min-width: 90%;
+    padding 200px 0;
+    text-align: center;
+`
 export const ButtonSite = styled.button`
     background-color: ${colors.DarkBackgroundSiteColor};
     width: auto;

@@ -67,6 +67,11 @@ export default function Squad() {
   // const {isLoading, isError, data, error} = useQuery([teamId],() => fetchTeamPlayers(teamId))
   // const squad = data !== undefined ? data.response : []
 
+  // if((isError === false && data === undefined) || (data.errors.requests)) {
+    //   return (
+    //     <RequestsLimit />
+    //   )
+    // }   
   // if(isError) {
   //     return <div>Erreur: { error.message }</div>
   // }

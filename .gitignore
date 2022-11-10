@@ -30,3 +30,8 @@ utils/config/
 #vscode
 .vscode/
 
+#firebase
+.firebase/
+.firebaserc
+firebase.json
+

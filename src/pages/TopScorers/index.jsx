@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "utils/Context/Context";
-import { baseUrl, requestOptions } from "utils/config/QueryConfig";
-import { useQuery } from "react-query";
-import Header from "components/Header";
-import { topScorers } from "utils/datas/TopScorers";
-import { useParams, Link } from "react-router-dom";
+import React, { useContext, useState } from "react"
+import { ThemeContext } from "utils/Context/Context"
+import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { useQuery } from "react-query"
+import Header from "components/Header"
+import { topScorers } from "utils/datas/TopScorers"
+import { useParams, Link } from "react-router-dom"
 import {
   StyledSelect,
   RankingWrapper,
@@ -21,64 +21,78 @@ import {
   RankingTabBodyData,
   HeaderBody,
   RankingPosition,
-  } from "utils/style/Rankings";
-import { selectOptions } from "utils/Context/Context";
-import NavLink from "components/NavLink";
-import PreviousLink from "components/NavLink/Previous";
-import NextLink from "components/NavLink/Next";
+} from "utils/style/Rankings"
+import { selectOptions } from "utils/Context/Context"
+import NavLink from "components/NavLink"
+import PreviousLink from "components/NavLink/Previous"
+import NextLink from "components/NavLink/Next"
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
   const response = await fetch(
     `${baseUrl}/players/topscorers?season=${yearSelected}&league=${idCompetition}`,
     requestOptions
-  );
+  )
 
-  return await response.json();
-};
+  return await response.json()
+}
 
 const TopScorers = () => {
-  const { yearSelected } = useContext(ThemeContext);
+  const { yearSelected } = useContext(ThemeContext)
   const [yearTopScorersSelected, setYearTopScorersSelected] =
-    useState(yearSelected);
-  const { idCompetition, countryCode } = useParams();
-  
-  const previousStep1 = 'leagues'
+    useState(yearSelected)
+  const { idCompetition, countryCode } = useParams()
+
+  const previousStep1 = "leagues"
   const previousStep2 = countryCode
   const previousStep3 = idCompetition
 
-  const nextUrlStep1 = 'meilleurs-passeurs'
+  const nextUrlStep1 = "meilleurs-passeurs"
   const nextUrlStep2 = countryCode
   const nextUrlStep3 = idCompetition
-  const nextLinkName = 'meilleurs passeurs'
-  
-  // const {isLoading, isError, data, error} = useQuery(
-  //   ['topScorers', [idCompetition, yearTopScorersSelected]],
-  //   () => fetchTopScorers(yearTopScorersSelected, idCompetition),
+  const nextLinkName = "meilleurs passeurs"
+
+  // const { isLoading, isError, data, error } = useQuery(
+  //   ["topScorers", [idCompetition, yearTopScorersSelected]],
+  //   () => fetchTopScorers(yearTopScorersSelected, idCompetition)
   // )
 
   // if((isError === false && data === undefined) || (data.errors.requests)) {
-    //   return (
-    //     <RequestsLimit />
-    //   )
-    // }   
-  // if(isError) {
-  //     return <div>Erreur: { error.message }</div>
+  //   return (
+  //     <RequestsLimit />
+  //   )
+  // }
+  // if (isError) {
+  //   return <div>Erreur: {error.message}</div>
   // }
 
-  // if(isLoading) {
-  //     return <div>Chargement...</div>
+  // if (isLoading) {
+  //   return <div>Chargement...</div>
   // }
 
   // const topScorers = data !== undefined ? data.response : []
-  const competitionName = topScorers[0].statistics[0].league.name;
+  const competitionName = topScorers[0].statistics[0].league.name
   const previousLinkName = competitionName
-  
+
   return (
     <>
       <Header />
       <HeaderBody>
-      <PreviousLink previousPageDatas={{previousStep1, previousStep2, previousStep3, previousLinkName }} />
-      <NextLink nextPageDatas={{nextUrlStep1, nextUrlStep2, nextUrlStep3, nextLinkName }} />
+        <PreviousLink
+          previousPageDatas={{
+            previousStep1,
+            previousStep2,
+            previousStep3,
+            previousLinkName,
+          }}
+        />
+        <NextLink
+          nextPageDatas={{
+            nextUrlStep1,
+            nextUrlStep2,
+            nextUrlStep3,
+            nextLinkName,
+          }}
+        />
         {/* <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} /> */}
       </HeaderBody>
       <RankingWrapper>
@@ -86,7 +100,7 @@ const TopScorers = () => {
           placeholder={yearTopScorersSelected}
           options={selectOptions}
           onChange={(option) => {
-            setYearTopScorersSelected(option.value);
+            setYearTopScorersSelected(option.value)
           }}
         />
         <RankingContainer>
@@ -113,7 +127,11 @@ const TopScorers = () => {
                     <RankingPosition>{index + 1}</RankingPosition>
                   </RankingTabBodyData>
                   <RankingTabBodyData>
-                    <RankingNamePlayer><Link to={`/player/${scorer.player.id}`}>{scorer.player.name}</Link></RankingNamePlayer>
+                    <RankingNamePlayer>
+                      <Link to={`/player/${scorer.player.id}`}>
+                        {scorer.player.name}
+                      </Link>
+                    </RankingNamePlayer>
                     <br />
                     <RankingNameTeam>
                       {scorer.statistics[0].team.name}
@@ -139,7 +157,7 @@ const TopScorers = () => {
         </RankingContainer>
       </RankingWrapper>
     </>
-  );
-};
+  )
+}
 
-export default TopScorers;
+export default TopScorers

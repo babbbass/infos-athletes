@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "utils/Context/Context";
-import { baseUrl, requestOptions } from "utils/config/QueryConfig";
-import { useQuery } from "react-query";
-import Header from "components/Header";
-import { topAssists } from "utils/datas/TopAssists";
-import { useParams, Link } from "react-router-dom";
+import React, { useContext, useState } from "react"
+import { ThemeContext } from "utils/Context/Context"
+import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { useQuery } from "react-query"
+import Header from "components/Header"
+import { topAssists } from "utils/datas/TopAssists"
+import { useParams, Link } from "react-router-dom"
 import {
   StyledSelect,
   RankingWrapper,
@@ -21,71 +21,84 @@ import {
   RankingTabBodyData,
   HeaderBody,
   RankingPosition,
-} from "utils/style/Rankings";
-import { selectOptions } from "utils/Context/Context";
-import PreviousLink from "components/NavLink/Previous";
-import NextLink from "components/NavLink/Next";
-import { BestOfLeague } from "utils/config/variablesConfig";
+} from "utils/style/Rankings"
+import { selectOptions } from "utils/Context/Context"
+import PreviousLink from "components/NavLink/Previous"
+import NextLink from "components/NavLink/Next"
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)
   const response = await fetch(
     `${baseUrl}/players/topassists?season=${yearSelected}&league=${idCompetition}`,
     requestOptions
-  );
+  )
 
-  return await response.json();
-};
+  return await response.json()
+}
 
 const TopAssits = () => {
-  const { yearSelected } = useContext(ThemeContext);
+  const { yearSelected } = useContext(ThemeContext)
   const [yearTopAssitsSelected, setYearTopAssitsSelected] =
-    useState(yearSelected);
-  const { idCompetition, countryCode } = useParams();
+    useState(yearSelected)
+  const { idCompetition, countryCode } = useParams()
 
-  // const {isLoading, isError, data, error} = useQuery(
-  //   ['topAssists', [idCompetition, yearTopAssitsSelected]],
-  //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition),
+  // const { isLoading, isError, data, error } = useQuery(
+  //   ["topAssists", [idCompetition, yearTopAssitsSelected]],
+  //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition)
   // )
   // if((isError === false && data === undefined) || (data.errors.requests)) {
-    //   return (
-    //     <RequestsLimit />
-    //   )
-    // }   
-  // if(isError) {
-  //     return <div>Erreur: { error.message }</div>
+  //   return (
+  //     <RequestsLimit />
+  //   )
+  // }
+  // if (isError) {
+  //   return <div>Erreur: {error.message}</div>
   // }
 
-  // if(isLoading) {
-  //     return <div>Chargement...</div>
+  // if (isLoading) {
+  //   return <div>Chargement...</div>
   // }
 
-  // const topAssists = data !== undefined ? data.response : []
-  const competitionName = topAssists[0].statistics[0].league.name;
+  //const topAssists = data !== undefined ? data.response : []
+  const competitionName = topAssists[0].statistics[0].league.name
 
-  const previousStep1 = 'leagues'
+  const previousStep1 = "leagues"
   const previousStep2 = countryCode
   const previousStep3 = idCompetition
   const previousLinkName = competitionName
 
-  const nextUrlStep1 = 'meilleurs-buteurs'
+  const nextUrlStep1 = "meilleurs-buteurs"
   const nextUrlStep2 = countryCode
   const nextUrlStep3 = idCompetition
-  const nextLinkName = 'meilleurs buteurs'
-  
+  const nextLinkName = "meilleurs buteurs"
+
   return (
     <>
       <Header />
       <HeaderBody>
-        <PreviousLink previousPageDatas={{previousStep1, previousStep2, previousStep3, previousLinkName }} />
-        <NextLink nextPageDatas={{ nextUrlStep1, nextUrlStep2, nextUrlStep3, nextLinkName }} />
+        <PreviousLink
+          previousPageDatas={{
+            previousStep1,
+            previousStep2,
+            previousStep3,
+            previousLinkName,
+          }}
+        />
+        <NextLink
+          nextPageDatas={{
+            nextUrlStep1,
+            nextUrlStep2,
+            nextUrlStep3,
+            nextLinkName,
+          }}
+        />
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect
           placeholder={yearTopAssitsSelected}
           options={selectOptions}
           onChange={(option) => {
-            setYearTopAssitsSelected(option.value);
+            setYearTopAssitsSelected(option.value)
           }}
         />
         <RankingContainer>
@@ -94,7 +107,7 @@ const TopAssits = () => {
               <RankingTabHeadRow>
                 <RankingTabHeadTitle></RankingTabHeadTitle>
                 <RankingTabHeadTitle></RankingTabHeadTitle>
-                <RankingTabHeadTitle>buts</RankingTabHeadTitle>
+                <RankingTabHeadTitle>Passes</RankingTabHeadTitle>
                 <RankingTabHeadTitle>
                   <SpanColor>matchs</SpanColor>
                 </RankingTabHeadTitle>
@@ -113,22 +126,24 @@ const TopAssits = () => {
                   </RankingTabBodyData>
                   <RankingTabBodyData>
                     <Link to={`/player/${scorer.player.id}`}>
-                      <RankingNamePlayer>{scorer.player.name}</RankingNamePlayer>
-                    </Link>  
-                      <br />
+                      <RankingNamePlayer>
+                        {scorer.player.name}
+                      </RankingNamePlayer>
+                    </Link>
+                    <br />
                     <RankingNameTeam>
                       {scorer.statistics[0].team.name}
                     </RankingNameTeam>
                   </RankingTabBodyData>
                   <RankingTabBodyData>
-                    {scorer.statistics[0].goals.total}
+                    {scorer.statistics[0].goals.assists}
                   </RankingTabBodyData>
                   <RankingTabBodyData>
                     {scorer.statistics[0].games.appearences}
                   </RankingTabBodyData>
                   <RankingTabBodyData>
                     {Math.round(
-                      (scorer.statistics[0].goals.total /
+                      (scorer.statistics[0].goals.assists /
                         scorer.statistics[0].games.appearences) *
                         100
                     ) / 100}
@@ -140,7 +155,7 @@ const TopAssits = () => {
         </RankingContainer>
       </RankingWrapper>
     </>
-  );
-};
+  )
+}
 
-export default TopAssits;
+export default TopAssits

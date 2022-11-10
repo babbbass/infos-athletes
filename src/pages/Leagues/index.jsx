@@ -1,20 +1,20 @@
-import { useQuery } from "react-query";
-import { useContext, useState } from "react";
-import Header from "components/Header";
-import Footer from "components/Footer";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { teams } from "utils/datas/Teams";
-import colors from "utils/style/colors";
+import { useQuery } from "react-query"
+import { useContext, useState } from "react"
+import Header from "components/Header"
+import Footer from "components/Footer"
+import { useParams } from "react-router-dom"
+import styled from "styled-components"
+import { teams } from "utils/datas/Teams"
+import colors from "utils/style/colors"
 import {
   CardContainer,
   StyledLink,
   StyledLinkCard,
   StyledImg,
   CardNameTeamOrPlayer,
-} from "utils/style/GlobalStyle";
-import { baseUrl, requestOptions } from "utils/config/QueryConfig";
-import RequestsLimit from "components/Error/RequestsLimit";
+} from "utils/style/GlobalStyle"
+import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import RequestsLimit from "components/Error/RequestsLimit"
 
 const InfoCardContainer = styled.div`
   width: 25%;
@@ -34,17 +34,17 @@ const InfoCardContainer = styled.div`
   @media (max-width: 390px) {
     width: 30%;
   }
-`;
+`
 const TeamHistory = styled.div`
   margin-bottom: 5px;
   font-size: 1rem;
   font-style: Italic;
   font-family: Georgia, serif;
-`;
+`
 
 const SpanVenueTeam = styled.span`
   font-weight: bold;
-`;
+`
 const HeaderBody = styled.nav`
   width: 100vw;
   min-height: 10vw;
@@ -52,20 +52,22 @@ const HeaderBody = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom:  1px solid #cfcfcf;
+  border-bottom: 1px solid #cfcfcf;
   @media (max-width: 767px) {
     z-index: -1;
     flex-direction: column;
     opacity: 0;
     transform: translateY(-100%);
-    transition: 1s cubic-bezier(0.73, 0.11,0.67, 0.99);
-    ${( {active} ) => active && `
+    transition: 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
+    ${({ active }) =>
+      active &&
+      `
       transform: translate(0);
       opacity: 1;
       z-index: 2;
     `};
-  };
-`;
+  } ;
+`
 const ToggleButton = styled.button`
   position: absolute;
   z-index: 10;
@@ -80,7 +82,7 @@ const ToggleButton = styled.button`
   align-items: center;
   background: transparent;
   @media (min-width: 768px) {
-      display:none;
+    display: none;
   }
 `
 
@@ -93,84 +95,97 @@ const ToggleButtonLine = styled.span`
   transition: transform 0.3s ease-out,
   opacity: 0.1s ease-out;
   `
-  const ToggleButtonLine1 = styled(ToggleButtonLine)`
+const ToggleButtonLine1 = styled(ToggleButtonLine)`
   transform: translateY(-10px);
-  ${( {active} ) => active && `
+  ${({ active }) =>
+    active &&
+    `
       transform: translateY(0) rotate(135deg);  
       `}
 `
 const ToggleButtonLine2 = styled(ToggleButtonLine)`
-  ${( {active} ) => active && `
+  ${({ active }) =>
+    active &&
+    `
       opacity: 0;  
   `}
-  `
-  const ToggleButtonLine3 = styled(ToggleButtonLine)`
+`
+const ToggleButtonLine3 = styled(ToggleButtonLine)`
   transform: translateY(10px);
-  ${( {active} ) => active && `
+  ${({ active }) =>
+    active &&
+    `
     transform: translateY(0) rotate(-135deg);  
   `}
-  `
-  const LeaguePagesLink = styled(StyledLink)`
-    margin: 10px 10px;
-    color: ${colors.DarkBackgroundSiteColor};
-    &:hover {
-      color: #bbb;
-    }
-  `
-  const CardContainerTeam = styled(CardContainer)`
-    @media (max-width: 767px) {
-      transform: translateY(-80px);
-      transition: transform 1s cubic-bezier(0.73, 0.11,0.67, 0.99);
-      ${( {active} ) => active && `
+`
+const LeaguePagesLink = styled(StyledLink)`
+  margin: 10px 10px;
+  color: ${colors.DarkBackgroundSiteColor};
+  &:hover {
+    color: #bbb;
+  }
+`
+const CardContainerTeam = styled(CardContainer)`
+  @media (max-width: 767px) {
+    transform: translateY(-80px);
+    transition: transform 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
+    ${({ active }) =>
+      active &&
+      `
         transform: translateY(0px);
       `}
-    }
-  `
-  const fetchCompetition = async (competitionId) => {
-    const response = await fetch(
+  }
+`
+const fetchCompetition = async (competitionId) => {
+  const response = await fetch(
     `${baseUrl}/teams?league=${competitionId}&season=2022`,
     requestOptions
-  );
+  )
 
-  return await response.json();
-};
+  return await response.json()
+}
 
 export default function Leagues() {
-  const { countryCode, competitionId } = useParams();
-  const [active, setActive] = useState(false);
-  const {setCountryCode} =  useState()
+  const { countryCode, competitionId } = useParams()
+  const [active, setActive] = useState(false)
 
-  // const {isLoading, isError, data, error} = useQuery([competitionId],() => fetchCompetition(competitionId))
+  // const { isLoading, isError, data, error } = useQuery([competitionId], () =>
+  //   fetchCompetition(competitionId)
+  // )
   // const teams = data !== undefined ? data.response : []
 
   // if((isError === false && data === undefined) || (data.errors.requests)) {
   //   return (
   //     <RequestsLimit />
   //   )
-  // }   
-  
-  //   if(isError) {
-  //     return <div>Erreur: { error.message }</div>
   // }
 
-  // if(isLoading) {
-  //     return <div>Chargement...</div>
+  // if (isError) {
+  //   return <div>Erreur: {error.message}</div>
   // }
 
-  setCountryCode(countryCode)
+  // if (isLoading) {
+  //   return <div>Chargement...</div>
+  // }
+
   return (
     <>
       <Header />
-        <ToggleButton onClick={() => setActive(!active)} aria-label="toogle curtain navigation">
-              <ToggleButtonLine1 active={active}></ToggleButtonLine1>
-              <ToggleButtonLine2 active={active}></ToggleButtonLine2>
-              <ToggleButtonLine3 active={active}></ToggleButtonLine3>
-        </ToggleButton>
+      <ToggleButton
+        onClick={() => setActive(!active)}
+        aria-label='toogle curtain navigation'
+      >
+        <ToggleButtonLine1 active={active}></ToggleButtonLine1>
+        <ToggleButtonLine2 active={active}></ToggleButtonLine2>
+        <ToggleButtonLine3 active={active}></ToggleButtonLine3>
+      </ToggleButton>
       <HeaderBody active={active}>
         <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
           Classement
         </LeaguePagesLink>
-        <LeaguePagesLink to={`/meilleurs-buteurs/${countryCode}/${competitionId}`}>
+        <LeaguePagesLink
+          to={`/meilleurs-buteurs/${countryCode}/${competitionId}`}
+        >
           Top buteurs
         </LeaguePagesLink>
         <LeaguePagesLink
@@ -178,7 +193,6 @@ export default function Leagues() {
         >
           Meilleurs passeurs
         </LeaguePagesLink>
-        
       </HeaderBody>
       <CardContainerTeam active={active}>
         {teams.map((team) => (
@@ -199,5 +213,5 @@ export default function Leagues() {
       </CardContainerTeam>
       <Footer />
     </>
-  );
+  )
 }

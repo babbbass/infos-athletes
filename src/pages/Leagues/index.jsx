@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { teams } from "utils/datas/Teams"
@@ -13,6 +13,8 @@ import {
 } from "utils/style/GlobalStyle"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import RequestsLimit from "components/Error/RequestsLimit"
+import ToggleButton from "components/NavLink/ToggleButton"
+import { ThemeContext } from "utils/Context/Context"
 
 const InfoCardContainer = styled.div`
   width: 25%;
@@ -66,56 +68,7 @@ const HeaderBody = styled.nav`
     `};
   } ;
 `
-const ToggleButton = styled.button`
-  position: absolute;
-  z-index: 10;
-  //top: 0;
-  right: 10px;
-  height: 38px;
-  width: 38px;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: transparent;
-  @media (min-width: 768px) {
-    display: none;
-  }
-`
 
-const ToggleButtonLine = styled.span`
-  position: absolute;
-  display: block;
-  width: 80%;
-  height: 2px;
-  background: ${colors.flowerblue};
-  transition: transform 0.3s ease-out,
-  opacity: 0.1s ease-out;
-  `
-const ToggleButtonLine1 = styled(ToggleButtonLine)`
-  transform: translateY(-10px);
-  ${({ active }) =>
-    active &&
-    `
-      transform: translateY(0) rotate(135deg);  
-      `}
-`
-const ToggleButtonLine2 = styled(ToggleButtonLine)`
-  ${({ active }) =>
-    active &&
-    `
-      opacity: 0;  
-  `}
-`
-const ToggleButtonLine3 = styled(ToggleButtonLine)`
-  transform: translateY(10px);
-  ${({ active }) =>
-    active &&
-    `
-    transform: translateY(0) rotate(-135deg);  
-  `}
-`
 const LeaguePagesLink = styled(StyledLink)`
   margin: 10px 10px;
   color: ${colors.DarkBackgroundSiteColor};
@@ -145,7 +98,7 @@ const fetchCompetition = async (competitionId) => {
 
 export default function Leagues() {
   const { countryCode, competitionId } = useParams()
-  const [active, setActive] = useState(false)
+  const { activeMenu } = useContext(ThemeContext)
 
   // const { isLoading, isError, data, error } = useQuery([competitionId], () =>
   //   fetchCompetition(competitionId)
@@ -168,15 +121,9 @@ export default function Leagues() {
 
   return (
     <>
-      <ToggleButton
-        onClick={() => setActive(!active)}
-        aria-label='toogle curtain navigation'
-      >
-        <ToggleButtonLine1 active={active}></ToggleButtonLine1>
-        <ToggleButtonLine2 active={active}></ToggleButtonLine2>
-        <ToggleButtonLine3 active={active}></ToggleButtonLine3>
-      </ToggleButton>
-      <HeaderBody active={active}>
+      <ToggleButton />
+      <HeaderBody active={activeMenu}>
+        {/* <ToggleButton active={active} onClick={() => setActive(!active)} /> */}
         <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
           Classement
         </LeaguePagesLink>
@@ -191,7 +138,7 @@ export default function Leagues() {
           Meilleurs passeurs
         </LeaguePagesLink>
       </HeaderBody>
-      <CardContainerTeam active={active}>
+      <CardContainerTeam active={activeMenu}>
         {teams.map((team) => (
           <InfoCardContainer key={team.team.id}>
             <StyledLinkCard to={`/team/${team.team.id}`}>

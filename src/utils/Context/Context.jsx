@@ -20,6 +20,7 @@ const ThemeContextProvider = (props) => {
   const [competitionName, setCompetitionName] = useState("")
   const [countryCode, setCountryCode] = useState("")
   const [teamName, setTeamName] = useState("")
+  const [activeMenu, setActiveMenu] = useState(false)
 
   return (
     <ThemeContext.Provider
@@ -34,6 +35,8 @@ const ThemeContextProvider = (props) => {
         setCountryCode,
         teamName,
         setTeamName,
+        activeMenu,
+        setActiveMenu,
       }}
     >
       {props.children}

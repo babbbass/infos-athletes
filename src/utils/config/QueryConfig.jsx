@@ -10,3 +10,4 @@ export const requestOptions = {
 };
 
 export const baseUrl = `https://v3.football.api-sports.io`
+export const baseNbaUrl = `https://v2.nba.api-sports.io`

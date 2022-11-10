@@ -12,6 +12,8 @@ import ThemeContextProvider from 'utils/Context/Context';
 import TopAssits from 'pages/TopAssists';
 import Games from 'pages/Games'
 import Player from 'pages/Player'
+import Nba from 'pages/Nba'
+import NbaSquad from 'pages/Nba/Squad'
 import GlobalStyle from 'utils/style/GlobalStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
   {
     path: "/player/:playerId",
     element: <Player />,
+  },
+  {
+    path: "/nba",
+    element: <Nba />,
+  },
+  {
+    path: "/nba/team/:teamId/players",
+    element: <NbaSquad />,
   },
 ]);
 

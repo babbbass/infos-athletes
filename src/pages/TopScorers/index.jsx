@@ -24,7 +24,6 @@ import {
   } from "utils/style/Rankings";
 import { selectOptions } from "utils/Context/Context";
 import NavLink from "components/NavLink";
-import { BestOfLeague } from "utils/config/variablesConfig";
 import PreviousLink from "components/NavLink/Previous";
 import NextLink from "components/NavLink/Next";
 

@@ -44,7 +44,7 @@ export default function Header() {
       <LinkContainer>
         <StyledLink to="/">Accueil</StyledLink>
         <StyledLink to="/prochains-matchs">Matchs</StyledLink>
-        <StyledLink>Equipes</StyledLink>
+        <StyledLink to="/nba">Nba</StyledLink>
       </LinkContainer>
     </Wrapper>
   );

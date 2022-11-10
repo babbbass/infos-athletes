@@ -26,3 +26,7 @@ package-lock.json
 
 #config
 utils/config/
+
+#vscode
+.vscode/
+

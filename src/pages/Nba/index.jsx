@@ -1,5 +1,3 @@
-import Footer from "components/Footer"
-import Header from "components/Header"
 import React, { useState, useContext } from "react"
 import { baseNbaUrl, requestOptions } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
@@ -165,7 +163,6 @@ export default function Nba() {
 
   return (
     <>
-      <Header />
       <ToggleButton
         onClick={() => setActive(!active)}
         aria-label='toogle curtain navigation'
@@ -201,7 +198,6 @@ export default function Nba() {
             )
         )}
       </CardContainerTeam>
-      <Footer />
     </>
   )
 }

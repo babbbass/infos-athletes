@@ -12,8 +12,6 @@ import { useQuery } from "react-query"
 import { requestOptions, baseUrl } from "utils/config/QueryConfig"
 import styled from "styled-components"
 import colors from "utils/style/colors"
-import Header from "components/Header"
-import Footer from "components/Footer"
 import {
   CardContainer,
   ButtonSiteContainer,
@@ -89,7 +87,6 @@ export default function PlayerCivility() {
           closeModalPalmaresPlayer={setOpenModalPalmaresPlayer}
         />
       )}
-      <Header />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{ previousStep1, previousStep2, previousLinkName }}
@@ -141,13 +138,6 @@ export default function PlayerCivility() {
           </LinkModal>
         </ButtonSiteContainer>
       </CardContainer>
-      {/* <ModalBackground>
-          <ModalContainer>
-         
-            
-          </ModalContainer>
-        </ModalBackground> */}
-      <Footer />
     </>
   )
 }

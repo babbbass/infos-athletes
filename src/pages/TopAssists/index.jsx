@@ -25,6 +25,7 @@ import {
 import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
+import RequestsLimit from "components/Error/RequestsLimit"
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)
@@ -46,11 +47,7 @@ const TopAssits = () => {
   //   ["topAssists", [idCompetition, yearTopAssitsSelected]],
   //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition)
   // )
-  // if((isError === false && data === undefined) || (data.errors.requests)) {
-  //   return (
-  //     <RequestsLimit />
-  //   )
-  // }
+  // console.log(data)
   // if (isError) {
   //   return <div>Erreur: {error.message}</div>
   // }
@@ -59,7 +56,11 @@ const TopAssits = () => {
   //   return <div>Chargement...</div>
   // }
 
-  //const topAssists = data !== undefined ? data.response : []
+  // if (data.errors && data.errors.length !== 0) {
+  //   return <RequestsLimit />
+  // }
+
+  // const topAssists = data !== undefined ? data.response : []
   const competitionName = topAssists[0].statistics[0].league.name
 
   const previousStep1 = "leagues"
@@ -74,7 +75,6 @@ const TopAssits = () => {
 
   return (
     <>
-      <Header />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{

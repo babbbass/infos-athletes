@@ -106,7 +106,6 @@ function Home() {
   console.log(countries)
   return (
     <div className='App'>
-      <Header />
       <Wrapper>
         <Title>INFOS ATHLETES</Title>
         <Presentation>
@@ -140,7 +139,6 @@ function Home() {
           ))}
         </FlagContainer>
       </Wrapper>
-      <Footer />
     </div>
   )
 }

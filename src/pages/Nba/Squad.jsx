@@ -5,8 +5,6 @@ import RequestsLimit from "components/Error/RequestsLimit"
 import { useQuery } from "react-query"
 import { ThemeContext } from "utils/Context/Context"
 import { players } from "utils/datas/Nba/players"
-import Header from "components/Header"
-import Footer from "components/Footer"
 import {
   CardContainer,
   StyledLinkCard,
@@ -58,28 +56,26 @@ export default function Squad() {
   const { teamId } = useParams()
   const { yearSelected, teamName } = useContext(ThemeContext)
 
-  const { isLoading, isError, data, error } = useQuery(
-    [teamId, [teamId, yearSelected]],
-    () => fetchNbaSquad(teamId, yearSelected)
-  )
-  const players = data !== undefined ? data.response : []
+  // const { isLoading, isError, data, error } = useQuery(
+  //   [teamId, [teamId, yearSelected]],
+  //   () => fetchNbaSquad(teamId, yearSelected)
+  // )
+  // const players = data !== undefined ? data.response : []
 
-  // if((isError === false && data === undefined) || (data.errors.requests)) {
-  //     return (
-  //         <RequestsLimit />
-  //     )
+  // if (isError) {
+  //   return <div>Erreur: {error.message}</div>
   // }
-  if (isError) {
-    return <div>Erreur: {error.message}</div>
-  }
 
-  if (isLoading) {
-    return <div>Chargement...</div>
-  }
+  // if (isLoading) {
+  //   return <div>Chargement...</div>
+  // }
+
+  // if (data.errors && data.errors.length !== 0) {
+  //   return <RequestsLimit />
+  // }
 
   return (
     <>
-      <Header />
       <HeaderBody>
         <LeaguePagesLink to={`/nba`}>Nba</LeaguePagesLink>
         {/* <LeaguePagesLink to={`/palmares/${teamId}`}>Palmarès</LeaguePagesLink> */}
@@ -115,7 +111,6 @@ export default function Squad() {
           </InfoCardContainer>
         ))}
       </CardContainer>
-      <Footer />
     </>
   )
 }

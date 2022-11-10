@@ -1,7 +1,5 @@
 import { useQuery } from "react-query"
 import { useContext, useState } from "react"
-import Header from "components/Header"
-import Footer from "components/Footer"
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { teams } from "utils/datas/Teams"
@@ -170,7 +168,6 @@ export default function Leagues() {
 
   return (
     <>
-      <Header />
       <ToggleButton
         onClick={() => setActive(!active)}
         aria-label='toogle curtain navigation'
@@ -211,7 +208,6 @@ export default function Leagues() {
           </InfoCardContainer>
         ))}
       </CardContainerTeam>
-      <Footer />
     </>
   )
 }

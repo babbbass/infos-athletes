@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
-import Header from "components/Header"
 import { topScorers } from "utils/datas/TopScorers"
 import { useParams, Link } from "react-router-dom"
 import {
@@ -58,7 +57,6 @@ const TopScorers = () => {
 
   // if((isError === false && data === undefined) || (data.errors.requests)) {
   //   return (
-  //     <RequestsLimit />
   //   )
   // }
   // if (isError) {
@@ -75,7 +73,6 @@ const TopScorers = () => {
 
   return (
     <>
-      <Header />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{

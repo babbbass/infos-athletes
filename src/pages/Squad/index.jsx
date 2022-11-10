@@ -1,5 +1,4 @@
 import { squad } from "utils/datas/Squads"
-import Header from "components/Header"
 import styled from "styled-components"
 import {
   CardContainer,
@@ -106,7 +105,6 @@ export default function Squad() {
 
   return (
     <div>
-      <Header />
       {openModal && <Modal playerId={playerId} closeModal={setOpenModal} />}
       <HeaderBody>
         <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>

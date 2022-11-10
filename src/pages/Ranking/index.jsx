@@ -3,7 +3,6 @@ import { ThemeContext } from "utils/Context/Context"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
 import Select from "react-select"
-import Header from "components/Header"
 import styled from "styled-components"
 import { ranking } from "utils/datas/Ranking"
 import { useParams } from "react-router-dom"
@@ -98,7 +97,6 @@ const Ranking = () => {
   const nextLinkName = "meilleurs buteurs"
   return (
     <>
-      <Header />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{

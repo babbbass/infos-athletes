@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import colors from "../../utils/style/colors";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import styled from "styled-components"
+import colors from "../../utils/style/colors"
 
 const Wrapper = styled.header`
   height: 80px;
@@ -10,7 +9,7 @@ const Wrapper = styled.header`
   flex-direction: column;
   justify-content: left;
   background: ${colors.DarkBackgroundSiteColor};
-`;
+`
 
 const TitleContainer = styled.div`
   width: 100%;
@@ -19,15 +18,15 @@ const TitleContainer = styled.div`
   font-style: italic;
   color: ${colors.whitesmoke};
   text-align: center;
-`;
+`
 
 const LinkContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`;
+`
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   text-decoration: none;
   margin 0 15px;
   font-style: italic;
@@ -35,17 +34,17 @@ const StyledLink = styled(Link)`
   &:hover{
     text-decoration: underline;
   } 
-`;
+`
 
 export default function Header() {
   return (
     <Wrapper>
       <TitleContainer>INFOS ATHLETES</TitleContainer>
       <LinkContainer>
-        <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/prochains-matchs">Matchs</StyledLink>
-        <StyledLink to="/nba">Nba</StyledLink>
+        <StyledLink href='/'>Accueil</StyledLink>
+        <StyledLink href='/prochains-matchs'>Matchs</StyledLink>
+        <StyledLink href='/nba'>Nba</StyledLink>
       </LinkContainer>
     </Wrapper>
-  );
+  )
 }

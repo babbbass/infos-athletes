@@ -14,6 +14,9 @@ import {
   CardNameTeamOrPlayer,
   CardContainer,
   StyledLinkCard,
+  AdditionnalDataContainer,
+  H1CardContainer,
+  H2CardContainer,
 } from "components/Card/globalStyleCard"
 
 const fetchTeamPlayers = async (teamId) => {
@@ -25,11 +28,6 @@ const fetchTeamPlayers = async (teamId) => {
   return await response.json()
 }
 
-const NameCardPlayer = styled(CardNameTeamOrPlayer)`
-  height: 20%;
-  margin-bottom: 5px;
-  align-self: center;
-`
 const HeaderBody = styled.div`
   display: flex;
   text-align: center;
@@ -40,21 +38,6 @@ const LeaguePagesLink = styled(StyledLinkCard)`
   &:hover {
     color: #bbb;
   }
-`
-const H1Container = styled.div`
-  width: 90%;
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-  margin: 10px auto;
-  border-bottom: 1px solid ${colors.primary};
-  color: ${colors.primary};
-`
-const H2container = styled(H1Container)`
-  font-size: 1.6rem;
-  width: 100%;
-  border-bottom: none;
 `
 export default function Squad() {
   const [openModal, setOpenModal] = useState(false)
@@ -112,12 +95,12 @@ export default function Squad() {
         </LeaguePagesLink>
         <LeaguePagesLink>Palmarès</LeaguePagesLink>
       </HeaderBody>
-      <H1Container>
+      <H1CardContainer>
         Effectif <br />
         {squad[0].team.name}
-      </H1Container>
+      </H1CardContainer>
       <CardContainer>
-        <H2container>Gardiens</H2container>
+        <H2CardContainer>Gardiens</H2CardContainer>
         {goalkeepers.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
             <StyledLinkCard
@@ -126,14 +109,16 @@ export default function Squad() {
                 setPlayerId(player.id)
               }}
             >
-              <NameCardPlayer>{player.name}</NameCardPlayer>
+              <CardNameTeamOrPlayer>{player.name}</CardNameTeamOrPlayer>
               <StyledImg src={player.photo} alt={`${player.name}-pict`} />
-              <div>Age: {player.age}</div>
-              <div>Numéro: {player.number}</div>
+              <AdditionnalDataContainer>
+                <div>Age: {player.age}</div>
+                <div>Numéro: {player.number}</div>
+              </AdditionnalDataContainer>
             </StyledLinkCard>
           </InfoCardContainer>
         ))}
-        <H2container>Défenseurs</H2container>
+        <H2CardContainer>Défenseurs</H2CardContainer>
         {defenders.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
             <StyledLinkCard
@@ -142,14 +127,16 @@ export default function Squad() {
                 setPlayerId(player.id)
               }}
             >
-              <NameCardPlayer>{player.name}</NameCardPlayer>
+              <CardNameTeamOrPlayer>{player.name}</CardNameTeamOrPlayer>
               <StyledImg src={player.photo} alt={`${player.name}-pict`} />
-              <div>Age: {player.age}</div>
-              <div>Numéro: {player.number}</div>
+              <AdditionnalDataContainer>
+                <div>Age: {player.age}</div>
+                <div>Numéro: {player.number}</div>
+              </AdditionnalDataContainer>
             </StyledLinkCard>
           </InfoCardContainer>
         ))}
-        <H2container>Milieux</H2container>
+        <H2CardContainer>Milieux</H2CardContainer>
         {midfielders.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
             <StyledLinkCard
@@ -158,14 +145,14 @@ export default function Squad() {
                 setPlayerId(player.id)
               }}
             >
-              <NameCardPlayer>{player.name}</NameCardPlayer>
+              <CardNameTeamOrPlayer>{player.name}</CardNameTeamOrPlayer>
               <StyledImg src={player.photo} alt={`${player.name}-pict`} />
               <div>Age: {player.age}</div>
               <div>Numéro: {player.number}</div>
             </StyledLinkCard>
           </InfoCardContainer>
         ))}
-        <H2container>Attaquants</H2container>
+        <H2CardContainer>Attaquants</H2CardContainer>
         {attackers.map((player, index) => (
           <InfoCardContainer key={`${player.id}-${index}`}>
             <StyledLinkCard
@@ -174,7 +161,7 @@ export default function Squad() {
                 setPlayerId(player.id)
               }}
             >
-              <NameCardPlayer>{player.name}</NameCardPlayer>
+              <CardNameTeamOrPlayer>{player.name}</CardNameTeamOrPlayer>
               <StyledImg src={player.photo} alt={`${player.name}-pict`} />
               <div>Age: {player.age}</div>
               <div>Numéro: {player.number}</div>

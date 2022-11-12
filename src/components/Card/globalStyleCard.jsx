@@ -10,7 +10,7 @@ export const CardContainer = styled.section`
 `
 export const InfoCardContainer = styled.div`
   width: 25%;
-  //height: max-content;
+  min-height: 260px;
   text-align: center;
   padding: 10px 20px 10px 20px;
   display: flex;
@@ -74,10 +74,7 @@ export const CardNameTeamOrPlayer = styled.div`
     font-size: 1.1rem;
   }
 `
-export const AdditionnalDataContainer = styled.div`
-  position: relative;
-  // bottom: 5px;
-`
+export const AdditionnalDataContainer = styled.div``
 export const StyledLinkCard = styled(Link)`
   text-decoration: none;
   position: relative;
@@ -85,4 +82,19 @@ export const StyledLinkCard = styled(Link)`
   height: 100%;
   color: ${colors.warriors};
   font-style: italic;
+`
+export const H1CardContainer = styled.div`
+  width: 90%;
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px auto;
+  border-bottom: 1px solid ${colors.primary};
+  color: ${colors.primary};
+`
+export const H2CardContainer = styled(H1CardContainer)`
+  font-size: 1.6rem;
+  width: 100%;
+  border-bottom: none;
 `

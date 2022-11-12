@@ -2,23 +2,24 @@ import { useQuery } from "react-query"
 import { useContext } from "react"
 import { useParams } from "react-router-dom"
 import { teams } from "utils/datas/Teams"
-import {
-  StyledLinkCard,
-  StyledImg,
-  CardNameTeamOrPlayer,
-} from "utils/style/GlobalStyle"
+import { StyledImg } from "utils/style/GlobalStyle"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import RequestsLimit from "components/Error/RequestsLimit"
 import ToggleButton from "components/NavLink/ToggleButton"
 import { ThemeContext } from "utils/Context/Context"
 import {
-  HeaderBody,
-  InfoCardContainer,
   LeaguePagesLink,
   CardContainerTeam,
   TeamHistory,
   SpanVenueTeam,
-} from "utils/style/teams"
+} from "components/Card/CardTeam/cardTeamStyle"
+import {
+  StyledLinkCard,
+  InfoCardContainer,
+  HeaderBody,
+  CardNameTeamOrPlayer,
+  AdditionnalDataContainer,
+} from "components/Card/globalStyleCard"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -76,13 +77,15 @@ export default function Leagues() {
             <StyledLinkCard to={`/team/${team.team.id}`}>
               <CardNameTeamOrPlayer>{team.team.name}</CardNameTeamOrPlayer>
               <StyledImg src={team.team.logo} alt={`${team.team.name}-logo`} />
-              <TeamHistory>Fondé en {team.team.founded}</TeamHistory>
-              <TeamHistory>
-                <SpanVenueTeam>Stade:</SpanVenueTeam> {team.venue.name}
-              </TeamHistory>
-              <TeamHistory>
-                <SpanVenueTeam>Ville:</SpanVenueTeam> {team.venue.city}
-              </TeamHistory>
+              <AdditionnalDataContainer>
+                <TeamHistory>Fondé en {team.team.founded}</TeamHistory>
+                <TeamHistory>
+                  <SpanVenueTeam>Stade:</SpanVenueTeam> {team.venue.name}
+                </TeamHistory>
+                <TeamHistory>
+                  <SpanVenueTeam>Ville:</SpanVenueTeam> {team.venue.city}
+                </TeamHistory>
+              </AdditionnalDataContainer>
             </StyledLinkCard>
           </InfoCardContainer>
         ))}

@@ -3,21 +3,11 @@ import { baseNbaUrl, requestOptions } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
 import RequestsLimit from "components/Error/RequestsLimit"
 import { teams } from "utils/datas/Nba/teams"
-import {
-  StyledLinkCard,
-  CardImgContainer,
-  StyledImg,
-  CardNameTeamOrPlayer,
-} from "utils/style/GlobalStyle"
 import { ThemeContext } from "utils/Context/Context"
 import ToggleButton from "components/NavLink/ToggleButton"
-import {
-  HeaderBody,
-  LeaguePagesLink,
-  InfoCardContainer,
-  CardContainerTeam,
-  TeamHistory,
-} from "utils/style/teams"
+import { LeaguePagesLink } from "components/Card/CardTeam/cardTeamStyle"
+import CardTeam from "components/Card/CardTeam/index"
+import { HeaderBody } from "components/Card/globalStyleCard"
 
 const fetchNbaTeams = async () => {
   const response = await fetch(`${baseNbaUrl}/teams`, requestOptions)
@@ -27,7 +17,7 @@ const fetchNbaTeams = async () => {
 
 export default function Nba() {
   const { activeMenu } = useContext(ThemeContext)
-  const { setTeamName } = useContext(ThemeContext)
+  //const { setTeamName } = useContext(ThemeContext)
 
   // const { isLoading, isError, data, error } = useQuery(["nbaTeams"], () =>
   //   fetchNbaTeams()
@@ -55,28 +45,7 @@ export default function Nba() {
         <LeaguePagesLink>Meilleurs marqueurs</LeaguePagesLink>
         <LeaguePagesLink>Meilleurs passeurs</LeaguePagesLink>
       </HeaderBody>
-      <CardContainerTeam active={activeMenu}>
-        {teams.map(
-          (team) =>
-            team.nbaFranchise !== false && (
-              <InfoCardContainer key={team.id}>
-                <StyledLinkCard
-                  to={`/nba/team/${team.id}/players`}
-                  onClick={setTeamName(team.name)}
-                >
-                  <CardNameTeamOrPlayer>{team.name}</CardNameTeamOrPlayer>
-                  <CardImgContainer>
-                    <StyledImg src={team.logo} alt={`${team.name}-logo`} />
-                  </CardImgContainer>
-                  {/* <AdditionnalDataContainer> */}
-                  <TeamHistory>Nom: {team.nickname}</TeamHistory>
-                  <TeamHistory>Ville: {team.city}</TeamHistory>
-                  {/* </AdditionnalDataContainer> */}
-                </StyledLinkCard>
-              </InfoCardContainer>
-            )
-        )}
-      </CardContainerTeam>
+      <CardTeam active={activeMenu} teams={teams} />
     </>
   )
 }

@@ -5,16 +5,16 @@ import RequestsLimit from "components/Error/RequestsLimit"
 import { useQuery } from "react-query"
 import { ThemeContext } from "utils/Context/Context"
 import { players } from "utils/datas/Nba/players"
-import {
-  CardContainer,
-  StyledLinkCard,
-  CardImgContainer,
-  StyledImg,
-  CardNameTeamOrPlayer,
-  InfoCardContainer,
-} from "utils/style/GlobalStyle"
+import { StyledImg } from "utils/style/GlobalStyle"
 import styled from "styled-components"
 import colors from "utils/style/colors"
+import {
+  CardImgContainer,
+  CardContainer,
+  InfoCardContainer,
+  CardNameTeamOrPlayer,
+  StyledLinkCard,
+} from "components/Card/globalStyleCard"
 
 const fetchNbaSquad = async (teamId, yearSelected) => {
   const response = await fetch(

@@ -3,60 +3,11 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import colors from "../../utils/style/colors"
 
-export const CardContainer = styled.section`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  flex-wrap: wrap;
-`
-export const InfoCardContainer = styled.div`
-  width: 25%;
-  height: fit-content;
-  text-align: center;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 0 10px 0;
-  background: ${colors.backgroundLight};
-  border-radius: 30px;
-  transition: 200ms;
-  &:hover {
-    cursor: pointer;
-    box-shadow: 2px 2px 10px #e2e3e9;
-  }
-  @media (max-width: 570px) {
-    width: 40%;
-  }
-  @media (max-width: 390px) {
-    width: 40%;
-  }
-`
-export const StyledLinkCard = styled(Link)`
-  text-decoration: none;
-  width: 100%;
-  color: #000;
-  font-style: italic;
-`
-
-export const CardImgContainer = styled.div`
-  height: 54%;
-  margin: 5px 0;
-`
-
 export const StyledImg = styled.img`
   max-width: 150px;
+  margin: 15px auto;
   @media (max-width: 390px) {
     width: 105px;
-  }
-`
-
-export const CardNameTeamOrPlayer = styled.div`
-  margin-bottom: 5px;
-  align-self: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  @media (max-width: 390px) {
-    height: 20%;
-    margin-bottom: auto;
-    font-size: 1.1rem;
   }
 `
 export const StyledLink = styled(Link)`
@@ -108,6 +59,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${colors.primary}
     font-size: 1rem;
     font-family: Lato, Roboto, Sans-Serif;
+    background: ${colors.backgroundDark};
   }
 
   a {

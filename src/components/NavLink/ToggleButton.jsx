@@ -26,7 +26,7 @@ const ToggleButtonLine = styled.span`
   display: block;
   width: 80%;
   height: 2px;
-  background: ${colors.flowerblue};
+  background: ${colors.slate};
   transition: transform 0.3s ease-out,
   opacity: 0.1s ease-out;
   `

@@ -1,12 +1,6 @@
 import { squad } from "utils/datas/Squads"
 import styled from "styled-components"
-import {
-  CardContainer,
-  StyledLinkCard,
-  StyledImg,
-  CardNameTeamOrPlayer,
-  InfoCardContainer,
-} from "utils/style/GlobalStyle"
+import { StyledImg } from "utils/style/GlobalStyle"
 import Modal from "components/Modal/PlayerCivility"
 import { useContext, useState } from "react"
 import { useQuery } from "react-query"
@@ -15,6 +9,12 @@ import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import colors from "utils/style/colors"
 import { ThemeContext } from "utils/Context/Context"
 import { squad as squadConfig } from "utils/config/squad"
+import {
+  InfoCardContainer,
+  CardNameTeamOrPlayer,
+  CardContainer,
+  StyledLinkCard,
+} from "components/Card/globalStyleCard"
 
 const fetchTeamPlayers = async (teamId) => {
   const response = await fetch(

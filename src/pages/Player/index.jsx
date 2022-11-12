@@ -12,11 +12,8 @@ import { useQuery } from "react-query"
 import { requestOptions, baseUrl } from "utils/config/QueryConfig"
 import styled from "styled-components"
 import colors from "utils/style/colors"
-import {
-  CardContainer,
-  ButtonSiteContainer,
-  ButtonSite,
-} from "utils/style/GlobalStyle"
+import { ButtonSiteContainer, ButtonSite } from "utils/style/GlobalStyle"
+import { CardContainer } from "components/Card/globalStyleCard"
 import PreviousLink from "components/NavLink/Previous"
 import { HeaderBody } from "utils/style/Rankings"
 import { useParams } from "react-router-dom"

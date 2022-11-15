@@ -1,73 +1,30 @@
-import Header from "components/Header"
-import Footer from "components/Footer"
-import styled from "styled-components"
-import colors from "utils/style/colors"
 import { countries } from "utils/datas/Countries"
-import { StyledImg } from "utils/style/GlobalStyle"
-import { Link } from "react-router-dom"
 import { useContext } from "react"
 import { useQuery } from "react-query"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import { ThemeContext } from "utils/Context/Context"
-
-const Wrapper = styled.section`
-  padding: 1.2rem;
-  background: ${colors.lightGrey};
-  color: ${colors.primary};
-  text-align: center;
-  flex-direction: row;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-`
-
-const Title = styled.h1`
-  font-size: 1.8rem;
-`
-
-const Presentation = styled.p`
-  font-size: 1rem;
-  width: 900px;
-`
-
-const FlagContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  padding: 30px;
-  width: 90%;
-`
-
-const TitleItem = styled.h2`
-  font-size: 1.7rem;
-  padding: 5px;
-  text-align: center;
-`
-const LinkContainer = styled.div`
-  flex-basis: 45%;
-  margin: 10px 0;
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-    box-shadow: 2px 2px 10px #e2e3e9;
-  }
-
-  @media (max-width: 425px) {
-    flex-basis: 100%;
-  }
-`
-const CountryFlagContainer = styled.div`
-  width: auto;
-`
-const CountryFlag = styled(StyledImg)`
-  margin: 10px 0;
-  border-radius: 6px;
-`
-const StyledLink = styled(Link)`
-  color: ${colors.primary};
-  font-weight: bold;
-  text-decoration: none;
-`
+import {
+  Title,
+  Wrapper,
+  FlagContainer,
+  ImgContainerCarroussel,
+  ImgContainer,
+  LinkContainer,
+  CountryFlag,
+  StyledLink,
+  TitleBlocSpan,
+  WrapperHeader,
+  ImgWrapperCarroussel,
+  ImgHomeCarroussel,
+  ButtonSiteContainer,
+  ButtonSite,
+  TitleBloc,
+  WrapperBody,
+  WrapperBodyBlock,
+  WrapperBodyBlockText,
+  WrapperBodyImg,
+} from "./HomeStyle"
+import { H2Style, H3Style } from "utils/style/GlobalStyle"
 
 const fetchCountries = async () => {
   const response = await fetch(`${baseUrl}/countries`, requestOptions)
@@ -75,6 +32,8 @@ const fetchCountries = async () => {
 }
 
 function Home() {
+  const styleWrapper = { "--nbCards": 6, animationDelay: "-1s" }
+  const colorButton = { background: "#0066FF" }
   const { setCompetitionName, setCountryCode, setCompetitionId } =
     useContext(ThemeContext)
   // const { isLoading, isError, data, error } = useQuery(
@@ -103,19 +62,69 @@ function Home() {
   // // country.name === "Germany" ||
   //     // country.name === "Spain"
   // )
-  console.log(countries)
+
   return (
-    <div className='App'>
+    <>
       <Wrapper>
-        <Title>INFOS ATHLETES</Title>
-        <Presentation>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged.
-        </Presentation>
+        <WrapperHeader>
+          <TitleBloc>
+            <Title>Choisis ton sport</Title>
+            <TitleBlocSpan>
+              Et trouves les toutes informations sur ton équipe et tes joueurs
+              préférés.
+            </TitleBlocSpan>
+          </TitleBloc>
+          <ImgContainerCarroussel>
+            <ImgWrapperCarroussel style={styleWrapper}>
+              <ImgHomeCarroussel
+                src='/mbappe.png'
+                style={{ "--cardIndex": 0 }}
+              />
+              <ImgHomeCarroussel
+                src='/morant.png'
+                style={{ "--cardIndex": 1 }}
+              />
+              <ImgHomeCarroussel
+                src='/debruyne.png'
+                style={{ "--cardIndex": 2 }}
+              />
+              <ImgHomeCarroussel
+                src='/towns.png'
+                style={{ "--cardIndex": 3 }}
+              />
+              <ImgHomeCarroussel
+                src='/curry.png'
+                style={{ "--cardIndex": 4 }}
+              />
+              <ImgHomeCarroussel
+                src='/messi.png'
+                style={{ "--cardIndex": 5 }}
+              />
+            </ImgWrapperCarroussel>
+          </ImgContainerCarroussel>
+
+          <ButtonSiteContainer>
+            <StyledLink to={`/`}>
+              <ButtonSite>foot</ButtonSite>
+            </StyledLink>
+            <StyledLink to={`/nba`}>
+              <ButtonSite style={colorButton}>NBA</ButtonSite>
+            </StyledLink>
+          </ButtonSiteContainer>
+        </WrapperHeader>
+        <WrapperBody>
+          <WrapperBodyBlock>
+            <WrapperBodyBlockText>meilleurs buteurs</WrapperBodyBlockText>
+            <WrapperBodyImg src='/benzema.png' alt={`benzema-logo`} />
+          </WrapperBodyBlock>
+          <WrapperBodyBlock>
+            <WrapperBodyBlockText>top scoreurs Nba</WrapperBodyBlockText>
+            <WrapperBodyImg src='/durant.png' alt={`durant-logo`} />
+          </WrapperBodyBlock>
+        </WrapperBody>
+        <TitleBloc>
+          <H2Style>Les meilleurs championnats</H2Style>
+        </TitleBloc>
         <FlagContainer>
           {countries.map((country, index) => (
             <LinkContainer key={`${country.code} - ${index}`}>
@@ -127,19 +136,19 @@ function Home() {
                   setCompetitionId(country.id)
                 }}
               >
-                <TitleItem>{country.name}</TitleItem>
-                <CountryFlagContainer>
+                <H3Style>{country.name}</H3Style>
+                <ImgContainer>
                   <CountryFlag
                     src={country.flag}
                     alt={`${country.name}-logo`}
                   />
-                </CountryFlagContainer>
+                </ImgContainer>
               </StyledLink>
             </LinkContainer>
           ))}
         </FlagContainer>
       </Wrapper>
-    </div>
+    </>
   )
 }
 

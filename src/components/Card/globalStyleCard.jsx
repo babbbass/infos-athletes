@@ -32,7 +32,7 @@ export const InfoCardContainer = styled.div`
   }
 `
 export const HeaderBody = styled.nav`
-  width: 100vw;
+  width: 100%;
   min-height: 10vw;
   position: relative;
   display: flex;

@@ -3,6 +3,29 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 import colors from "../../utils/style/colors"
 
+export const sizesFont = {
+  h1: "2.5rem",
+  h1SmartPhone: "2rem",
+  h2: "1.875rem",
+  h3: "1.7rem",
+  medium: "1.2rem",
+  normal: "1rem",
+}
+
+export const H3Style = styled.h3`
+  font-size: ${sizesFont.h3};
+  font-family: DrukWide-Super, sans-serif;
+  padding: 5px;
+  text-align: center;
+`
+
+export const H2Style = styled.h2`
+  font-size: ${sizesFont.h2};
+  font-family: DrukWide-Super, serif;
+  text-transform: uppercase;
+  text-align: center;
+`
+
 export const StyledImg = styled.img`
   max-width: 150px;
   margin: 15px auto;
@@ -26,9 +49,9 @@ export const ButtonSiteContainer = styled.div`
   margin: 10px 0;
 `
 export const Wrapper = styled.section`
-    min-width: 90%;
-    padding 200px 0;
-    text-align: center;
+  min-width: 90%;
+  padding 200px 0;
+  text-align: center;
 `
 export const ButtonSite = styled.button`
   background-color: ${colors.DarkBackgroundSiteColor};
@@ -55,11 +78,13 @@ export const ButtonSite = styled.button`
 const GlobalStyle = createGlobalStyle`
   body {
     margin: auto;
+    max-width: 1400px;
+    width: 100%;
     padding: 0;
-    color: ${colors.primary}
+    color: ${colors.primary};
     font-size: 1rem;
     font-family: Lato, Roboto, Sans-Serif;
-    background: ${colors.backgroundDark};
+    background: ${colors.whitesmoke};
   }
 
   a {

@@ -10,7 +10,6 @@ import TopScorers from "pages/TopScorers"
 import Ranking from "pages/Ranking/"
 import ThemeContextProvider from "utils/Context/Context"
 import TopAssits from "pages/TopAssists"
-import Games from "pages/Games"
 import Player from "pages/Player"
 import Nba from "pages/Nba"
 import NbaSquad from "pages/Nba/Squad"
@@ -51,10 +50,6 @@ const router = createBrowserRouter([
   {
     path: "/classement/:countryCode/:idCompetition",
     element: <Ranking />,
-  },
-  {
-    path: "/prochains-matchs",
-    element: <Games />,
   },
   {
     path: "/player/:playerId",

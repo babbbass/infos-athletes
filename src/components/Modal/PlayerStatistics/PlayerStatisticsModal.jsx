@@ -1,20 +1,7 @@
 import React, { useContext, useState } from "react"
 import {
-  PlayerStatsModalBackground,
-  PlayerStatsModalContainer,
-  ModalContainerCard,
-  RowStatsModalContainer,
-  RowModalTitle,
-  ModalContainerTitle,
-  PlayerStatsModalContainerBody,
-  PlayerStatsModalContainerHeader,
-  ModalContainerFooter,
-  TitleCloseBtnButton,
-  ModalContainerFooterButton,
-  ModalContainerCardHeader,
   ImgContainer,
   H1Container,
-  RowModalData,
   StyledSelect,
 } from "./PlayerStatisticsStyle"
 //import { playerStatistics } from 'utils/datas/PlayerStatistics'
@@ -22,6 +9,14 @@ import { ThemeContext } from "utils/Context/Context"
 import { requestOptions, baseUrl } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
 import { selectOptions } from "utils/Context/Context"
+import { CardRow } from "components/Card/globalStyleCard"
+import styled from "styled-components"
+import { ModalContainerBody } from "utils/style/Modals"
+
+const PlayerStatisticContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`
 
 const fetchPlayerDatas = async (playerId, yearSeason) => {
   const response = await fetch(
@@ -32,11 +27,7 @@ const fetchPlayerDatas = async (playerId, yearSeason) => {
   return await response.json()
 }
 
-export default function PlayerStatisticsModal({
-  closeModalStatistics,
-  playerStatistic,
-}) {
-  //
+export default function PlayerStatisticsModal({ playerStatistic }) {
   const { yearSelected } = useContext(ThemeContext)
   const [yearStatisticsSelected, setYearStatisticsSelected] =
     useState(yearSelected)
@@ -59,81 +50,43 @@ export default function PlayerStatisticsModal({
   const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
 
   return (
-    <div>
-      <PlayerStatsModalBackground>
-        <PlayerStatsModalContainer>
-          <PlayerStatsModalContainerHeader>
-            <ModalContainerTitle>{`${playerStatistics[0].player.name.toUpperCase()}`}</ModalContainerTitle>
-            <StyledSelect
-              placeholder={yearStatisticsSelected}
-              options={selectOptions}
-              onChange={(option) => {
-                setYearStatisticsSelected(option.value)
-              }}
-            />
-          </PlayerStatsModalContainerHeader>
-          <PlayerStatsModalContainerBody>
-            {playerStatistics[0]?.statistics.map((competitionStats, index) => (
-              <ModalContainerCard
-                key={`${playerStatistics[0].player.id}-${index}`}
-              >
-                <ModalContainerCardHeader>
-                  <H1Container>{`${competitionStats.league.name}`}</H1Container>
-                  <ImgContainer
-                    src={competitionStats.team.logo}
-                    alt={`firstname-statistiques`}
-                  />
-                </ModalContainerCardHeader>
-                <RowStatsModalContainer>
-                  <div>
-                    <RowModalTitle>Matchs:</RowModalTitle>{" "}
-                    <RowModalData>{`${competitionStats.games.appearences}`}</RowModalData>
-                  </div>
-                  <div>
-                    <RowModalTitle>Titulaire:</RowModalTitle>{" "}
-                    <RowModalData>
-                      {competitionStats.games.lineups}
-                    </RowModalData>
-                  </div>
-                  <div>
-                    <RowModalTitle>Nb min:</RowModalTitle>{" "}
-                    <RowModalData>
-                      {competitionStats.games.minutes}
-                    </RowModalData>
-                  </div>
-                  <div>
-                    <RowModalTitle>Note:</RowModalTitle>{" "}
-                    <RowModalData>
-                      {Math.round(competitionStats.games.rating * 100) / 100}
-                    </RowModalData>
-                  </div>
-                  <div>
-                    <RowModalTitle>Buts:</RowModalTitle>{" "}
-                    <RowModalData>{competitionStats.goals.total}</RowModalData>
-                  </div>
-                  <div>
-                    <RowModalTitle>Pas déc:</RowModalTitle>{" "}
-                    <RowModalData>
-                      {competitionStats.goals.assists}
-                    </RowModalData>
-                  </div>
-                </RowStatsModalContainer>
-              </ModalContainerCard>
-            ))}
-          </PlayerStatsModalContainerBody>
-          <ModalContainerFooter>
-            <ModalContainerFooterButton>
-              <TitleCloseBtnButton
-                onClick={() => {
-                  closeModalStatistics(false)
-                }}
-              >
-                Fermer
-              </TitleCloseBtnButton>
-            </ModalContainerFooterButton>
-          </ModalContainerFooter>
-        </PlayerStatsModalContainer>
-      </PlayerStatsModalBackground>
-    </div>
+    <>
+      {/* <CardContainer> */}
+      {/* <ModalContainerTitle>{`${playerStatistics[0].player.name.toUpperCase()}`}</ModalContainerTitle> */}
+      <StyledSelect
+        placeholder={yearStatisticsSelected}
+        options={selectOptions}
+        onChange={(option) => {
+          setYearStatisticsSelected(option.value)
+        }}
+      />
+      <PlayerStatisticContainer>
+        {playerStatistics[0]?.statistics.map((competitionStats, index) => (
+          <div key={`${playerStatistics[0].player.id}-${index}`}>
+            {/* <ModalContainerCardHeader> */}
+            <H1Container>{`${competitionStats.league.name}`}</H1Container>
+            <ModalContainerBody>
+              <ImgContainer
+                src={competitionStats.team.logo}
+                alt={`firstname-statistiques`}
+              />
+              {/* </ModalContainerCardHeader> */}
+              {/* <RowStatsModalContainer> */}
+              <CardRow>
+                Matchs: {`${competitionStats.games.appearences}`}
+              </CardRow>
+              <CardRow>Titulaire:{competitionStats.games.lineups}</CardRow>
+              <CardRow>Nb min: {competitionStats.games.minutes}</CardRow>
+              <CardRow>
+                Note: {Math.round(competitionStats.games.rating * 100) / 100}
+              </CardRow>
+              <CardRow>Buts: {competitionStats.goals.total}</CardRow>
+              <CardRow>Pas déc: {competitionStats.goals.assists}</CardRow>
+              {/* </RowStatsModalContainer> */}
+            </ModalContainerBody>
+          </div>
+        ))}
+      </PlayerStatisticContainer>
+    </>
   )
 }

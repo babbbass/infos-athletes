@@ -30,7 +30,7 @@ export const StyledImg = styled.img`
   max-width: 150px;
   margin: 15px auto;
   @media (max-width: 390px) {
-    width: 105px;
+    width: 90px;
   }
 `
 export const StyledLink = styled(Link)`
@@ -73,6 +73,10 @@ export const ButtonSite = styled.button`
     background-color: ${colors.whitesmoke};
     color: ${colors.primary};
     border: 1px solid ${colors.primary};
+  }
+  @media (max-width: 400px) {
+    width: 120px;
+    padding: 15px 22px;
   }
 `
 const GlobalStyle = createGlobalStyle`

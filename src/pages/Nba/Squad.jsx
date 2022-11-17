@@ -11,7 +11,7 @@ import colors from "utils/style/colors"
 import {
   CardImgContainer,
   CardContainer,
-  InfoCardContainer,
+  Card,
   CardNameTeamOrPlayer,
   StyledLinkCard,
 } from "components/Card/globalStyleCard"
@@ -86,7 +86,7 @@ export default function Squad() {
       </H1Container>
       <CardContainer>
         {players.map((player, index) => (
-          <InfoCardContainer key={`${player.id}-${index}`}>
+          <Card key={`${player.id}-${index}`}>
             <StyledLinkCard
               to={`/player/${player.id}`}
               onClick={() => {
@@ -108,7 +108,7 @@ export default function Squad() {
               <div>Numéro: {player.leagues.standard.jersey}</div>
               <div>POSTE: {player.leagues.standard.pos}</div>
             </StyledLinkCard>
-          </InfoCardContainer>
+          </Card>
         ))}
       </CardContainer>
     </>

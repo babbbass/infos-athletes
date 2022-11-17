@@ -15,7 +15,7 @@ import {
 } from "components/Card/CardTeam/cardTeamStyle"
 import {
   StyledLinkCard,
-  InfoCardContainer,
+  Card,
   HeaderBody,
   CardNameTeamOrPlayer,
   AdditionnalDataContainer,
@@ -73,7 +73,7 @@ export default function Leagues() {
       </HeaderBody>
       <CardContainerTeam active={activeMenu}>
         {teams.map((team) => (
-          <InfoCardContainer key={team.team.id}>
+          <Card key={team.team.id}>
             <StyledLinkCard to={`/team/${team.team.id}`}>
               <CardNameTeamOrPlayer>{team.team.name}</CardNameTeamOrPlayer>
               <StyledImg src={team.team.logo} alt={`${team.team.name}-logo`} />
@@ -87,7 +87,7 @@ export default function Leagues() {
                 </TeamHistory>
               </AdditionnalDataContainer>
             </StyledLinkCard>
-          </InfoCardContainer>
+          </Card>
         ))}
       </CardContainerTeam>
     </>

@@ -2,7 +2,7 @@ import React from "react"
 import { CardContainerTeam, TeamHistory } from "./cardTeamStyle"
 import { StyledImg } from "utils/style/GlobalStyle"
 import {
-  InfoCardContainer,
+  Card,
   StyledLinkCard,
   CardNameTeamOrPlayer,
   CardImgContainer,
@@ -16,7 +16,7 @@ export default function CardTeam({ active, teams }) {
         {teams.map(
           (team) =>
             team.nbaFranchise !== false && (
-              <InfoCardContainer key={team.id}>
+              <Card key={team.id}>
                 <StyledLinkCard
                   to={`/nba/team/${team.id}/players`}
                   //onClick={setTeamName(team.name)}
@@ -30,7 +30,7 @@ export default function CardTeam({ active, teams }) {
                     <TeamHistory>Ville: {team.city}</TeamHistory>
                   </AdditionnalDataContainer>
                 </StyledLinkCard>
-              </InfoCardContainer>
+              </Card>
             )
         )}
       </CardContainerTeam>

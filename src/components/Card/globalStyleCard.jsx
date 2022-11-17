@@ -4,25 +4,29 @@ import { Link } from "react-router-dom"
 
 export const CardContainer = styled.section`
   display: flex;
+  position: relative;
+  perspective: 2000px;
+  persepectuve-origin: top;
   justify-content: space-evenly;
   width: 100%;
   flex-wrap: wrap;
 `
-export const InfoCardContainer = styled.div`
+export const Card = styled.div`
   width: 25%;
-  min-height: 260px;
+  min-height: 225px;
   text-align: center;
-  padding: 10px 20px 10px 20px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin: 10px 0 10px 0;
+  position: relative;
+  height: 100%;
   background: ${colors.slate};
   border: 2px solid ${colors.warriors};
   border-radius: 30px;
-  transition: 200ms;
   &:hover {
     cursor: pointer;
-    box-shadow: 4px 4px 12px ${colors.slate}; //e2e3e9
+    box-shadow: 4px 4px 12px ${colors.slate};
   }
   @media (max-width: 570px) {
     width: 40%;
@@ -30,6 +34,22 @@ export const InfoCardContainer = styled.div`
   @media (max-width: 390px) {
     width: 30%;
   }
+`
+export const CardRow = styled.span`
+  display: block;
+  color: ${colors.warriors};
+`
+
+export const CardFront = styled.div`
+  color: ${colors.warriors};
+  width: 100%;
+  padding: 10px 0px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+`
+export const CardBack = styled(CardFront)`
+  transform: rotateY(180deg);
+  position: absolute;
 `
 export const HeaderBody = styled.nav`
   width: 100%;

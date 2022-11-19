@@ -5,7 +5,7 @@ export const Wrapper = styled.footer`
   padding: 1rem;
   position: relative;
   bottom: 0px;
-  width: auto;
+  width: 100%;
   bottom: 0;
   font-size: 1.2rem;
   font-style: italic;

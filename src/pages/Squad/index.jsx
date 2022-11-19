@@ -1,12 +1,10 @@
 import { squad } from "utils/datas/Squads"
 import styled from "styled-components"
 import { StyledImg } from "utils/style/GlobalStyle"
-import Modal from "components/Modal/PlayerCivility"
 import { useContext, useState } from "react"
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
-import colors from "utils/style/colors"
 import { ThemeContext } from "utils/Context/Context"
 import { squad as squadConfig } from "utils/config/squad"
 import {
@@ -40,7 +38,6 @@ const LeaguePagesLink = styled(StyledLinkCard)`
   }
 `
 export default function Squad() {
-  const [openModal, setOpenModal] = useState(false)
   const [playerId, setPlayerId] = useState(0)
   const { teamId } = useParams()
   const { competitionId, competitionName, countryCode } =
@@ -86,7 +83,6 @@ export default function Squad() {
 
   return (
     <div>
-      {openModal && <Modal playerId={playerId} closeModal={setOpenModal} />}
       <HeaderBody>
         <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
           {competitionName}

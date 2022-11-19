@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import colors from "utils/style/colors"
 import { Link } from "react-router-dom"
+import { StyledLink } from "utils/style/GlobalStyle"
 
 export const CardContainer = styled.section`
   display: flex;
@@ -35,6 +36,9 @@ export const Card = styled.div`
     width: 30%;
   }
 `
+export const PlayerCardBody = styled.div`
+  flex-basis: 50%;
+`
 export const CardRow = styled.span`
   display: block;
   color: ${colors.warriors};
@@ -45,11 +49,12 @@ export const CardFront = styled.div`
   width: 100%;
   padding: 10px 0px;
   backface-visibility: hidden;
+  position: absolute;
   -webkit-backface-visibility: hidden;
 `
 export const CardBack = styled(CardFront)`
   transform: rotateY(180deg);
-  position: absolute;
+  position: relative;
 `
 export const HeaderBody = styled.nav`
   width: 100%;
@@ -64,7 +69,7 @@ export const HeaderBody = styled.nav`
     flex-direction: column;
     opacity: 0;
     transform: translateY(-100%);
-    transition: 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
+    transition: 0.8s cubic-bezier(0.73, 0.11, 0.67, 0.99);
     ${({ active }) =>
       active &&
       `

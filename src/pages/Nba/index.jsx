@@ -41,7 +41,7 @@ export default function Nba() {
     <>
       <ToggleButton />
       <HeaderBody active={activeMenu}>
-        <LeaguePagesLink>Classement</LeaguePagesLink>
+        <LeaguePagesLink to='/'>Accueil</LeaguePagesLink>
         <LeaguePagesLink>Meilleurs marqueurs</LeaguePagesLink>
         <LeaguePagesLink>Meilleurs passeurs</LeaguePagesLink>
       </HeaderBody>

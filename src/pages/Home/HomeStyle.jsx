@@ -107,6 +107,7 @@ export const ButtonSite = styled.button`
   text-align: center;
   text-transform: uppercase;
   margin-right: 10px;
+  cursor: grab;
 `
 
 export const WrapperBody = styled.div`

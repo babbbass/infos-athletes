@@ -1,16 +1,9 @@
-import { countries } from "utils/datas/Countries"
-import { useContext } from "react"
 import { useQuery } from "react-query"
 import { baseUrl, requestOptions } from "utils/config/QueryConfig"
-import { ThemeContext } from "utils/Context/Context"
 import {
   Title,
   Wrapper,
-  FlagContainer,
   ImgContainerCarroussel,
-  ImgContainer,
-  LinkContainer,
-  CountryFlag,
   StyledLink,
   TitleBlocSpan,
   WrapperHeader,
@@ -25,7 +18,7 @@ import {
   WrapperBodyBlockText,
   WrapperBodyImg,
 } from "./HomeStyle"
-import { H2Style, H3Style } from "utils/style/GlobalStyle"
+import Flag from "components/Flag"
 
 const fetchCountries = async () => {
   const response = await fetch(`${baseUrl}/countries`, requestOptions)
@@ -33,9 +26,9 @@ const fetchCountries = async () => {
 }
 
 function Home() {
+  const nbaLink = "nba"
+  const footballLink = "football"
   const styleWrapper = { "--nbCards": 6, animationDelay: "-1s" }
-  const { setCompetitionName, setCountryCode, setCompetitionId } =
-    useContext(ThemeContext)
   // const { isLoading, isError, data, error } = useQuery(
   //   "countries",
   //   fetchCountries
@@ -103,10 +96,10 @@ function Home() {
             </TitleBlocSpan>
           </TitleBloc>
           <ButtonSiteContainer>
-            <StyledLink to={`/`}>
+            <StyledLink to={`/${footballLink}`}>
               <ButtonHome>foot</ButtonHome>
             </StyledLink>
-            <StyledLink to={`/nba`}>
+            <StyledLink to={`/${nbaLink}`}>
               <ButtonHomeNba>NBA</ButtonHomeNba>
             </StyledLink>
           </ButtonSiteContainer>
@@ -121,31 +114,7 @@ function Home() {
             <WrapperBodyImg src='/durant.png' alt={`durant-logo`} />
           </WrapperBodyBlock>
         </WrapperBody>
-        <TitleBloc>
-          <H2Style>Les meilleurs championnats</H2Style>
-        </TitleBloc>
-        <FlagContainer>
-          {countries.map((country, index) => (
-            <LinkContainer key={`${country.code} - ${index}`}>
-              <StyledLink
-                to={`/leagues/${country.code}/${country.id}`}
-                onClick={() => {
-                  setCompetitionName(country.ligue)
-                  setCountryCode(country.code)
-                  setCompetitionId(country.id)
-                }}
-              >
-                <H3Style>{country.name}</H3Style>
-                <ImgContainer>
-                  <CountryFlag
-                    src={country.flag}
-                    alt={`${country.name}-logo`}
-                  />
-                </ImgContainer>
-              </StyledLink>
-            </LinkContainer>
-          ))}
-        </FlagContainer>
+        <Flag />
       </Wrapper>
     </>
   )

@@ -12,6 +12,9 @@ export const WrapperHeader = styled.div`
   display: flex;
   flex-wrap: no-wrap;
   justify-content: space-evenly;
+  @media (min-width: 1200px) {
+    padding-left: 50px;
+  }
 `
 export const TitleBloc = styled.div`
   position: relative;
@@ -20,7 +23,7 @@ export const TitleBloc = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding: 20px;
+  padding-left: 20px;
 `
 export const Title = styled.h1`
   font-size: ${sizesFont.h1};
@@ -42,9 +45,14 @@ export const ImgContainerCarroussel = styled.div`
   perspective: 200px;
   pointer-events: none;
   margin: 30px auto 0px auto;
-  left: calc(50px + 55%);
+  left: calc(50px + 65%);
   @media (max-width: 425px) {
-    left: calc(50px + 30%);
+    position: static;
+    height: 240px;
+    margin: 0px auto;
+  }
+  @media (max-width: 400px) {
+    height: 130px;
   }
 `
 export const imgWrapperCarrousselAnimation = keyframes`
@@ -96,7 +104,7 @@ export const ButtonSiteContainer = styled.div`
     margin-bottom: 10px;
   }
 `
-export const ButtonSite = styled.button`
+export const ButtonHome = styled.button`
   background-color: ${colors.DarkBackgroundSiteColor};
   max-width: 160px;
   border-radius: 26px;
@@ -108,6 +116,14 @@ export const ButtonSite = styled.button`
   text-transform: uppercase;
   margin-right: 10px;
   cursor: grab;
+  &:hover {
+    background-color: ${colors.whitesmoke};
+    color: ${colors.primary};
+    border: 1px solid ${colors.primary};
+  }
+`
+export const ButtonHomeNba = styled(ButtonHome)`
+  background: #0066ff;
 `
 
 export const WrapperBody = styled.div`
@@ -139,6 +155,9 @@ export const WrapperBodyBlockText = styled.span`
   &:hover {
     text-decoration: underline;
   }
+  @media (max-width: 425px) {
+    font-size: ${sizesFont.medium};
+  }
 `
 export const WrapperBodyImg = styled(StyledImg)`
   max-width: 100%;
@@ -158,8 +177,7 @@ export const FlagContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 30px;
-  width: 90%;
+  padding: 0px 20px;
 `
 export const StyledLink = styled(Link)`
   color: ${colors.primary};
@@ -169,7 +187,6 @@ export const StyledLink = styled(Link)`
 
 export const LinkContainer = styled.div`
   flex-basis: 45%;
-  margin: 10px 0;
   text-align: center;
   &:hover {
     cursor: pointer;

@@ -17,7 +17,8 @@ import {
   ImgWrapperCarroussel,
   ImgHomeCarroussel,
   ButtonSiteContainer,
-  ButtonSite,
+  ButtonHome,
+  ButtonHomeNba,
   TitleBloc,
   WrapperBody,
   WrapperBodyBlock,
@@ -33,7 +34,6 @@ const fetchCountries = async () => {
 
 function Home() {
   const styleWrapper = { "--nbCards": 6, animationDelay: "-1s" }
-  const colorButton = { background: "#0066FF" }
   const { setCompetitionName, setCountryCode, setCompetitionId } =
     useContext(ThemeContext)
   // const { isLoading, isError, data, error } = useQuery(
@@ -67,13 +67,6 @@ function Home() {
     <>
       <Wrapper>
         <WrapperHeader>
-          <TitleBloc>
-            <Title>Choisis ton sport</Title>
-            <TitleBlocSpan>
-              Et trouves les toutes informations sur ton équipe et tes joueurs
-              préférés.
-            </TitleBlocSpan>
-          </TitleBloc>
           <ImgContainerCarroussel>
             <ImgWrapperCarroussel style={styleWrapper}>
               <ImgHomeCarroussel
@@ -102,13 +95,19 @@ function Home() {
               />
             </ImgWrapperCarroussel>
           </ImgContainerCarroussel>
-
+          <TitleBloc>
+            <Title>Choisis ton sport</Title>
+            <TitleBlocSpan>
+              Et trouves les toutes informations sur ton équipe et tes joueurs
+              préférés.
+            </TitleBlocSpan>
+          </TitleBloc>
           <ButtonSiteContainer>
             <StyledLink to={`/`}>
-              <ButtonSite>foot</ButtonSite>
+              <ButtonHome>foot</ButtonHome>
             </StyledLink>
             <StyledLink to={`/nba`}>
-              <ButtonSite style={colorButton}>NBA</ButtonSite>
+              <ButtonHomeNba>NBA</ButtonHomeNba>
             </StyledLink>
           </ButtonSiteContainer>
         </WrapperHeader>

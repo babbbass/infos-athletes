@@ -2,7 +2,6 @@ import styled from "styled-components"
 import colors from "../../utils/style/colors"
 
 export const Wrapper = styled.header`
-  height: 80px;
   padding: 1em;
   display: flex;
   flex-wrap: no-wrap;

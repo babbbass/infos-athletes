@@ -1,7 +1,21 @@
 import { createGlobalStyle } from "styled-components"
 import styled from "styled-components"
 import { Link } from "react-router-dom"
-import colors from "../../utils/style/colors"
+
+export const colors = {
+  primary: "#333",
+  whitesmoke: "#F5F5F5",
+  backgroundLight: "#F9F9FC",
+  backgroundDark: "#A9A9A9",
+  DarkBackgroundSiteColor: "#0A0A0A",
+  lightGrey: "#F4F3EE",
+  veryLightGrey: "#bbb",
+  middleGrey: "#BCB8B1",
+  flowerblue: "cornflowerblue",
+  slate: "#26282a",
+  warriors: "#fdb927",
+  backgroundHover: "#eee",
+}
 
 export const sizesFont = {
   h1: "2.5rem",
@@ -10,8 +24,37 @@ export const sizesFont = {
   h3: "1.7rem",
   medium: "1.2rem",
   normal: "1rem",
+  textSmartPhone: "0.8rem",
 }
 
+export const Menu = styled.nav`
+  width: 100%;
+  // min-height: 10vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #cfcfcf;
+  @media (max-width: 767px) {
+    z-index: -1;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
+    ${({ active }) =>
+      active &&
+      `
+      transform: translate(0);
+      opacity: 1;
+      z-index: 2;
+    `};
+  } ;
+`
+
+export const H1Style = styled.h1`
+  font-family: Lato, Roboto, Sans-Serif;
+  font-size: ${sizesFont.h1};
+`
 export const H3Style = styled.h3`
   font-size: ${sizesFont.h3};
   font-family: DrukWide-Super, sans-serif;
@@ -83,6 +126,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: auto;
     max-width: 1400px;
+    position: relative;
     width: 100%;
     padding: 0;
     color: ${colors.primary};

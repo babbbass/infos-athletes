@@ -10,7 +10,7 @@ export const TitleBloc = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding-left: 20px;
+  // padding-left: 20px;
 `
 export const FlagContainer = styled.div`
   display: flex;

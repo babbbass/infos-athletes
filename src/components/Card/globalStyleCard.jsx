@@ -55,7 +55,7 @@ export const CardBack = styled(CardFront)`
 `
 export const HeaderBody = styled.nav`
   width: 100%;
-  min-height: 10vw;
+  // min-height: 10vw;
   position: relative;
   display: flex;
   justify-content: center;

@@ -7,7 +7,7 @@ import { ThemeContext } from "utils/Context/Context"
 import ToggleButton from "components/NavLink/ToggleButton"
 import { LeaguePagesLink } from "components/Card/CardTeam/cardTeamStyle"
 import CardTeam from "components/Card/CardTeam/index"
-import { HeaderBody } from "components/Card/globalStyleCard"
+import { Menu } from "utils/style/GlobalStyle"
 
 const fetchNbaTeams = async () => {
   const response = await fetch(`${baseNbaUrl}/teams`, requestOptions)
@@ -39,11 +39,11 @@ export default function Nba() {
   return (
     <>
       <ToggleButton />
-      <HeaderBody active={activeMenu}>
+      <Menu active={activeMenu}>
         <LeaguePagesLink to='/'>Infos Athletes</LeaguePagesLink>
-        <LeaguePagesLink>Matchs du Jour</LeaguePagesLink>
+        <LeaguePagesLink to='/nba/matchs'>Matchs du Jour</LeaguePagesLink>
         <LeaguePagesLink>Meilleurs passeurs</LeaguePagesLink>
-      </HeaderBody>
+      </Menu>
       <CardTeam active={activeMenu} teams={teams} />
     </>
   )

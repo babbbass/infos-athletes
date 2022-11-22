@@ -20,6 +20,7 @@ import {
   CardNameTeamOrPlayer,
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
+import { Menu } from "utils/style/GlobalStyle"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -56,7 +57,8 @@ export default function Leagues() {
   return (
     <>
       <ToggleButton />
-      <HeaderBody active={activeMenu}>
+      <Menu active={activeMenu}>
+        <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
         <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
           Classement
         </LeaguePagesLink>
@@ -70,7 +72,7 @@ export default function Leagues() {
         >
           Meilleurs passeurs
         </LeaguePagesLink>
-      </HeaderBody>
+      </Menu>
       <CardContainerTeam active={activeMenu}>
         {teams.map((team) => (
           <Card key={team.team.id}>

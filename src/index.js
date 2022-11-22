@@ -16,6 +16,8 @@ import NbaSquad from "pages/Nba/Squad"
 import GlobalStyle from "utils/style/GlobalStyle"
 import Layout from "components/Layout"
 import Football from "pages/Football"
+import NbaGames from "pages/Nba/NbaGames"
+import GameStatistics from "pages/Nba/GameStatistics"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 const queryClient = new QueryClient({
@@ -63,6 +65,14 @@ const router = createBrowserRouter([
   {
     path: "/nba",
     element: <Nba />,
+  },
+  {
+    path: "/nba/matchs",
+    element: <NbaGames />,
+  },
+  {
+    path: "/nba/match/:matchId",
+    element: <GameStatistics />,
   },
   {
     path: "/nba/team/:teamId/players",

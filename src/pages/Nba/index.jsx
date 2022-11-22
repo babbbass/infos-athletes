@@ -17,7 +17,6 @@ const fetchNbaTeams = async () => {
 
 export default function Nba() {
   const { activeMenu } = useContext(ThemeContext)
-  //const { setTeamName } = useContext(ThemeContext)
 
   // const { isLoading, isError, data, error } = useQuery(["nbaTeams"], () =>
   //   fetchNbaTeams()
@@ -41,8 +40,8 @@ export default function Nba() {
     <>
       <ToggleButton />
       <HeaderBody active={activeMenu}>
-        <LeaguePagesLink to='/'>Accueil</LeaguePagesLink>
-        <LeaguePagesLink>Meilleurs marqueurs</LeaguePagesLink>
+        <LeaguePagesLink to='/'>Infos Athletes</LeaguePagesLink>
+        <LeaguePagesLink>Matchs du Jour</LeaguePagesLink>
         <LeaguePagesLink>Meilleurs passeurs</LeaguePagesLink>
       </HeaderBody>
       <CardTeam active={activeMenu} teams={teams} />

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import colors from "utils/style/colors"
 import { Link } from "react-router-dom"
-import { StyledLink } from "utils/style/GlobalStyle"
+import { sizesFont } from "utils/style/GlobalStyle"
 
 export const CardContainer = styled.section`
   display: flex;
@@ -14,7 +14,7 @@ export const CardContainer = styled.section`
 `
 export const Card = styled.div`
   width: 25%;
-  min-height: 225px;
+  min-height: 320px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -30,10 +30,7 @@ export const Card = styled.div`
     box-shadow: 4px 4px 12px ${colors.slate};
   }
   @media (max-width: 570px) {
-    width: 40%;
-  }
-  @media (max-width: 390px) {
-    width: 30%;
+    width: 45%;
   }
 `
 export const PlayerCardBody = styled.div`
@@ -84,14 +81,14 @@ export const CardImgContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60%;
+  height: 170px;
 `
 export const CardNameTeamOrPlayer = styled.div`
-  margin-bottom: 5px;
-  position: relative;
-  top: 5px;
+  padding: 5px auto;
+  margin: 5px auto;
+  height: 40px;
   align-self: center;
-  font-size: 1.2rem;
+  font-size: ${sizesFont.medium};
   font-weight: bold;
   @media (max-width: 390px) {
     height: 20%;

@@ -84,6 +84,7 @@ export default function Squad() {
   return (
     <div>
       <HeaderBody>
+        <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
         <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
           {competitionName}
         </LeaguePagesLink>

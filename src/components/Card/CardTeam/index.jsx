@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { CardContainerTeam, TeamHistory } from "./cardTeamStyle"
 import { StyledImg } from "utils/style/GlobalStyle"
 import {
@@ -8,8 +8,10 @@ import {
   CardImgContainer,
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
+import { ThemeContext } from "utils/Context/Context"
 
 export default function CardTeam({ active, teams }) {
+  const { setTeamName } = useContext(ThemeContext)
   return (
     <>
       <CardContainerTeam active={active}>
@@ -19,11 +21,14 @@ export default function CardTeam({ active, teams }) {
               <Card key={team.id}>
                 <StyledLinkCard
                   to={`/nba/team/${team.id}/players`}
-                  //onClick={setTeamName(team.name)}
+                  onClick={() => setTeamName(team.name)}
                 >
                   <CardNameTeamOrPlayer>{team.name}</CardNameTeamOrPlayer>
                   <CardImgContainer>
-                    <StyledImg src={team.logo} alt={`${team.name}-logo`} />
+                    <StyledImg
+                      src={team.logo ? team.logo : `/defaultBasketPicture.jpeg`}
+                      alt={`${team.name}-logo`}
+                    />
                   </CardImgContainer>
                   <AdditionnalDataContainer>
                     <TeamHistory>Nom: {team.nickname}</TeamHistory>

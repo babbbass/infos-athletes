@@ -14,19 +14,21 @@ const fetchGames = async (date) => {
 }
 
 export default function NbaGames() {
-  const date = new Date().toJSON().slice(0, 10)
-  // const { isLoading, isError, data, error } = useQuery(["nbaTeams", date], () =>
-  //   fetchGames(date)
-  // )
+  const today = new Date().toJSON().slice(0, 10)
+  //const today = "2022-11-24" //new Date().toJSON().slice(0, 10)
+  const { isLoading, isError, data, error } = useQuery(
+    ["nbaGames", today],
+    () => fetchGames(today)
+  )
 
-  // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
-  // }
+  if (isError) {
+    return <div>Erreur: {error.message}</div>
+  }
 
-  // if (isLoading) {
-  //   return <div>Chargement...</div>
-  // }
-
-  // const games = data !== undefined ? data.response : []
-  return <Games games={games} date={date} />
+  if (isLoading) {
+    return <div>Chargement...</div>
+  }
+  console.log(data)
+  const games = data !== undefined ? data.response : []
+  return <Games games={games} date={today} />
 }

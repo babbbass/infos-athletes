@@ -29,6 +29,9 @@ const isWinner = (homePts, visitorPts, homeTeam, visitorTeam) => {
   return false
 }
 
+const isFinished = "Finished"
+const noData = "Match non terminé"
+
 export default function Games({ games, date }) {
   const { activeMenu } = useContext(ThemeContext)
   return (
@@ -38,8 +41,11 @@ export default function Games({ games, date }) {
         <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
       </Menu>
       {games.map((game) => (
-        <GameLink to={`/nba/match/${game.id}`}>
-          <Game key={game.id}>
+        <GameLink
+          key={game.id}
+          to={game.status.long === isFinished && `/nba/match/${game.id}`}
+        >
+          <Game>
             {isWinner(game.scores.home.points, game.scores.visitors.points)}
             <TeamHome>
               <ImgTeamGame src={game.teams.home.logo} />
@@ -53,10 +59,16 @@ export default function Games({ games, date }) {
                   <>{game.teams.home.name}</>
                 )}
               </TeamName>
-              <GameScore>{game.scores.home.points}</GameScore>
-              <GameLineScore>
-                {linescores(game.scores.home.linescore)}
-              </GameLineScore>
+              {game.status.long !== isFinished ? (
+                <GameLineScore>{noData}</GameLineScore>
+              ) : (
+                <>
+                  <GameScore>{game.scores.home.points}</GameScore>
+                  <GameLineScore>
+                    {linescores(game.scores.home.linescore)}
+                  </GameLineScore>
+                </>
+              )}
             </TeamHome>
             <TeamVisitors>
               <ImgTeamGame src={game.teams.visitors.logo} />
@@ -70,10 +82,16 @@ export default function Games({ games, date }) {
                   <WinnerTeam>{game.teams.visitors.name}</WinnerTeam>
                 )}
               </TeamName>
-              <GameScore>{game.scores.visitors.points}</GameScore>
-              <GameLineScore>
-                {linescores(game.scores.visitors.linescore)}
-              </GameLineScore>
+              {game.status.long !== isFinished ? (
+                <GameLineScore>{noData}</GameLineScore>
+              ) : (
+                <>
+                  <GameScore>{game.scores.visitors.points}</GameScore>
+                  <GameLineScore>
+                    {linescores(game.scores.visitors.linescore)}
+                  </GameLineScore>
+                </>
+              )}
             </TeamVisitors>
           </Game>
         </GameLink>

@@ -106,11 +106,15 @@ function Home() {
         </WrapperHeader>
         <WrapperBody>
           <WrapperBodyBlock>
-            <WrapperBodyBlockText>meilleurs buteurs</WrapperBodyBlockText>
+            <StyledLink to={``}>
+              <WrapperBodyBlockText>meilleurs buteurs</WrapperBodyBlockText>
+            </StyledLink>
             <WrapperBodyImg src='/benzema.png' alt={`benzema-logo`} />
           </WrapperBodyBlock>
           <WrapperBodyBlock>
-            <WrapperBodyBlockText>top scoreurs Nba</WrapperBodyBlockText>
+            <StyledLink to={`/nba/matchs`}>
+              <WrapperBodyBlockText>Matchs du jour</WrapperBodyBlockText>
+            </StyledLink>
             <WrapperBodyImg src='/durant.png' alt={`durant-logo`} />
           </WrapperBodyBlock>
         </WrapperBody>

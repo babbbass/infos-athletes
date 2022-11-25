@@ -39,6 +39,7 @@ export default function Games({ games, date }) {
       <ToggleButton />
       <Menu active={activeMenu}>
         <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
+        <LeaguePagesLink to={`/nba`}>Équipes</LeaguePagesLink>
       </Menu>
       {games.map((game) => (
         <GameLink

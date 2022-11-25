@@ -5,21 +5,58 @@ import styled from "styled-components"
 import { CardRow, PlayerCardBody } from "components/Card/globalStyleCard"
 import { PlayerStatisticContainer } from "components/Card/CardPlayer/styleCardPlayer"
 import Button from "components/Button"
+import { useQuery } from "react-query"
+import { requestOptions, baseUrl } from "utils/config/QueryConfig"
+import { useParams } from "react-router-dom"
+import { colors } from "utils/style/GlobalStyle"
 
 const CardBodyPalmares = styled(PlayerCardBody)`
   flex-basis: 33%;
   margin: 10px auto;
+  @media (max-width: 425px) {
+    flex-basis: 45%;
+  }
 `
+const RowTrophie = styled(CardRow)`
+  text-transform: uppercase;
+  color: ${colors.whitesmoke};
+`
+const fetchPlayerPalmares = async (playerId) => {
+  console.log(playerId)
+
+  const response = await fetch(
+    `${baseUrl}/trophies?player=${playerId}`,
+    requestOptions
+  )
+
+  return await response.json()
+}
 export default function PlayerPalmares({ linkButton }) {
   const { yearSelected, setYearSelected } = useContext(ThemeContext)
+  const { playerId } = useParams("playerId")
+
+  // const { isLoading, isError, data, error } = useQuery(
+  //   ["player-palmares", playerId],
+  //   () => fetchPlayerPalmares(playerId)
+  // )
+
+  // if (isError) {
+  //   return <div>Erreur: {error.message}</div>
+  // }
+
+  // if (isLoading) {
+  //   return <div>Chargement...</div>
+  // }
+
+  // const playerPalmares = data === undefined ? [] : data.response
 
   return (
     <>
       <PlayerStatisticContainer>
         {playerPalmares.map((trophie, index) => (
           <CardBodyPalmares key={`${trophie.league}-${index}`}>
-            <CardRow>Trophée: {trophie.league}</CardRow>
-            <CardRow>Année: {trophie.season}</CardRow>
+            <RowTrophie>{trophie.league}</RowTrophie>
+            <CardRow>{trophie.season}</CardRow>
             <CardRow>Place: {trophie.place}</CardRow>
           </CardBodyPalmares>
         ))}

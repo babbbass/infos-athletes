@@ -16,11 +16,11 @@ import {
 import {
   StyledLinkCard,
   Card,
-  HeaderBody,
   CardNameTeamOrPlayer,
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
 import { Menu } from "utils/style/GlobalStyle"
+import styled from "styled-components"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -30,6 +30,10 @@ const fetchCompetition = async (competitionId) => {
 
   return await response.json()
 }
+
+const CardTeam = styled(Card)`
+  min-height: 280px;
+`
 
 export default function Leagues() {
   const { countryCode, competitionId } = useParams()
@@ -75,7 +79,7 @@ export default function Leagues() {
       </Menu>
       <CardContainerTeam active={activeMenu}>
         {teams.map((team) => (
-          <Card key={team.team.id}>
+          <CardTeam key={team.team.id}>
             <StyledLinkCard to={`/team/${team.team.id}`}>
               <CardNameTeamOrPlayer>{team.team.name}</CardNameTeamOrPlayer>
               <StyledImg src={team.team.logo} alt={`${team.team.name}-logo`} />
@@ -89,7 +93,7 @@ export default function Leagues() {
                 </TeamHistory>
               </AdditionnalDataContainer>
             </StyledLinkCard>
-          </Card>
+          </CardTeam>
         ))}
       </CardContainerTeam>
     </>

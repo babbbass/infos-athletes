@@ -18,7 +18,7 @@ export const Card = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-content: center;
   margin: 10px 0 10px 0;
   position: relative;
   height: 100%;
@@ -31,6 +31,7 @@ export const Card = styled.div`
   }
   @media (max-width: 570px) {
     width: 45%;
+    min-height: 250px;
   }
 `
 export const PlayerCardBody = styled.div`
@@ -55,7 +56,6 @@ export const CardBack = styled(CardFront)`
 `
 export const HeaderBody = styled.nav`
   width: 100%;
-  // min-height: 10vw;
   position: relative;
   display: flex;
   justify-content: center;
@@ -84,14 +84,13 @@ export const CardImgContainer = styled.div`
   height: 170px;
 `
 export const CardNameTeamOrPlayer = styled.div`
-  padding: 5px auto;
+  //padding: 5px auto;
   margin: 5px auto;
-  height: 40px;
+  height: 35px;
   align-self: center;
   font-size: ${sizesFont.medium};
   font-weight: bold;
   @media (max-width: 390px) {
-    height: 20%;
     margin-bottom: auto;
     font-size: 1.1rem;
   }

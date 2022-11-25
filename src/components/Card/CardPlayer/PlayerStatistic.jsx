@@ -1,16 +1,17 @@
 import React, { useContext, useState } from "react"
-import {
-  ImgContainer,
-  H1Container,
-  StyledSelect,
-} from "../../Modal/PlayerStatistics/PlayerStatisticsStyle"
 import { ThemeContext } from "utils/Context/Context"
 import { requestOptions, baseUrl } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
 import { selectOptions } from "utils/Context/Context"
 import { CardRow, PlayerCardBody } from "components/Card/globalStyleCard"
-import { PlayerStatisticContainer } from "components/Card/CardPlayer/styleCardPlayer"
+import {
+  PlayerStatisticContainer,
+  StyledSelect,
+  ImgContainer,
+  H1Container,
+} from "components/Card/CardPlayer/styleCardPlayer"
 import Button from "components/Button"
+import styled from "styled-components"
 
 const fetchPlayerDatas = async (playerId, yearSeason) => {
   const response = await fetch(
@@ -20,6 +21,17 @@ const fetchPlayerDatas = async (playerId, yearSeason) => {
 
   return await response.json()
 }
+
+export const H1StatsPlayer = styled(H1Container)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: bold;
+  talign: center;
+  height: 30px;
+  margin: 20px auto;
+`
 
 export default function PlayerStatistics({ linkButton, playerStatistic }) {
   const { yearSelected } = useContext(ThemeContext)
@@ -55,7 +67,7 @@ export default function PlayerStatistics({ linkButton, playerStatistic }) {
       <PlayerStatisticContainer>
         {playerStatistics[0]?.statistics.map((competitionStats, index) => (
           <PlayerCardBody key={`${playerStatistics[0].player.id}-${index}`}>
-            <H1Container>{`${competitionStats.league.name}`}</H1Container>
+            <H1StatsPlayer>{`${competitionStats.league.name}`}</H1StatsPlayer>
             <ImgContainer
               src={competitionStats.team.logo}
               alt={`firstname-statistiques`}

@@ -47,7 +47,7 @@ const TopAssits = () => {
   //   ["topAssists", [idCompetition, yearTopAssitsSelected]],
   //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition)
   // )
-  // console.log(data)
+
   // if (isError) {
   //   return <div>Erreur: {error.message}</div>
   // }

@@ -3,6 +3,7 @@ import colors from "utils/style/colors"
 import { Link } from "react-router-dom"
 import { StyledLink } from "utils/style/GlobalStyle"
 import { Card } from "../globalStyleCard"
+import Select from "react-select"
 
 export const CardPagePlayer = styled(Card)`
   width: 90%;
@@ -25,6 +26,7 @@ export const H1Container = styled.div`
   text-transform: uppercase;
   color: ${colors.warriors};
 `
+
 export const LinkPlayer = styled(StyledLink)`
   color: ${colors.whitesmoke};
   &:hover {
@@ -35,4 +37,18 @@ export const PlayerStatisticContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+`
+
+export const StyledSelect = styled(Select)`
+  width: 50%;
+  margin: 20px auto;
+  color: ${colors.primary};
+  text-align: center;
+`
+
+export const ImgContainer = styled.img`
+  width: 120px;
+  @media (max-width: 330px) {
+    width: 105px;
+  }
 `

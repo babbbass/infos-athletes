@@ -38,7 +38,7 @@ const LeaguePagesLink = styled(StyledLinkCard)`
   }
 `
 export default function Squad() {
-  const [playerId, setPlayerId] = useState(0)
+  const [setPlayerId] = useState(0)
   const { teamId } = useParams()
   const { competitionId, competitionName, countryCode } =
     useContext(ThemeContext)

@@ -12,7 +12,7 @@ export const LeaguePagesLink = styled(StyledLink)`
 `
 export const CardContainerTeam = styled(CardContainer)`
   @media (max-width: 767px) {
-    transform: translateY(-80px);
+    transform: translateY(-120px);
     transition: transform 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
     ${({ active }) =>
       active &&
@@ -22,11 +22,13 @@ export const CardContainerTeam = styled(CardContainer)`
   }
 `
 export const TeamHistory = styled.div`
-  margin-bottom: 5px;
+  text-align: center;
+  margin-bottom: 10px;
   font-size: 1rem;
   font-style: Italic;
   font-family: Georgia, serif;
 `
+export const TeamHistoryStadium = styled(TeamHistory)``
 export const SpanVenueTeam = styled.span`
   font-weight: bold;
 `

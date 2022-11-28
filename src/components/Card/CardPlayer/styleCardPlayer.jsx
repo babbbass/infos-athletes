@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import colors from "utils/style/colors"
-import { Link } from "react-router-dom"
 import { StyledLink } from "utils/style/GlobalStyle"
 import { Card } from "../globalStyleCard"
 import Select from "react-select"
@@ -9,7 +8,7 @@ export const CardPagePlayer = styled(Card)`
   width: 90%;
   min-height: 500px;
   transform-style: preserve-3d;
-  color: ${colors.warriors};
+  color: ${colors.primary};
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   ${({ openModalStatistic }) =>
     openModalStatistic && `transform: rotateY(180deg)`}
@@ -24,7 +23,7 @@ export const H1Container = styled.div`
   text-align: center;
   margin: 10px auto;
   text-transform: uppercase;
-  color: ${colors.warriors};
+  color: ${colors.primary};
 `
 
 export const LinkPlayer = styled(StyledLink)`

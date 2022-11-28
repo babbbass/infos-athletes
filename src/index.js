@@ -4,13 +4,13 @@ import Home from "pages/Home"
 import { QueryClient, QueryClientProvider } from "react-query"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import ErrorPage from "error-page"
-import Leagues from "pages/Leagues"
-import Squad from "pages/Squad"
+import Teams from "pages/Football/Teams"
+import Squad from "pages/Football/Squad"
 import TopScorers from "pages/TopScorers"
 import Ranking from "pages/Ranking/"
 import ThemeContextProvider from "utils/Context/Context"
 import TopAssits from "pages/TopAssists"
-import Player from "pages/Player"
+import Player from "pages/Football/Player"
 import Nba from "pages/Nba"
 import NbaSquad from "pages/Nba/Squad"
 import GlobalStyle from "utils/style/GlobalStyle"
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/leagues/:countryCode/:competitionId",
-    element: <Leagues />,
+    element: <Teams />,
   },
   {
     path: "/team/:teamId",

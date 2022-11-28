@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import colors from "utils/style/colors"
 import { Link } from "react-router-dom"
-import { sizesFont } from "utils/style/GlobalStyle"
+import { sizesFont, colors } from "utils/style/GlobalStyle"
 
 export const CardContainer = styled.section`
   display: flex;
@@ -22,16 +21,19 @@ export const Card = styled.div`
   margin: 10px 0 10px 0;
   position: relative;
   height: 100%;
-  background: ${colors.slate};
-  border: 2px solid ${colors.warriors};
+  background: ${colors.gainsboro};
+  border: 2px solid ${colors.blacki};
   border-radius: 30px;
   &:hover {
     cursor: pointer;
     box-shadow: 4px 4px 12px ${colors.slate};
   }
   @media (max-width: 570px) {
-    width: 45%;
-    min-height: 250px;
+    width: 47%;
+    padding-top: 30px;
+  }
+  @media (max-width: 400px) {
+    min-height: 280px;
   }
 `
 export const PlayerCardBody = styled.div`
@@ -39,11 +41,11 @@ export const PlayerCardBody = styled.div`
 `
 export const CardRow = styled.span`
   display: block;
-  color: ${colors.warriors};
+  font-family: Lato, Roboto, Sans-Serif;
 `
 
 export const CardFront = styled.div`
-  color: ${colors.warriors};
+  color: ${colors.primary};
   width: 100%;
   padding: 10px 0px;
   backface-visibility: hidden;
@@ -84,15 +86,15 @@ export const CardImgContainer = styled.div`
   height: 170px;
 `
 export const CardNameTeamOrPlayer = styled.div`
-  //padding: 5px auto;
   margin: 5px auto;
+  text-transform: uppercase;
   height: 35px;
   align-self: center;
   font-size: ${sizesFont.medium};
   font-weight: bold;
   @media (max-width: 390px) {
     margin-bottom: auto;
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 `
 export const AdditionnalDataContainer = styled.div``
@@ -101,18 +103,19 @@ export const StyledLinkCard = styled(Link)`
   position: relative;
   width: 100%;
   height: 100%;
-  color: ${colors.warriors};
+  color: ${colors.primary};
   font-style: italic;
 `
 export const H1CardContainer = styled.div`
   width: 90%;
-  font-size: 2rem;
-  font-style: italic;
+  font-size: ${sizesFont.h2};
   font-weight: bold;
   text-align: center;
   margin: 10px auto;
-  border-bottom: 1px solid ${colors.primary};
   color: ${colors.primary};
+`
+export const Hr = styled.hr`
+  width: 65%;
 `
 export const H2CardContainer = styled(H1CardContainer)`
   font-size: 1.6rem;

@@ -10,6 +10,7 @@ export const colors = {
   DarkBackgroundSiteColor: "#0A0A0A",
   lightGrey: "#F4F3EE",
   veryLightGrey: "#bbb",
+  gainsboro: "#dcdcdc",
   middleGrey: "#BCB8B1",
   flowerblue: "cornflowerblue",
   slate: "#26282a",
@@ -29,7 +30,6 @@ export const sizesFont = {
 
 export const Menu = styled.nav`
   width: 100%;
-  // min-height: 10vw;
   position: relative;
   display: flex;
   justify-content: center;

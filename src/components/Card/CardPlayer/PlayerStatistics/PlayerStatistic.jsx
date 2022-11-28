@@ -73,7 +73,7 @@ export default function PlayerStatistics({ linkButton, playerStatistic }) {
               alt={`firstname-statistiques`}
             />
             <CardRow>Matchs: {`${competitionStats.games.appearences}`}</CardRow>
-            <CardRow>Titulaire:{competitionStats.games.lineups}</CardRow>
+            <CardRow>Titulaire: {competitionStats.games.lineups}</CardRow>
             <CardRow>Nb min: {competitionStats.games.minutes}</CardRow>
             <CardRow>
               Note: {Math.round(competitionStats.games.rating * 100) / 100}

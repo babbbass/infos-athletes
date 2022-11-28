@@ -91,13 +91,13 @@ function Home() {
           <TitleBloc>
             <Title>Choisis ton sport</Title>
             <TitleBlocSpan>
-              Et trouves les toutes informations sur ton équipe et tes joueurs
+              trouves toutes les informations sur ton équipe et tes joueurs
               préférés.
             </TitleBlocSpan>
           </TitleBloc>
           <ButtonSiteContainer>
             <StyledLink to={`/${footballLink}`}>
-              <ButtonHome>foot</ButtonHome>
+              <ButtonHome>Foot</ButtonHome>
             </StyledLink>
             <StyledLink to={`/${nbaLink}`}>
               <ButtonHomeNba>NBA</ButtonHomeNba>

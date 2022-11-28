@@ -12,6 +12,7 @@ import {
   CardContainerTeam,
   TeamHistory,
   SpanVenueTeam,
+  TeamHistoryStadium,
 } from "components/Card/CardTeam/cardTeamStyle"
 import {
   StyledLinkCard,
@@ -20,7 +21,6 @@ import {
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
 import { Menu } from "utils/style/GlobalStyle"
-import styled from "styled-components"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -31,11 +31,7 @@ const fetchCompetition = async (competitionId) => {
   return await response.json()
 }
 
-const CardTeam = styled(Card)`
-  min-height: 280px;
-`
-
-export default function Leagues() {
+export default function Teams() {
   const { countryCode, competitionId } = useParams()
   const { activeMenu } = useContext(ThemeContext)
 
@@ -79,21 +75,21 @@ export default function Leagues() {
       </Menu>
       <CardContainerTeam active={activeMenu}>
         {teams.map((team) => (
-          <CardTeam key={team.team.id}>
+          <Card key={team.team.id}>
             <StyledLinkCard to={`/team/${team.team.id}`}>
               <CardNameTeamOrPlayer>{team.team.name}</CardNameTeamOrPlayer>
               <StyledImg src={team.team.logo} alt={`${team.team.name}-logo`} />
               <AdditionnalDataContainer>
                 <TeamHistory>Fondé en {team.team.founded}</TeamHistory>
-                <TeamHistory>
-                  <SpanVenueTeam>Stade:</SpanVenueTeam> {team.venue.name}
-                </TeamHistory>
-                <TeamHistory>
+                <TeamHistoryStadium>
+                  <SpanVenueTeam>{team.venue.name}</SpanVenueTeam>
+                </TeamHistoryStadium>
+                <TeamHistoryStadium>
                   <SpanVenueTeam>Ville:</SpanVenueTeam> {team.venue.city}
-                </TeamHistory>
+                </TeamHistoryStadium>
               </AdditionnalDataContainer>
             </StyledLinkCard>
-          </CardTeam>
+          </Card>
         ))}
       </CardContainerTeam>
     </>

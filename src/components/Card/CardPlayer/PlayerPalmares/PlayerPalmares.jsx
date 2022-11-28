@@ -1,26 +1,13 @@
 import React, { useContext } from "react"
 import { ThemeContext } from "utils/Context/Context"
 import { playerPalmares } from "utils/datas/PlayerPalmares"
-import styled from "styled-components"
-import { CardRow, PlayerCardBody } from "components/Card/globalStyleCard"
+import { CardRow } from "components/Card/globalStyleCard"
 import { PlayerStatisticContainer } from "components/Card/CardPlayer/styleCardPlayer"
 import Button from "components/Button"
 import { useQuery } from "react-query"
 import { requestOptions, baseUrl } from "utils/config/QueryConfig"
 import { useParams } from "react-router-dom"
-import { colors } from "utils/style/GlobalStyle"
-
-const CardBodyPalmares = styled(PlayerCardBody)`
-  flex-basis: 33%;
-  margin: 10px auto;
-  @media (max-width: 425px) {
-    flex-basis: 45%;
-  }
-`
-const RowTrophie = styled(CardRow)`
-  text-transform: uppercase;
-  color: ${colors.whitesmoke};
-`
+import { RowTrophie, CardBodyPalmares } from "./style"
 const fetchPlayerPalmares = async (playerId) => {
   console.log(playerId)
 

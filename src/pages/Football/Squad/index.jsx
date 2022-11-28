@@ -1,5 +1,4 @@
 import { squad } from "utils/datas/Squads"
-import styled from "styled-components"
 import { StyledImg } from "utils/style/GlobalStyle"
 import { useContext, useState } from "react"
 import { useQuery } from "react-query"
@@ -8,14 +7,15 @@ import { baseUrl, requestOptions } from "utils/config/QueryConfig"
 import { ThemeContext } from "utils/Context/Context"
 import { squad as squadConfig } from "utils/config/squad"
 import {
-  Card,
   CardNameTeamOrPlayer,
   CardContainer,
   StyledLinkCard,
   AdditionnalDataContainer,
   H1CardContainer,
   H2CardContainer,
+  Hr,
 } from "components/Card/globalStyleCard"
+import { CardSquad, HeaderBody, LeaguePagesLink } from "./style"
 
 const fetchTeamPlayers = async (teamId) => {
   const response = await fetch(
@@ -26,17 +26,6 @@ const fetchTeamPlayers = async (teamId) => {
   return await response.json()
 }
 
-const HeaderBody = styled.div`
-  display: flex;
-  text-align: center;
-  padding: 12px 0;
-`
-const LeaguePagesLink = styled(StyledLinkCard)`
-  color: #000;
-  &:hover {
-    color: #bbb;
-  }
-`
 export default function Squad() {
   const [setPlayerId] = useState(0)
   const { teamId } = useParams()
@@ -90,14 +79,12 @@ export default function Squad() {
         </LeaguePagesLink>
         <LeaguePagesLink>Palmarès</LeaguePagesLink>
       </HeaderBody>
-      <H1CardContainer>
-        Effectif <br />
-        {squad[0].team.name}
-      </H1CardContainer>
+      <H1CardContainer>{squad[0].team.name}</H1CardContainer>
+      <Hr />
       <CardContainer>
         <H2CardContainer>Gardiens</H2CardContainer>
         {goalkeepers.map((player, index) => (
-          <Card key={`${player.id}-${index}`}>
+          <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
               to={`/player/${player.id}`}
               onClick={() => {
@@ -112,11 +99,11 @@ export default function Squad() {
               </AdditionnalDataContainer>
               {/* <PlayerCivility playerId={player.id} /> */}
             </StyledLinkCard>
-          </Card>
+          </CardSquad>
         ))}
         <H2CardContainer>Défenseurs</H2CardContainer>
         {defenders.map((player, index) => (
-          <Card key={`${player.id}-${index}`}>
+          <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
               to={`/player/${player.id}`}
               onClick={() => {
@@ -130,11 +117,11 @@ export default function Squad() {
                 <div>Numéro: {player.number}</div>
               </AdditionnalDataContainer>
             </StyledLinkCard>
-          </Card>
+          </CardSquad>
         ))}
         <H2CardContainer>Milieux</H2CardContainer>
         {midfielders.map((player, index) => (
-          <Card key={`${player.id}-${index}`}>
+          <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
               to={`/player/${player.id}`}
               onClick={() => {
@@ -146,11 +133,11 @@ export default function Squad() {
               <div>Age: {player.age}</div>
               <div>Numéro: {player.number}</div>
             </StyledLinkCard>
-          </Card>
+          </CardSquad>
         ))}
         <H2CardContainer>Attaquants</H2CardContainer>
         {attackers.map((player, index) => (
-          <Card key={`${player.id}-${index}`}>
+          <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
               to={`/player/${player.id}`}
               onClick={() => {
@@ -162,7 +149,7 @@ export default function Squad() {
               <div>Age: {player.age}</div>
               <div>Numéro: {player.number}</div>
             </StyledLinkCard>
-          </Card>
+          </CardSquad>
         ))}
       </CardContainer>
     </div>

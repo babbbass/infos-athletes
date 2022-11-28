@@ -1,12 +1,12 @@
 import styled from "styled-components"
-import colors from "../../utils/style/colors"
+import { colors } from "utils/style/GlobalStyle"
 
 export const Wrapper = styled.header`
   padding: 1em;
   display: flex;
   flex-wrap: no-wrap;
   flex-direction: column;
-  background: ${colors.slate};
+  background: ${colors.whitesmoke};
   justify-content: left;
 `
 
@@ -14,9 +14,9 @@ export const TitleContainer = styled.div`
   width: 100%;
   margin-bottom: 13px;
   font-size: 1.9em;
-  font-style: italic;
-  color: ${colors.whitesmoke};
+  color: ${colors.primary};
   text-align: center;
+  font-weight: 600;
 `
 
 export const LinkContainer = styled.div`

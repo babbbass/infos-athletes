@@ -29,32 +29,6 @@ function Home() {
   const nbaLink = "nba"
   const footballLink = "football"
   const styleWrapper = { "--nbCards": 6, animationDelay: "-1s" }
-  // const { isLoading, isError, data, error } = useQuery(
-  //   "countries",
-  //   fetchCountries
-  // )
-
-  // if((isError === false && data === undefined) || (data.errors.requests)) {
-  //   return (
-  //     <RequestsLimit />
-  //   )
-  // }
-  // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
-  // }
-
-  // if (isLoading) {
-  //   return <div>Chargement...</div>
-  // }
-  // const allCountries = data !== undefined ? data.response : []
-
-  // // const countries = allCountries.filter(
-  //   // (country) =>
-  //   // country.name === "England" ||
-  // // country.name === "France" ||
-  // // country.name === "Germany" ||
-  //     // country.name === "Spain"
-  // )
 
   return (
     <>

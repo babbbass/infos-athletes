@@ -54,7 +54,7 @@ export const ImgContainerCarroussel = styled.div`
     height: 240px;
     margin: 0px auto;
   }
-  @media (max-width: 400px) {
+  @media (max-width: 390px) {
     height: 130px;
   }
 `

@@ -5,18 +5,14 @@ import {
   LinkContainer,
   CountryFlag,
   StyledLink,
-  TitleBloc,
+  CountryName,
 } from "./style"
-import { H3Style, H2Style } from "utils/style/GlobalStyle"
 import { countries } from "utils/datas/Countries"
 
 export default function Flag() {
   const { setCompetitionName, setCountryCode, setCompetitionId } = useState("")
   return (
     <>
-      <TitleBloc>
-        <H2Style>Les meilleurs championnats</H2Style>
-      </TitleBloc>
       <FlagContainer>
         {countries.map((country, index) => (
           <LinkContainer key={`${country.code} - ${index}`}>
@@ -28,7 +24,7 @@ export default function Flag() {
                 setCompetitionId(country.id)
               }}
             >
-              <H3Style>{country.name}</H3Style>
+              <CountryName>{country.name}</CountryName>
               <ImgContainer>
                 <CountryFlag src={country.flag} alt={`${country.name}-logo`} />
               </ImgContainer>

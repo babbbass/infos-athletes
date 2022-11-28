@@ -34,4 +34,5 @@ utils/config/
 .firebase/
 .firebaserc
 firebase.json
+.github/
 

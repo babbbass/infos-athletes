@@ -7,7 +7,7 @@ export const Wrapper = styled.section``
 
 export const WrapperHeader = styled.div`
   min-height: 300px;
-  background: ${colors.slate};
+  background: ${colors.whitesmoke};
   flex-direction: column;
   display: flex;
   flex-wrap: no-wrap;
@@ -27,17 +27,20 @@ export const TitleBloc = styled.div`
 `
 export const Title = styled.h1`
   font-size: ${sizesFont.h1};
-  font-family: DrukWide-Super, sans-serif;
+  // font-family: DrukWide-Super, sans-serif;
   text-transform: uppercase;
-  color: ${colors.whitesmoke};
+  color: ${colors.primary};
   @media (max-width: 425px) {
     font-size: ${sizesFont.h1SmartPhone};
   }
 `
 
 export const TitleBlocSpan = styled.span`
-  color: ${colors.whitesmoke};
+  color: ${colors.primary};
   font-size: ${sizesFont.medium};
+  @media (max-width: 400px) {
+    font-size: ${sizesFont.normal};
+  }
 `
 
 export const ImgContainerCarroussel = styled.div`

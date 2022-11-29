@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components"
-import colors from "utils/style/colors"
-import { sizesFont, StyledImg } from "utils/style/GlobalStyle"
+import { sizesFont, StyledImg, colors } from "utils/style/GlobalStyle"
 import { Link } from "react-router-dom"
 
 export const Wrapper = styled.section``

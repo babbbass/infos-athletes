@@ -3,7 +3,7 @@ import { StyledImg } from "utils/style/GlobalStyle"
 import { useContext, useState } from "react"
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
-import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseUrl, requestOptions, foot } from "utils/config/config"
 import { ThemeContext } from "utils/Context/Context"
 import { squad as squadConfig } from "utils/config/squad"
 import {
@@ -86,7 +86,7 @@ export default function Squad() {
         {goalkeepers.map((player, index) => (
           <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
-              to={`/player/${player.id}`}
+              to={`/${foot}/player/${player.id}`}
               onClick={() => {
                 setPlayerId(player.id)
               }}
@@ -105,7 +105,7 @@ export default function Squad() {
         {defenders.map((player, index) => (
           <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
-              to={`/player/${player.id}`}
+              to={`/${foot}/player/${player.id}`}
               onClick={() => {
                 setPlayerId(player.id)
               }}
@@ -123,7 +123,7 @@ export default function Squad() {
         {midfielders.map((player, index) => (
           <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
-              to={`/player/${player.id}`}
+              to={`/${foot}/player/${player.id}`}
               onClick={() => {
                 setPlayerId(player.id)
               }}
@@ -139,7 +139,7 @@ export default function Squad() {
         {attackers.map((player, index) => (
           <CardSquad key={`${player.id}-${index}`}>
             <StyledLinkCard
-              to={`/player/${player.id}`}
+              to={`/${foot}/player/${player.id}`}
               onClick={() => {
                 setPlayerId(player.id)
               }}

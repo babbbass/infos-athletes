@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react"
 import styled from "styled-components"
-import colors from "utils/style/colors"
+import { colors } from "utils/style/GlobalStyle"
 import { ThemeContext } from "utils/Context/Context"
 
 const ToggleButtonContainer = styled.button`

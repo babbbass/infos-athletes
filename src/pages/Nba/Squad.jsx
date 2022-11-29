@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useParams } from "react-router"
-import { requestOptions, baseNbaUrl } from "utils/config/QueryConfig"
+import { requestOptions, baseNbaUrl } from "utils/config/config"
 import RequestsLimit from "components/Error/RequestsLimit"
 import { useQuery } from "react-query"
 import { players } from "utils/datas/Nba/players"

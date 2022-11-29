@@ -1,19 +1,16 @@
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
-import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseUrl, requestOptions, foot } from "utils/config/config"
 import { useQuery } from "react-query"
-import Select from "react-select"
 import styled from "styled-components"
 import { ranking } from "utils/datas/Ranking"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import {
   StyledSelect,
   RankingWrapper,
   RankingContainer,
-  RankingNameTeam,
   RankingNamePlayer,
   SpanColor,
-  StyledLinkCard,
   RankingTab,
   RankingTabHead,
   RankingTabHeadRow,
@@ -22,9 +19,7 @@ import {
   RankingTabBodyRow,
   RankingTabBodyData,
   HeaderBody,
-  ArrowNavigation,
   RankingPosition,
-  LeaguePagesLink,
 } from "utils/style/Rankings"
 import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
@@ -153,9 +148,11 @@ const Ranking = () => {
                     <RankingPosition>{index + 1}</RankingPosition>
                   </RankingTabBodyData>
                   <RankingTabBodyData>
-                    <LeagueRankingNamePlayer>
-                      {team.team.name}
-                    </LeagueRankingNamePlayer>
+                    <Link to={`/${foot}/team/${team.team.id}`}>
+                      <LeagueRankingNamePlayer>
+                        {team.team.name}
+                      </LeagueRankingNamePlayer>
+                    </Link>
                   </RankingTabBodyData>
                   <LeagueRankingTabBodyData>
                     {team.all.played}

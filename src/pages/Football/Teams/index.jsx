@@ -3,16 +3,16 @@ import { useContext } from "react"
 import { useParams } from "react-router-dom"
 import { teams } from "utils/datas/Teams"
 import { StyledImg } from "utils/style/GlobalStyle"
-import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseUrl, requestOptions } from "utils/config/config"
 import RequestsLimit from "components/Error/RequestsLimit"
-import ToggleButton from "components/NavLink/ToggleButton"
+import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import { ThemeContext } from "utils/Context/Context"
 import {
   LeaguePagesLink,
   TeamHistory,
   SpanVenueTeam,
   TeamHistoryStadium,
-} from "components/Card/CardTeam/cardTeamStyle"
+} from "components/Card/CardTeams/cardTeamStyle"
 import {
   StyledLinkCard,
   Card,

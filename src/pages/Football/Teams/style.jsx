@@ -1,4 +1,4 @@
-import { CardContainerTeam } from "components/Card/CardTeam/cardTeamStyle"
+import { CardContainerTeam } from "components/Card/CardTeams/cardTeamStyle"
 import styled from "styled-components"
 
 export const CardContainerFootballTeam = styled(CardContainerTeam)`

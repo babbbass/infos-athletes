@@ -1,12 +1,12 @@
 import React, { useContext } from "react"
-import { baseNbaUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseNbaUrl, requestOptions } from "utils/config/config"
 import { useQuery } from "react-query"
 import RequestsLimit from "components/Error/RequestsLimit"
 import { teams } from "utils/datas/Nba/teams"
 import { ThemeContext } from "utils/Context/Context"
-import ToggleButton from "components/NavLink/ToggleButton"
-import { LeaguePagesLink } from "components/Card/CardTeam/cardTeamStyle"
-import CardTeam from "components/Card/CardTeam/index"
+import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
+import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
+import CardTeam from "components/Card/CardTeams/index"
 import { Menu } from "utils/style/GlobalStyle"
 
 const fetchNbaTeams = async () => {

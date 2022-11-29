@@ -1,5 +1,5 @@
 import { useQuery } from "react-query"
-import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseUrl, requestOptions } from "utils/config/config"
 import {
   Title,
   Wrapper,

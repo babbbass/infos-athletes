@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
-import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseUrl, foot, requestOptions } from "utils/config/config"
 import { useQuery } from "react-query"
 import Header from "components/Header"
 import { topAssists } from "utils/datas/TopAssists"
@@ -125,7 +125,7 @@ const TopAssits = () => {
                     <RankingPosition>{index + 1}</RankingPosition>
                   </RankingTabBodyData>
                   <RankingTabBodyData>
-                    <Link to={`/player/${scorer.player.id}`}>
+                    <Link to={`/${foot}/player/${scorer.player.id}`}>
                       <RankingNamePlayer>
                         {scorer.player.name}
                       </RankingNamePlayer>

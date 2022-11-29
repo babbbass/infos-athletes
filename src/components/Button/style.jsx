@@ -1,5 +1,4 @@
-import colors from "utils/style/colors"
-import { StyledLink } from "utils/style/GlobalStyle"
+import { StyledLink, colors } from "utils/style/GlobalStyle"
 import styled from "styled-components"
 
 export const LinkButton = styled(StyledLink)`

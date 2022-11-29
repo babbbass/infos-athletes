@@ -10,8 +10,8 @@ import {
   LinkTeam,
 } from "./style"
 import { GamesContainer, TeamName } from "../style"
-import { LeaguePagesLink } from "components/Card/CardTeam/cardTeamStyle"
-import ToggleButton from "components/NavLink/ToggleButton"
+import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
+import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import { useState } from "react"
 import GameStatisticsTable from "../TableStastistics/TableGameStatistics"
 
@@ -27,7 +27,9 @@ export default function GameStatistic({ statistics }) {
       <GamesContainer active={activeMenu}>
         <DualOpponents>
           <DualOpponentHome>
-            <LinkTeam to={`/nba/team/${statistics[0].team.id}/players`}>
+            <LinkTeam
+              to={`/nba/team/${statistics[0].team.id}/${statistics[0].team.name}/players`}
+            >
               <LogoTeamContainer>
                 <ImgTeamGameStatistics src={statistics[0].team.logo} />
               </LogoTeamContainer>
@@ -39,7 +41,9 @@ export default function GameStatistic({ statistics }) {
             ${statistics[1].statistics[0].points}`}
           </DualOpponentScore>
           <DualOpponentVisitor>
-            <LinkTeam to={`/nba/team/${statistics[1].team.id}/players`}>
+            <LinkTeam
+              to={`/nba/team/${statistics[1].team.id}/${statistics[1].team.name}/players`}
+            >
               <LogoTeamContainer>
                 <ImgTeamGameStatistics src={statistics[1].team.logo} />
               </LogoTeamContainer>

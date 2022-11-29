@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
-import { baseUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseUrl, requestOptions, foot } from "utils/config/config"
 import { useQuery } from "react-query"
 import { topScorers } from "utils/datas/TopScorers"
 import { useParams, Link } from "react-router-dom"
@@ -125,7 +125,7 @@ const TopScorers = () => {
                   </RankingTabBodyData>
                   <RankingTabBodyData>
                     <RankingNamePlayer>
-                      <Link to={`/player/${scorer.player.id}`}>
+                      <Link to={`/${foot}/player/${scorer.player.id}`}>
                         {scorer.player.name}
                       </Link>
                     </RankingNamePlayer>

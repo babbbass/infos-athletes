@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import colors from "utils/style/colors"
-import { StyledLink } from "utils/style/GlobalStyle"
+import { StyledLink, colors } from "utils/style/GlobalStyle"
 import { Card } from "../globalStyleCard"
 import Select from "react-select"
 

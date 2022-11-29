@@ -1,10 +1,9 @@
 import React, { useState } from "react"
-import { ModalContainerBody, StyledImg } from "utils/style/Modals"
 import { playerStatistics } from "utils/datas/PlayerStatistics"
 import PlayerStatisticsModal from "components/Card/CardPlayer/PlayerStatistics/PlayerStatistic"
 import PlayerPalmares from "components/Card/CardPlayer/PlayerPalmares/PlayerPalmares"
 import { useQuery } from "react-query"
-import { requestOptions, baseUrl } from "utils/config/QueryConfig"
+import { requestOptions, baseUrl, foot } from "utils/config/config"
 import { useParams } from "react-router-dom"
 import {
   CardBack,
@@ -19,6 +18,22 @@ import {
 import PreviousLink from "components/NavLink/Previous"
 import { HeaderBody } from "utils/style/Rankings"
 import Button from "components/Button"
+import styled from "styled-components"
+
+const ModalContainerBody = styled.div`
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`
+const StyledImg = styled.img`
+  margin: 25px 0;
+  @media (max-width: 390px) {
+    width: 105px;
+  }
+`
 
 const fetchPlayerDatas = async (playerId) => {
   const response = await fetch(
@@ -53,7 +68,7 @@ export default function PlayerCivility() {
   // }
   const teamId = playerStatistics[0].statistics[0].team.id
   const teamName = playerStatistics[0].statistics[0].team.name
-  const previousStep1 = "team"
+  const previousStep1 = `${foot}/team`
   const previousStep2 = teamId
   const previousLinkName = teamName
 

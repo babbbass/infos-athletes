@@ -6,10 +6,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import ErrorPage from "error-page"
 import Teams from "pages/Football/Teams"
 import Squad from "pages/Football/Squad"
-import TopScorers from "pages/TopScorers"
-import Ranking from "pages/Ranking/"
+import TopScorers from "pages/Football/Ranking/TopScorers"
+import Ranking from "pages/Football/Ranking"
 import ThemeContextProvider from "utils/Context/Context"
-import TopAssits from "pages/TopAssists"
+import TopAssits from "pages/Football/Ranking/TopAssists"
 import Player from "pages/Football/Player"
 import Nba from "pages/Nba"
 import NbaSquad from "pages/Nba/Squad"
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
     element: <Teams />,
   },
   {
-    path: "/team/:teamId",
+    path: "/football/team/:teamId",
     element: <Squad />,
   },
   {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
     element: <Ranking />,
   },
   {
-    path: "/player/:playerId",
+    path: "/football/player/:playerId",
     element: <Player />,
   },
   {
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
     element: <GameStatistics />,
   },
   {
-    path: "/nba/team/:teamId/players",
+    path: "/nba/team/:teamId/:teamName/players",
     element: <NbaSquad />,
   },
 ])

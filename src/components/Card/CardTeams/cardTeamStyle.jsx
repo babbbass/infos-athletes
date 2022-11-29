@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import colors from "utils/style/colors"
 import { CardContainer } from "components/Card/globalStyleCard"
-import { StyledLink } from "utils/style/GlobalStyle"
+import { StyledLink, colors } from "utils/style/GlobalStyle"
 
 export const LeaguePagesLink = styled(StyledLink)`
   margin: 10px 10px;

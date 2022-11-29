@@ -1,6 +1,6 @@
 import React from "react"
 import { useQuery } from "react-query"
-import { baseNbaUrl, requestOptions } from "utils/config/QueryConfig"
+import { baseNbaUrl, requestOptions } from "utils/config/config"
 import Games from "components/Games"
 import { games } from "utils/datas/Nba/Game"
 

@@ -1,5 +1,6 @@
-import React, { useContext } from "react"
-import { ThemeContext } from "utils/Context/Context"
+import React from "react"
+import { useParams } from "react-router-dom"
+import { foot } from "utils/config/config"
 import {
   CardImgContainer,
   CardContainer,
@@ -7,9 +8,8 @@ import {
   CardNameTeamOrPlayer,
   StyledLinkCard,
 } from "components/Card/globalStyleCard"
-import { StyledImg } from "utils/style/GlobalStyle"
+import { StyledImg, colors } from "utils/style/GlobalStyle"
 import styled from "styled-components"
-import colors from "utils/style/colors"
 
 const NameCardPlayer = styled(CardNameTeamOrPlayer)`
   height: 20%;
@@ -27,15 +27,15 @@ const H1Container = styled.div`
   color: ${colors.primary};
 `
 export default function CardPlayer({ players }) {
-  const { teamName } = useContext(ThemeContext)
+  const { teamName } = useParams("teamName")
   return (
     <>
-      <H1Container>{teamName ? teamName : `Joueurs`}</H1Container>
+      <H1Container>{teamName}</H1Container>
       <CardContainer>
         {players.map((player, index) => (
           <Card key={`${player.id}-${index}`}>
             <StyledLinkCard
-              to={`/player/${player.id}`}
+              to={`/${foot}/player/${player.id}`}
               onClick={() => {
                 //           setPlayerId(player.id);
               }}

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
-import { requestOptions, baseUrl } from "utils/config/QueryConfig"
+import { requestOptions, baseUrl } from "utils/config/config"
 import { useQuery } from "react-query"
 import { selectOptions } from "utils/Context/Context"
 import { CardRow, PlayerCardBody } from "components/Card/globalStyleCard"
@@ -39,21 +39,21 @@ export default function PlayerStatistics({ linkButton, playerStatistic }) {
     useState(yearSelected)
   const playerId = playerStatistic[0].player.id
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["player-statistics", { playerId, yearStatisticsSelected }],
-  //   () => fetchPlayerDatas(playerId, yearStatisticsSelected)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["player-statistics", { playerId, yearStatisticsSelected }],
+    () => fetchPlayerDatas(playerId, yearStatisticsSelected)
+  )
 
-  // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
-  // }
+  if (isError) {
+    return <div>Erreur: {error.message}</div>
+  }
 
-  // if (isLoading) {
-  //   return <div>Chargement...</div>
-  // }
+  if (isLoading) {
+    return <div>Chargement...</div>
+  }
 
-  // const playerStatistics = data === undefined ? [] : data.response
-  const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
+  const playerStatistics = data === undefined ? [] : data.response
+  // const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { ThemeContext } from "utils/Context/Context"
-import ToggleButton from "components/NavLink/ToggleButton"
+import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import {
   GamesContainer,
   TeamVisitors,
@@ -14,7 +14,7 @@ import {
   GameLink,
 } from "./style"
 import { Menu } from "utils/style/GlobalStyle"
-import { LeaguePagesLink } from "components/Card/CardTeam/cardTeamStyle"
+import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 
 const linescores = (linescore) => {
   let [qt1, qt2, qt3, qt4] = linescore

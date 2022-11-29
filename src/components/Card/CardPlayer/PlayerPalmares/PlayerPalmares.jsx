@@ -5,12 +5,11 @@ import { CardRow } from "components/Card/globalStyleCard"
 import { PlayerStatisticContainer } from "components/Card/CardPlayer/styleCardPlayer"
 import Button from "components/Button"
 import { useQuery } from "react-query"
-import { requestOptions, baseUrl } from "utils/config/QueryConfig"
+import { requestOptions, baseUrl } from "utils/config/config"
 import { useParams } from "react-router-dom"
 import { RowTrophie, CardBodyPalmares } from "./style"
-const fetchPlayerPalmares = async (playerId) => {
-  console.log(playerId)
 
+const fetchPlayerPalmares = async (playerId) => {
   const response = await fetch(
     `${baseUrl}/trophies?player=${playerId}`,
     requestOptions
@@ -22,20 +21,20 @@ export default function PlayerPalmares({ linkButton }) {
   const { yearSelected, setYearSelected } = useContext(ThemeContext)
   const { playerId } = useParams("playerId")
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["player-palmares", playerId],
-  //   () => fetchPlayerPalmares(playerId)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["player-palmares", playerId],
+    () => fetchPlayerPalmares(playerId)
+  )
 
-  // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
-  // }
+  if (isError) {
+    return <div>Erreur: {error.message}</div>
+  }
 
-  // if (isLoading) {
-  //   return <div>Chargement...</div>
-  // }
+  if (isLoading) {
+    return <div>Chargement...</div>
+  }
 
-  // const playerPalmares = data === undefined ? [] : data.response
+  const playerPalmares = data === undefined ? [] : data.response
 
   return (
     <>

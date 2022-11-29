@@ -1,18 +1,19 @@
 import React from "react"
 import { Menu } from "utils/style/GlobalStyle"
 import {
-  GamesContainer,
   DualOpponents,
   DualOpponentHome,
   DualOpponentVisitor,
   DualOpponentScore,
   ImgTeamGameStatistics,
-  TeamName,
+  LogoTeamContainer,
+  LinkTeam,
 } from "./style"
+import { GamesContainer, TeamName } from "../style"
 import { LeaguePagesLink } from "components/Card/CardTeam/cardTeamStyle"
 import ToggleButton from "components/NavLink/ToggleButton"
 import { useState } from "react"
-import GameStatisticsTable from "./TableStastistics/TableGameStatistics"
+import GameStatisticsTable from "../TableStastistics/TableGameStatistics"
 
 export default function GameStatistic({ statistics }) {
   const activeMenu = useState(false)
@@ -21,20 +22,29 @@ export default function GameStatistic({ statistics }) {
       <ToggleButton />
       <Menu active={activeMenu}>
         <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
+        <LeaguePagesLink to={`/nba/matchs`}>Matchs du jour</LeaguePagesLink>
       </Menu>
       <GamesContainer active={activeMenu}>
         <DualOpponents>
           <DualOpponentHome>
-            <ImgTeamGameStatistics src={statistics[0].team.logo} />
-            <TeamName>{statistics[0].team.name}</TeamName>
+            <LinkTeam to={`/nba/team/${statistics[0].team.id}/players`}>
+              <LogoTeamContainer>
+                <ImgTeamGameStatistics src={statistics[0].team.logo} />
+              </LogoTeamContainer>
+              <TeamName>{statistics[0].team.name}</TeamName>
+            </LinkTeam>
           </DualOpponentHome>
           <DualOpponentScore>
             {`${statistics[0].statistics[0].points} -
             ${statistics[1].statistics[0].points}`}
           </DualOpponentScore>
           <DualOpponentVisitor>
-            <ImgTeamGameStatistics src={statistics[1].team.logo} />
-            <TeamName>{statistics[1].team.name}</TeamName>
+            <LinkTeam to={`/nba/team/${statistics[1].team.id}/players`}>
+              <LogoTeamContainer>
+                <ImgTeamGameStatistics src={statistics[1].team.logo} />
+              </LogoTeamContainer>
+              <TeamName>{statistics[1].team.name}</TeamName>
+            </LinkTeam>
           </DualOpponentVisitor>
         </DualOpponents>
       </GamesContainer>

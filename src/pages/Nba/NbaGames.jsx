@@ -28,7 +28,7 @@ export default function NbaGames() {
   if (isLoading) {
     return <div>Chargement...</div>
   }
-  console.log(data)
+
   const games = data !== undefined ? data.response : []
   return <Games games={games} date={today} />
 }

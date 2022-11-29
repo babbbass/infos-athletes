@@ -9,7 +9,6 @@ import ToggleButton from "components/NavLink/ToggleButton"
 import { ThemeContext } from "utils/Context/Context"
 import {
   LeaguePagesLink,
-  CardContainerTeam,
   TeamHistory,
   SpanVenueTeam,
   TeamHistoryStadium,
@@ -21,6 +20,7 @@ import {
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
 import { Menu } from "utils/style/GlobalStyle"
+import { CardContainerFootballTeam } from "./style"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -73,7 +73,7 @@ export default function Teams() {
           Meilleurs passeurs
         </LeaguePagesLink>
       </Menu>
-      <CardContainerTeam active={activeMenu}>
+      <CardContainerFootballTeam active={activeMenu}>
         {teams.map((team) => (
           <Card key={team.team.id}>
             <StyledLinkCard to={`/team/${team.team.id}`}>
@@ -91,7 +91,7 @@ export default function Teams() {
             </StyledLinkCard>
           </Card>
         ))}
-      </CardContainerTeam>
+      </CardContainerFootballTeam>
     </>
   )
 }

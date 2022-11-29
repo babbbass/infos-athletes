@@ -1,7 +1,7 @@
 import React from "react"
 import { baseNbaUrl, requestOptions } from "utils/config/QueryConfig"
 import { useQuery } from "react-query"
-import GameStatistic from "components/Games/GameStatistic"
+import GameStatistic from "components/Games/GameStatistics/GameStatistic"
 import { useParams } from "react-router-dom"
 import { statistics } from "utils/datas/Nba/GameStatistics"
 

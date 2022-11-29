@@ -12,7 +12,7 @@ export const LeaguePagesLink = styled(StyledLink)`
 `
 export const CardContainerTeam = styled(CardContainer)`
   @media (max-width: 767px) {
-    transform: translateY(-120px);
+    transform: translateY(-80px);
     transition: transform 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
     ${({ active }) =>
       active &&

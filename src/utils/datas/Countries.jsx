@@ -2,7 +2,7 @@ import france from "./france.png"
 import england from "./england.png"
 import spain from "./spain.png"
 import germany from "./germany.png"
-console.log(france)
+
 export const countries = [
   {
     id: "39",

@@ -6,7 +6,6 @@ import {
 } from "./style"
 
 export default function TeamStatistics({ statistics }) {
-  console.log(statistics)
   return (
     <>
       <TableGameStatisticsTr>

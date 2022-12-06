@@ -26,7 +26,6 @@ export const TitleBloc = styled.div`
 `
 export const Title = styled.h1`
   font-size: ${sizesFont.h1};
-  // font-family: DrukWide-Super, sans-serif;
   text-transform: uppercase;
   color: ${colors.primary};
   @media (max-width: 425px) {
@@ -158,7 +157,7 @@ export const WrapperBodyBlockText = styled.span`
     text-decoration: underline;
   }
   @media (max-width: 425px) {
-    font-size: ${sizesFont.medium};
+    font-size: ${sizesFont.normal};
   }
 `
 export const WrapperBodyImg = styled(StyledImg)`

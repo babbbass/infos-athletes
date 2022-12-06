@@ -1,13 +1,14 @@
 import React, { useContext } from "react"
 import { baseNbaUrl, requestOptions } from "utils/config/config"
 import { useQuery } from "react-query"
-import RequestsLimit from "components/Error/RequestsLimit"
 import { teams } from "utils/datas/Nba/teams"
 import { ThemeContext } from "utils/Context/Context"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 import CardTeam from "components/Card/CardTeams/index"
 import { Menu } from "utils/style/GlobalStyle"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchNbaTeams = async () => {
   const response = await fetch(`${baseNbaUrl}/teams`, requestOptions)
@@ -23,18 +24,14 @@ export default function Nba() {
   // )
 
   // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
+  //   return <Error error={error} />
   // }
 
   // if (isLoading) {
-  //   return <div>Chargement...</div>
+  //   return <Loader />
   // }
 
-  // if (data.errors && data.errors.length !== 0) {
-  //   return <RequestsLimit />
-  // }
-
-  // const teams = data !== undefined ? data.response : []
+  //const teams = data !== undefined ? data.response : []
 
   return (
     <>

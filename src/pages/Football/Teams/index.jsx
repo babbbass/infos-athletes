@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 import { teams } from "utils/datas/Teams"
 import { StyledImg } from "utils/style/GlobalStyle"
 import { baseUrl, requestOptions } from "utils/config/config"
-import RequestsLimit from "components/Error/RequestsLimit"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import { ThemeContext } from "utils/Context/Context"
 import {
@@ -21,6 +20,8 @@ import {
 } from "components/Card/globalStyleCard"
 import { Menu } from "utils/style/GlobalStyle"
 import { CardContainerFootballTeam } from "./style"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -40,18 +41,12 @@ export default function Teams() {
   // )
   // const teams = data !== undefined ? data.response : []
 
-  // if((isError === false && data === undefined) || (data.errors.requests)) {
-  //   return (
-  //     <RequestsLimit />
-  //   )
-  // }
-
   // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
+  //   return <Error error={error} />
   // }
 
   // if (isLoading) {
-  //   return <div>Chargement...</div>
+  //   return <Loader />
   // }
 
   return (
@@ -76,7 +71,7 @@ export default function Teams() {
       <CardContainerFootballTeam active={activeMenu}>
         {teams.map((team) => (
           <Card key={team.team.id}>
-            <StyledLinkCard to={`/team/${team.team.id}`}>
+            <StyledLinkCard to={`/football/team/${team.team.id}`}>
               <CardNameTeamOrPlayer>{team.team.name}</CardNameTeamOrPlayer>
               <StyledImg src={team.team.logo} alt={`${team.team.name}-logo`} />
               <AdditionnalDataContainer>

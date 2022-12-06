@@ -19,6 +19,8 @@ import PreviousLink from "components/NavLink/Previous"
 import { HeaderBody } from "utils/style/Rankings"
 import Button from "components/Button"
 import styled from "styled-components"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const ModalContainerBody = styled.div`
   flex: 50%;
@@ -54,18 +56,15 @@ export default function PlayerCivility() {
   // )
 
   // const playerStatistics = data !== undefined ? data.response : []
-  // if((isError === false && data === undefined) || (data.errors.requests)) {
-  //   return (
-  //     <RequestsLimit />
-  //   )
-  // }
+
   // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
+  //   return <Error error={error} />
   // }
 
   // if (isLoading) {
-  //   return <div>Chargement...</div>
+  //   return <Loader />
   // }
+
   const teamId = playerStatistics[0].statistics[0].team.id
   const teamName = playerStatistics[0].statistics[0].team.name
   const previousStep1 = `${foot}/team`

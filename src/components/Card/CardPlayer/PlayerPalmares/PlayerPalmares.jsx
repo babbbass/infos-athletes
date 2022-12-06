@@ -8,6 +8,8 @@ import { useQuery } from "react-query"
 import { requestOptions, baseUrl } from "utils/config/config"
 import { useParams } from "react-router-dom"
 import { RowTrophie, CardBodyPalmares } from "./style"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchPlayerPalmares = async (playerId) => {
   const response = await fetch(
@@ -21,20 +23,20 @@ export default function PlayerPalmares({ linkButton }) {
   const { yearSelected, setYearSelected } = useContext(ThemeContext)
   const { playerId } = useParams("playerId")
 
-  const { isLoading, isError, data, error } = useQuery(
-    ["player-palmares", playerId],
-    () => fetchPlayerPalmares(playerId)
-  )
+  // const { isLoading, isError, data, error } = useQuery(
+  //   ["player-palmares", playerId],
+  //   () => fetchPlayerPalmares(playerId)
+  // )
 
-  if (isError) {
-    return <div>Erreur: {error.message}</div>
-  }
+  // if (isError) {
+  //   return <Error error={error} />
+  // }
 
-  if (isLoading) {
-    return <div>Chargement...</div>
-  }
+  // if (isLoading) {
+  //   return <Loader />
+  // }
 
-  const playerPalmares = data === undefined ? [] : data.response
+  // const playerPalmares = data === undefined ? [] : data.response
 
   return (
     <>

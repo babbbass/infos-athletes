@@ -25,7 +25,8 @@ import {
 import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
-import RequestsLimit from "components/Error/RequestsLimit"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
   //console.log(yearSelected, idCompetition)
@@ -49,15 +50,11 @@ const TopAssits = () => {
   // )
 
   // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
+  //   return <Error error={error} />
   // }
 
   // if (isLoading) {
-  //   return <div>Chargement...</div>
-  // }
-
-  // if (data.errors && data.errors.length !== 0) {
-  //   return <RequestsLimit />
+  //   return <Loader />
   // }
 
   // const topAssists = data !== undefined ? data.response : []

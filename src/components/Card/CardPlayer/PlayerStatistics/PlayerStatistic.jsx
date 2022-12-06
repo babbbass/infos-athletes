@@ -12,6 +12,8 @@ import {
 } from "components/Card/CardPlayer/styleCardPlayer"
 import Button from "components/Button"
 import styled from "styled-components"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchPlayerDatas = async (playerId, yearSeason) => {
   const response = await fetch(
@@ -39,21 +41,21 @@ export default function PlayerStatistics({ linkButton, playerStatistic }) {
     useState(yearSelected)
   const playerId = playerStatistic[0].player.id
 
-  const { isLoading, isError, data, error } = useQuery(
-    ["player-statistics", { playerId, yearStatisticsSelected }],
-    () => fetchPlayerDatas(playerId, yearStatisticsSelected)
-  )
+  // const { isLoading, isError, data, error } = useQuery(
+  //   ["player-statistics", { playerId, yearStatisticsSelected }],
+  //   () => fetchPlayerDatas(playerId, yearStatisticsSelected)
+  // )
 
-  if (isError) {
-    return <div>Erreur: {error.message}</div>
-  }
+  // if (isError) {
+  //   return <Error error={error} />
+  // }
 
-  if (isLoading) {
-    return <div>Chargement...</div>
-  }
+  // if (isLoading) {
+  //   return <Loader />
+  // }
 
-  const playerStatistics = data === undefined ? [] : data.response
-  // const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
+  // const playerStatistics = data === undefined ? [] : data.response
+  const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
 
   return (
     <>

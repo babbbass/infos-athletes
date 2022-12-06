@@ -127,9 +127,9 @@ const GlobalStyle = createGlobalStyle`
     margin: auto;
     max-width: 1400px;
     width: 100%;
-    padding: 0;
+    padding: 0px;
     color: ${colors.primary};
-    font-size: 1rem;
+    font-size: ${sizesFont.normal};
     font-family: Lato, Roboto, Sans-Serif;
     background: ${colors.whitesmoke};
   }

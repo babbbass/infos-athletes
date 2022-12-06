@@ -25,6 +25,8 @@ import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
 import { stepsUrl } from "utils/config/variablesConfig"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const LeagueRankingNamePlayer = styled(RankingNamePlayer)`
   font-size: 0.9rem;
@@ -63,17 +65,13 @@ const Ranking = () => {
   //   ["leagueRanking", [idCompetition, yearLeagueSelected]],
   //   () => fetchRankingLeague(idCompetition, yearLeagueSelected)
   // )
-  //if((isError === false && data === undefined) || (data.errors.requests)) {
-  //   return (
-  //     <RequestsLimit />
-  //   )
-  // }
+
   // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
+  //   return <Error error={error} />
   // }
 
   // if (isLoading) {
-  //   return <div>Chargement...</div>
+  //   return <Loader />
   // }
 
   // const league = data !== undefined ? data.response : []

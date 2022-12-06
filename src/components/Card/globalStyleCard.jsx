@@ -79,7 +79,7 @@ export const HeaderBody = styled.nav`
   } ;
 `
 export const CardImgContainer = styled.div`
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   align-items: center;
   justify-content: center;

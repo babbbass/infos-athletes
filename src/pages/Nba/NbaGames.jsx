@@ -3,6 +3,8 @@ import { useQuery } from "react-query"
 import { baseNbaUrl, requestOptions } from "utils/config/config"
 import Games from "components/Games"
 import { games } from "utils/datas/Nba/Game"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchGames = async (date) => {
   const response = await fetch(
@@ -14,19 +16,19 @@ const fetchGames = async (date) => {
 }
 
 export default function NbaGames() {
+  //console.log("hello!!!")
   const today = new Date().toJSON().slice(0, 10)
-  //const today = "2022-11-24" //new Date().toJSON().slice(0, 10)
   const { isLoading, isError, data, error } = useQuery(
     ["nbaGames", today],
     () => fetchGames(today)
   )
 
   if (isError) {
-    return <div>Erreur: {error.message}</div>
+    return <Error error={error} />
   }
 
   if (isLoading) {
-    return <div>Chargement...</div>
+    return <Loader />
   }
 
   const games = data !== undefined ? data.response : []

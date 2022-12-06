@@ -4,6 +4,8 @@ import { useQuery } from "react-query"
 import GameStatistic from "components/Games/GameStatistics/GameStatistic"
 import { useParams } from "react-router-dom"
 import { statistics } from "utils/datas/Nba/GameStatistics"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchGameStatistics = async (gameId) => {
   const response = await fetch(
@@ -14,21 +16,21 @@ const fetchGameStatistics = async (gameId) => {
   return await response.json()
 }
 export default function GameStatistics() {
-  const { matchId } = useParams("matchId")
-  const { isLoading, isError, data, error } = useQuery(
-    ["nbaGameStatistics", matchId],
-    () => fetchGameStatistics(matchId)
-  )
+  // const { matchId } = useParams("matchId")
+  // const { isLoading, isError, data, error } = useQuery(
+  //   ["nbaGameStatistics", matchId],
+  //   () => fetchGameStatistics(matchId)
+  // )
 
-  if (isError) {
-    return <div>Erreur: {error.message}</div>
-  }
+  // if (isError) {
+  //   return <Error error={error} />
+  // }
 
-  if (isLoading) {
-    return <div>Chargement...</div>
-  }
+  // if (isLoading) {
+  //   return <Loader />
+  // }
 
-  const statistics = data !== undefined ? data.response : []
+  //const statistics = data !== undefined ? data.response : []
   return (
     <>
       <GameStatistic statistics={statistics} />

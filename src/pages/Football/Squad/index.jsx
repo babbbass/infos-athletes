@@ -16,6 +16,8 @@ import {
   Hr,
 } from "components/Card/globalStyleCard"
 import { CardSquad, HeaderBody, LeaguePagesLink } from "./style"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchTeamPlayers = async (teamId) => {
   const response = await fetch(
@@ -32,21 +34,18 @@ export default function Squad() {
   const { competitionId, competitionName, countryCode } =
     useContext(ThemeContext)
 
-  const { isLoading, isError, data, error } = useQuery([teamId], () =>
-    fetchTeamPlayers(teamId)
-  )
-  const squad = data !== undefined ? data.response : []
+  // const { isLoading, isError, data, error } = useQuery([teamId], () =>
+  //   fetchTeamPlayers(teamId)
+  // )
+  // const squad = data !== undefined ? data.response : []
 
-  // if ((isError === false && data === undefined) || data.errors.requests) {
-  //   return <RequestsLimit />
+  // if (isError) {
+  //   return <Error error={error} />
   // }
-  if (isError) {
-    return <div>Erreur: {error.message}</div>
-  }
 
-  if (isLoading) {
-    return <div>Chargement...</div>
-  }
+  // if (isLoading) {
+  //   return <Loader />
+  // }
 
   const defenders = []
   const goalkeepers = []

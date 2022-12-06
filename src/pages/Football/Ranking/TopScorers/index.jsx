@@ -25,6 +25,8 @@ import { selectOptions } from "utils/Context/Context"
 import NavLink from "components/NavLink"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
+import Loader from "components/Loader"
+import Error from "components/Error"
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
   const response = await fetch(
@@ -55,19 +57,15 @@ const TopScorers = () => {
   //   () => fetchTopScorers(yearTopScorersSelected, idCompetition)
   // )
 
-  // if((isError === false && data === undefined) || (data.errors.requests)) {
-  //   return (
-  //   )
-  // }
   // if (isError) {
-  //   return <div>Erreur: {error.message}</div>
+  //   return <Error error={error} />
   // }
 
   // if (isLoading) {
-  //   return <div>Chargement...</div>
+  //   return <Loader />
   // }
 
-  // const topScorers = data !== undefined ? data.response : []
+  //const topScorers = data !== undefined ? data.response : []
   const competitionName = topScorers[0].statistics[0].league.name
   const previousLinkName = competitionName
 

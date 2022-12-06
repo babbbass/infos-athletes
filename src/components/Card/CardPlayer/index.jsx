@@ -15,6 +15,7 @@ const NameCardPlayer = styled(CardNameTeamOrPlayer)`
   height: 20%;
   margin-bottom: 5px;
   align-self: center;
+  font-size: 0.8rem;
 `
 const H1Container = styled.div`
   width: 90%;

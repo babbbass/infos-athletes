@@ -35,12 +35,7 @@ export default function CardPlayer({ players }) {
       <CardContainer>
         {players.map((player, index) => (
           <Card key={`${player.id}-${index}`}>
-            <StyledLinkCard
-              to={`/${foot}/player/${player.id}`}
-              onClick={() => {
-                //           setPlayerId(player.id);
-              }}
-            >
+            <StyledLinkCard to={`/basket/player/${player.id}`}>
               <NameCardPlayer>{`${player.firstname} ${player.lastname}`}</NameCardPlayer>
               <CardImgContainer>
                 <StyledImg

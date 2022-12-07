@@ -15,7 +15,10 @@ import {
   H2CardContainer,
   Hr,
 } from "components/Card/globalStyleCard"
-import { CardSquad, HeaderBody, LeaguePagesLink } from "./style"
+import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
+import { CardSquad } from "./style"
+import { Menu } from "utils/style/GlobalStyle"
+import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import Loader from "components/Loader"
 import Error from "components/Error"
 
@@ -30,7 +33,7 @@ const fetchTeamPlayers = async (teamId) => {
 
 export default function Squad() {
   const { teamId } = useParams()
-  const { competitionId, competitionName, countryCode } =
+  const { competitionId, competitionName, countryCode, activeMenu } =
     useContext(ThemeContext)
 
   // const { isLoading, isError, data, error } = useQuery([teamId], () =>
@@ -70,16 +73,18 @@ export default function Squad() {
 
   return (
     <div>
-      <HeaderBody>
+      <ToggleButton />
+      <Menu active={activeMenu}>
         <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
         <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
           {competitionName}
         </LeaguePagesLink>
         <LeaguePagesLink>Palmarès</LeaguePagesLink>
-      </HeaderBody>
-      <H1CardContainer>{squad[0].team.name}</H1CardContainer>
-      <Hr />
-      <CardContainer>
+      </Menu>
+
+      <CardContainer active={activeMenu}>
+        <H1CardContainer>{squad[0].team.name}</H1CardContainer>
+        <Hr />
         <H2CardContainer>Gardiens</H2CardContainer>
         {goalkeepers.map((player, index) => (
           <CardSquad key={`${player.id}-${index}`}>

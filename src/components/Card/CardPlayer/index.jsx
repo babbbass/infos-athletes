@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import { useParams } from "react-router-dom"
 import { foot } from "utils/config/config"
 import {
@@ -10,6 +10,7 @@ import {
 } from "components/Card/globalStyleCard"
 import { StyledImg, colors } from "utils/style/GlobalStyle"
 import styled from "styled-components"
+import { ThemeContext } from "utils/Context/Context"
 
 const NameCardPlayer = styled(CardNameTeamOrPlayer)`
   height: 20%;
@@ -29,10 +30,11 @@ const H1Container = styled.div`
 `
 export default function CardPlayer({ players }) {
   const { teamName } = useParams("teamName")
+  const { activeMenu } = useContext(ThemeContext)
   return (
     <>
-      <H1Container>{teamName}</H1Container>
-      <CardContainer>
+      <CardContainer active={activeMenu}>
+        <H1Container>{teamName}</H1Container>
         {players.map((player, index) => (
           <Card key={`${player.id}-${index}`}>
             <StyledLinkCard to={`/basket/player/${player.id}`}>

@@ -7,8 +7,11 @@ import { ThemeContext } from "utils/Context/Context"
 import styled from "styled-components"
 import { StyledLinkCard } from "components/Card/globalStyleCard"
 import CardPlayer from "components/Card/CardPlayer"
+import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import Loader from "components/Loader"
 import Error from "components/Error"
+import { Menu } from "utils/style/GlobalStyle"
+import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 
 const fetchNbaSquad = async (teamId, yearSelected) => {
   const response = await fetch(
@@ -19,21 +22,9 @@ const fetchNbaSquad = async (teamId, yearSelected) => {
   return await response.json()
 }
 
-const HeaderBody = styled.div`
-  display: flex;
-  text-align: center;
-  padding: 12px 0;
-`
-const LeaguePagesLink = styled(StyledLinkCard)`
-  color: #000;
-  &:hover {
-    color: #bbb;
-  }
-`
-
 export default function Squad() {
   const { teamId } = useParams()
-  const { yearSelected } = useContext(ThemeContext)
+  const { yearSelected, activeMenu } = useContext(ThemeContext)
 
   // const { isLoading, isError, data, error } = useQuery(
   //   [teamId, [teamId, yearSelected]],
@@ -51,10 +42,11 @@ export default function Squad() {
 
   return (
     <>
-      <HeaderBody>
+      <ToggleButton />
+      <Menu active={activeMenu}>
         <LeaguePagesLink to={`/nba`}>Nba</LeaguePagesLink>
         <LeaguePagesLink to={`/nba/matchs`}>Matchs du jour</LeaguePagesLink>
-      </HeaderBody>
+      </Menu>
       <CardPlayer players={players} />
     </>
   )

@@ -35,7 +35,6 @@ const fetchCompetition = async (competitionId) => {
 export default function Teams() {
   const { countryCode, competitionId } = useParams()
   const { activeMenu } = useContext(ThemeContext)
-
   // const { isLoading, isError, data, error } = useQuery([competitionId], () =>
   //   fetchCompetition(competitionId)
   // )

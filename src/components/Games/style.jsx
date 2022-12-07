@@ -11,6 +11,14 @@ export const GamesContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   font-size: ${sizesFont.normal};
+  transform: translateY(-50px);
+  transition: 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
+  ${({ active }) =>
+    active &&
+    `
+      transform: translate(0);
+      
+  `};
 `
 export const GameLink = styled(StyledLink)`
   color: ${colors.primary};

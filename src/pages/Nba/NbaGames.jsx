@@ -16,7 +16,6 @@ const fetchGames = async (date) => {
 }
 
 export default function NbaGames() {
-  //console.log("hello!!!")
   const today = new Date().toJSON().slice(0, 10)
   const { isLoading, isError, data, error } = useQuery(
     ["nbaGames", today],

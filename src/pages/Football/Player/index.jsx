@@ -5,12 +5,8 @@ import PlayerPalmares from "components/Card/CardPlayer/PlayerPalmares/PlayerPalm
 import { useQuery } from "react-query"
 import { requestOptions, baseUrl, foot } from "utils/config/config"
 import { useParams } from "react-router-dom"
-import {
-  CardBack,
-  CardFront,
-  CardContainer,
-  CardRow,
-} from "components/Card/globalStyleCard"
+import { CardBack, CardFront, CardRow } from "components/Card/globalStyleCard"
+import { CardContainerPlayer, ModalContainerBody, StyledImg } from "./style"
 import {
   CardPagePlayer,
   H1Container,
@@ -18,24 +14,8 @@ import {
 import PreviousLink from "components/NavLink/Previous"
 import { HeaderBody } from "utils/style/Rankings"
 import Button from "components/Button"
-import styled from "styled-components"
 import Loader from "components/Loader"
 import Error from "components/Error"
-
-const ModalContainerBody = styled.div`
-  flex: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`
-const StyledImg = styled.img`
-  margin: 25px 0;
-  @media (max-width: 390px) {
-    width: 105px;
-  }
-`
 
 const fetchPlayerDatas = async (playerId) => {
   const response = await fetch(
@@ -78,7 +58,7 @@ export default function PlayerCivility() {
           previousPageDatas={{ previousStep1, previousStep2, previousLinkName }}
         />
       </HeaderBody>
-      <CardContainer>
+      <CardContainerPlayer>
         <CardPagePlayer
           openModalStatistic={openModalStatistic}
           openModalPalmaresPlayer={openPalmaresPlayer}
@@ -131,7 +111,7 @@ export default function PlayerCivility() {
             )}
           </CardBack>
         </CardPagePlayer>
-      </CardContainer>
+      </CardContainerPlayer>
     </>
   )
 }

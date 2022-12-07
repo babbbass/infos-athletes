@@ -10,6 +10,15 @@ export const CardContainer = styled.section`
   justify-content: space-evenly;
   width: 100%;
   flex-wrap: wrap;
+  @media (max-width: 767px) {
+    transform: translateY(-50px);
+    transition: 1s cubic-bezier(0.73, 0.11, 0.67, 0.99);
+    ${({ active }) =>
+      active &&
+      `
+        transform: translate(0);
+      `};
+  }
 `
 export const Card = styled.div`
   width: 25%;

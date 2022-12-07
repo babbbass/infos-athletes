@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Menu } from "utils/style/GlobalStyle"
+import { ThemeContext } from "utils/Context/Context"
 import {
   DualOpponents,
   DualOpponentHome,
@@ -9,14 +10,13 @@ import {
   LogoTeamContainer,
   LinkTeam,
 } from "./style"
-import { GamesContainer, TeamName } from "../style"
+import { GamesContainer, TeamName } from "components/Games/style"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
-import { useState } from "react"
 import GameStatisticsTable from "../TableStastistics/TableGameStatistics"
 
 export default function GameStatistic({ statistics }) {
-  const activeMenu = useState(false)
+  const { activeMenu } = useContext(ThemeContext)
   return (
     <>
       <ToggleButton />
@@ -51,8 +51,8 @@ export default function GameStatistic({ statistics }) {
             </LinkTeam>
           </DualOpponentVisitor>
         </DualOpponents>
+        <GameStatisticsTable statistics={statistics} />
       </GamesContainer>
-      <GameStatisticsTable statistics={statistics} />
     </>
   )
 }

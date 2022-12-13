@@ -7,11 +7,9 @@ import { CardRow, PlayerCardBody } from "components/Card/globalStyleCard"
 import {
   PlayerStatisticContainer,
   StyledSelect,
-  ImgContainer,
-  H1Container,
 } from "components/Card/CardPlayer/styleCardPlayer"
+import { ImgContainer, Img, H1StatsPlayer } from "./style.jsx"
 import Button from "components/Button"
-import styled from "styled-components"
 import Loader from "components/Loader"
 import Error from "components/Error"
 
@@ -24,38 +22,27 @@ const fetchPlayerDatas = async (playerId, yearSeason) => {
   return await response.json()
 }
 
-export const H1StatsPlayer = styled(H1Container)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: bold;
-  talign: center;
-  height: 30px;
-  margin: 20px auto;
-`
-
 export default function PlayerStatistics({ linkButton, playerStatistic }) {
   const { yearSelected } = useContext(ThemeContext)
   const [yearStatisticsSelected, setYearStatisticsSelected] =
     useState(yearSelected)
   const playerId = playerStatistic[0].player.id
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["player-statistics", { playerId, yearStatisticsSelected }],
-  //   () => fetchPlayerDatas(playerId, yearStatisticsSelected)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["player-statistics", { playerId, yearStatisticsSelected }],
+    () => fetchPlayerDatas(playerId, yearStatisticsSelected)
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  // const playerStatistics = data === undefined ? [] : data.response
-  const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
+  const playerStatistics = data === undefined ? [] : data.response
+  // const playerStatistics = playerStatistic !== undefined ? playerStatistic : []
 
   return (
     <>
@@ -70,10 +57,12 @@ export default function PlayerStatistics({ linkButton, playerStatistic }) {
         {playerStatistics[0]?.statistics.map((competitionStats, index) => (
           <PlayerCardBody key={`${playerStatistics[0].player.id}-${index}`}>
             <H1StatsPlayer>{`${competitionStats.league.name}`}</H1StatsPlayer>
-            <ImgContainer
-              src={competitionStats.team.logo}
-              alt={`firstname-statistiques`}
-            />
+            <ImgContainer>
+              <Img
+                src={competitionStats.team.logo}
+                alt={`firstname-statistiques`}
+              />
+            </ImgContainer>
             <CardRow>Matchs: {`${competitionStats.games.appearences}`}</CardRow>
             <CardRow>Titulaire: {competitionStats.games.lineups}</CardRow>
             <CardRow>Nb min: {competitionStats.games.minutes}</CardRow>

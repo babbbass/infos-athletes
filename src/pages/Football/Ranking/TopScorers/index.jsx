@@ -52,20 +52,20 @@ const TopScorers = () => {
   const nextUrlStep3 = idCompetition
   const nextLinkName = "meilleurs passeurs"
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["topScorers", [idCompetition, yearTopScorersSelected]],
-  //   () => fetchTopScorers(yearTopScorersSelected, idCompetition)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["topScorers", [idCompetition, yearTopScorersSelected]],
+    () => fetchTopScorers(yearTopScorersSelected, idCompetition)
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  //const topScorers = data !== undefined ? data.response : []
+  const topScorers = data !== undefined ? data.response : []
   const competitionName = topScorers[0].statistics[0].league.name
   const previousLinkName = competitionName
 

@@ -2,7 +2,6 @@ import { useQuery } from "react-query"
 import { useContext } from "react"
 import { useParams } from "react-router-dom"
 import { teams } from "utils/datas/Teams"
-import { StyledImg } from "utils/style/GlobalStyle"
 import { baseUrl, requestOptions } from "utils/config/config"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import { ThemeContext } from "utils/Context/Context"
@@ -19,7 +18,7 @@ import {
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
 import { Menu } from "utils/style/GlobalStyle"
-import { CardContainerFootballTeam } from "./style"
+import { CardContainerFootballTeam, ImgContainer, Img } from "./style"
 import Loader from "components/Loader"
 import Error from "components/Error"
 
@@ -35,18 +34,18 @@ const fetchCompetition = async (competitionId) => {
 export default function Teams() {
   const { countryCode, competitionId } = useParams()
   const { activeMenu } = useContext(ThemeContext)
-  // const { isLoading, isError, data, error } = useQuery([competitionId], () =>
-  //   fetchCompetition(competitionId)
-  // )
-  // const teams = data !== undefined ? data.response : []
+  const { isLoading, isError, data, error } = useQuery([competitionId], () =>
+    fetchCompetition(competitionId)
+  )
+  const teams = data !== undefined ? data.response : []
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <>
@@ -72,7 +71,9 @@ export default function Teams() {
           <Card key={team.team.id}>
             <StyledLinkCard to={`/football/team/${team.team.id}`}>
               <CardNameTeamOrPlayer>{team.team.name}</CardNameTeamOrPlayer>
-              <StyledImg src={team.team.logo} alt={`${team.team.name}-logo`} />
+              <ImgContainer>
+                <Img src={team.team.logo} alt={`${team.team.name}-logo`} />
+              </ImgContainer>
               <AdditionnalDataContainer>
                 <TeamHistory>Fondé en {team.team.founded}</TeamHistory>
                 <TeamHistoryStadium>

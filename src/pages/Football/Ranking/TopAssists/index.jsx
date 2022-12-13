@@ -44,20 +44,20 @@ const TopAssits = () => {
     useState(yearSelected)
   const { idCompetition, countryCode } = useParams()
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["topAssists", [idCompetition, yearTopAssitsSelected]],
-  //   () => fetchTopAssists(yearTopAssitsSelected, idCompetition)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["topAssists", [idCompetition, yearTopAssitsSelected]],
+    () => fetchTopAssists(yearTopAssitsSelected, idCompetition)
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  // const topAssists = data !== undefined ? data.response : []
+  const topAssists = data !== undefined ? data.response : []
   const competitionName = topAssists[0].statistics[0].league.name
 
   const previousStep1 = "leagues"

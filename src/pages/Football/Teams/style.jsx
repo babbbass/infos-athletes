@@ -12,3 +12,20 @@ export const CardContainerFootballTeam = styled(CardContainerTeam)`
       `}
   }
 `
+export const Img = styled.img`
+  width: 120px;
+  @media (max-width: 330px) {
+    width: 105px;
+  }
+`
+export const ImgContainer = styled.div`
+  width: 120px;
+  height: 120px;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  @media (max-width: 330px) {
+    width: 105px;
+    height: 105px;
+  }
+`

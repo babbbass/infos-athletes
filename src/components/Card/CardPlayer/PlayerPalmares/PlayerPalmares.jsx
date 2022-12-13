@@ -23,20 +23,20 @@ export default function PlayerPalmares({ linkButton }) {
   const { yearSelected, setYearSelected } = useContext(ThemeContext)
   const { playerId } = useParams("playerId")
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["player-palmares", playerId],
-  //   () => fetchPlayerPalmares(playerId)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["player-palmares", playerId],
+    () => fetchPlayerPalmares(playerId)
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  // const playerPalmares = data === undefined ? [] : data.response
+  const playerPalmares = data === undefined ? [] : data.response
 
   return (
     <>

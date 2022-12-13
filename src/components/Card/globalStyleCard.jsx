@@ -22,7 +22,7 @@ export const CardContainer = styled.section`
 `
 export const Card = styled.div`
   width: 25%;
-  min-height: 320px;
+  min-height: 310px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -40,9 +40,6 @@ export const Card = styled.div`
   @media (max-width: 570px) {
     width: 47%;
     padding-top: 30px;
-  }
-  @media (max-width: 400px) {
-    min-height: 280px;
   }
 `
 export const PlayerCardBody = styled.div`
@@ -102,6 +99,7 @@ export const CardNameTeamOrPlayer = styled.div`
   font-size: ${sizesFont.medium};
   font-weight: bold;
   @media (max-width: 390px) {
+    overflow: hidden;
     margin-bottom: auto;
     font-size: 1rem;
   }

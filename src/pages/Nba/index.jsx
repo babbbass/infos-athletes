@@ -19,19 +19,19 @@ const fetchNbaTeams = async () => {
 export default function Nba() {
   const { activeMenu } = useContext(ThemeContext)
 
-  // const { isLoading, isError, data, error } = useQuery(["nbaTeams"], () =>
-  //   fetchNbaTeams()
-  // )
+  const { isLoading, isError, data, error } = useQuery(["nbaTeams"], () =>
+    fetchNbaTeams()
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  //const teams = data !== undefined ? data.response : []
+  const teams = data !== undefined ? data.response : []
 
   return (
     <>

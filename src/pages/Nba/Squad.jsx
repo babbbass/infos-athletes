@@ -26,19 +26,19 @@ export default function Squad() {
   const { teamId } = useParams()
   const { yearSelected, activeMenu } = useContext(ThemeContext)
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   [teamId, [teamId, yearSelected]],
-  //   () => fetchNbaSquad(teamId, yearSelected)
-  // )
-  // const players = data !== undefined ? data.response : []
+  const { isLoading, isError, data, error } = useQuery(
+    [teamId, [teamId, yearSelected]],
+    () => fetchNbaSquad(teamId, yearSelected)
+  )
+  const players = data !== undefined ? data.response : []
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <>

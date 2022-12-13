@@ -43,10 +43,3 @@ export const StyledSelect = styled(Select)`
   color: ${colors.primary};
   text-align: center;
 `
-
-export const ImgContainer = styled.img`
-  width: 120px;
-  @media (max-width: 330px) {
-    width: 105px;
-  }
-`

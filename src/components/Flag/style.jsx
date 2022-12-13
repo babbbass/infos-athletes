@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { colors, H3Style, H2Style } from "utils/style/GlobalStyle"
+import { colors, H3Style } from "utils/style/GlobalStyle"
 import { StyledImg } from "utils/style/GlobalStyle"
 import { Link } from "react-router-dom"
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { playerStatistics } from "utils/datas/PlayerStatistics"
-import PlayerStatisticsModal from "components/Card/CardPlayer/PlayerStatistics/PlayerStatistic"
+import PlayerStatistics from "components/Card/CardPlayer/PlayerStatistics/PlayerStatistic"
 import PlayerPalmares from "components/Card/CardPlayer/PlayerPalmares/PlayerPalmares"
 import { useQuery } from "react-query"
 import { requestOptions, baseUrl, foot } from "utils/config/config"
@@ -31,19 +31,19 @@ export default function PlayerCivility() {
   const [openPalmaresPlayer, setOpenPalmaresPlayer] = useState(false)
   const { playerId } = useParams()
 
-  // const { isLoading, isError, data, error } = useQuery([playerId], () =>
-  //   fetchPlayerDatas(playerId)
-  // )
+  const { isLoading, isError, data, error } = useQuery([playerId], () =>
+    fetchPlayerDatas(playerId)
+  )
 
-  // const playerStatistics = data !== undefined ? data.response : []
+  const playerStatistics = data !== undefined ? data.response : []
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
   const teamId = playerStatistics[0].statistics[0].team.id
   const teamName = playerStatistics[0].statistics[0].team.name
@@ -89,7 +89,7 @@ export default function PlayerCivility() {
           </CardFront>
           <CardBack>
             {openModalStatistic && (
-              <PlayerStatisticsModal
+              <PlayerStatistics
                 linkButton={{
                   setOpenPalmaresPlayer,
                   openModalStatistic,

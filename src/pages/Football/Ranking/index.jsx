@@ -61,22 +61,23 @@ const Ranking = () => {
   const [yearLeagueSelected, setYearLeagueSelected] = useState(yearSelected)
   const { idCompetition, countryCode } = useParams()
 
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["leagueRanking", [idCompetition, yearLeagueSelected]],
-  //   () => fetchRankingLeague(idCompetition, yearLeagueSelected)
-  // )
+  const { isLoading, isError, data, error } = useQuery(
+    ["leagueRanking", [idCompetition, yearLeagueSelected]],
+    () => fetchRankingLeague(idCompetition, yearLeagueSelected)
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  // const league = data !== undefined ? data.response : []
-  // const leagueRanking = league[0].league.standings[0]
-  const leagueRanking = ranking[0].standings[0]
+  const league = data !== undefined ? data.response : []
+  const leagueRanking = league[0].league.standings[0]
+  //utils/datas
+  //const leagueRanking = ranking[0].standings[0]
   const competitionName = leagueRanking[0].group
 
   const previousStep1 = stepsUrl.leagues

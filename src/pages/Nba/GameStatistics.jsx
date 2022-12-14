@@ -16,21 +16,21 @@ const fetchGameStatistics = async (gameId) => {
   return await response.json()
 }
 export default function GameStatistics() {
-  // const { matchId } = useParams("matchId")
-  // const { isLoading, isError, data, error } = useQuery(
-  //   ["nbaGameStatistics", matchId],
-  //   () => fetchGameStatistics(matchId)
-  // )
+  const { matchId } = useParams("matchId")
+  const { isLoading, isError, data, error } = useQuery(
+    ["nbaGameStatistics", matchId],
+    () => fetchGameStatistics(matchId)
+  )
 
-  // if (isError) {
-  //   return <Error error={error} />
-  // }
+  if (isError) {
+    return <Error error={error} />
+  }
 
-  // if (isLoading) {
-  //   return <Loader />
-  // }
+  if (isLoading) {
+    return <Loader />
+  }
 
-  //const statistics = data !== undefined ? data.response : []
+  const statistics = data !== undefined ? data.response : []
   return (
     <>
       <GameStatistic statistics={statistics} />

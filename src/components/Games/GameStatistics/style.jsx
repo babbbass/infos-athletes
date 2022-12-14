@@ -10,6 +10,7 @@ export const DualOpponentHome = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  width: 30%;
   margin 5px auto;
 `
 export const LinkTeam = styled(StyledLink)`
@@ -18,7 +19,9 @@ export const LinkTeam = styled(StyledLink)`
 export const DualOpponentVisitor = styled(DualOpponentHome)``
 export const DualOpponentScore = styled.div`
   display: flex;
-  align-items: center;  
+  width: 30%;
+  align-items: center;
+  justify-content center;   
   margin 10px 10px;
   font-weight: bold;
   @media (max-width: 370px) {

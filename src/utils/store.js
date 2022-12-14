@@ -19,7 +19,7 @@ const competitionId = ({ countryCode, competitionId, competitionName }) => ({
   },
 })
 
-const isActiveMenu = () => ({ type: "isActive" })
+const isActiveMenu = (isActive) => ({ type: "isActive" })
 
 const competitionName = () => ({ type: "setCompetitionName" })
 
@@ -30,12 +30,19 @@ const countryName = (country) => ({
 
 function reducer(state = initialState, action) {
   if (action.type === "setCompetitionId") {
-    console.log(action)
+    //console.log(action)
     return {
       ...state,
       competitionId: action.payload.competitionId,
       countryCode: action.payload.countryCode,
       competitionName: action.payload.competitionName,
+    }
+  }
+
+  if (action.type === "isActive") {
+    return {
+      ...state,
+      activeMenu: !state.activeMenu,
     }
   }
 

@@ -1,14 +1,14 @@
-import React, { useContext } from "react"
+import React from "react"
 import { baseNbaUrl, requestOptions } from "utils/config/config"
 import { useQuery } from "react-query"
 import { teams } from "utils/datas/Nba/teams"
-import { ThemeContext } from "utils/Context/Context"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 import CardTeam from "components/Card/CardTeams/index"
 import { Menu } from "utils/style/GlobalStyle"
 import Loader from "components/Loader"
 import Error from "components/Error"
+import { useSelector } from "react-redux"
 
 const fetchNbaTeams = async () => {
   const response = await fetch(`${baseNbaUrl}/teams`, requestOptions)
@@ -17,7 +17,7 @@ const fetchNbaTeams = async () => {
 }
 
 export default function Nba() {
-  const { activeMenu } = useContext(ThemeContext)
+  const activeMenu = useSelector((state) => state.activeMenu)
 
   const { isLoading, isError, data, error } = useQuery(["nbaTeams"], () =>
     fetchNbaTeams()

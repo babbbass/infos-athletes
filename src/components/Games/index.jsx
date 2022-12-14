@@ -1,5 +1,4 @@
-import React, { useContext } from "react"
-import { ThemeContext } from "utils/Context/Context"
+import React from "react"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import {
   GamesContainer,
@@ -15,6 +14,7 @@ import {
 } from "./style"
 import { Menu } from "utils/style/GlobalStyle"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
+import { useSelector } from "react-redux"
 
 const linescores = (linescore) => {
   let [qt1, qt2, qt3, qt4] = linescore
@@ -33,12 +33,12 @@ const isFinished = "Finished"
 const noData = "Match non terminé"
 
 export default function Games({ games, date }) {
-  const { activeMenu } = useContext(ThemeContext)
+  const activeMenu = useSelector((state) => state.activeMenu)
   return (
     <>
       <ToggleButton />
       <Menu active={activeMenu}>
-        <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
+        <LeaguePagesLink to={`/`}>Infos Athletes</LeaguePagesLink>
         <LeaguePagesLink to={`/nba`}>Équipes</LeaguePagesLink>
       </Menu>
       <GamesContainer active={activeMenu}>

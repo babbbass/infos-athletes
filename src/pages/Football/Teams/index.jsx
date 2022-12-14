@@ -1,10 +1,8 @@
 import { useQuery } from "react-query"
-import { useContext } from "react"
 import { useParams } from "react-router-dom"
 import { teams } from "utils/datas/Teams"
 import { baseUrl, requestOptions, competitions } from "utils/config/config"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
-import { ThemeContext } from "utils/Context/Context"
 import {
   LeaguePagesLink,
   TeamHistory,
@@ -23,6 +21,7 @@ import { CardContainerFootballTeam, ImgContainer, Img } from "./style"
 import Loader from "components/Loader"
 import Error from "components/Error"
 import { useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 const fetchCompetition = async (competitionId) => {
   const response = await fetch(
@@ -39,8 +38,8 @@ export default function Teams() {
   const { competitionName } = competitions.find(
     (competition) => competition.id === countryCode
   )
-  const { activeMenu } = useContext(ThemeContext)
-
+  const activeMenu = useSelector((state) => state.activeMenu)
+  // query
   const { isLoading, isError, data, error } = useQuery([competitionId], () =>
     fetchCompetition(competitionId)
   )
@@ -56,20 +55,39 @@ export default function Teams() {
 
   return (
     <>
-      {/* onClick={useDispatch({type: ""})} */}
       <ToggleButton />
       <Menu active={activeMenu}>
         <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
-        <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
+        <LeaguePagesLink
+          to={`/classement/${countryCode}/${competitionId}`}
+          onClick={() => {
+            dispatch({
+              type: "setCompetitionId",
+              payload: { countryCode, competitionId, competitionName },
+            })
+          }}
+        >
           Classement
         </LeaguePagesLink>
         <LeaguePagesLink
           to={`/meilleurs-buteurs/${countryCode}/${competitionId}`}
+          onClick={() => {
+            dispatch({
+              type: "setCompetitionId",
+              payload: { countryCode, competitionId, competitionName },
+            })
+          }}
         >
           Top buteurs
         </LeaguePagesLink>
         <LeaguePagesLink
           to={`/meilleurs-passeurs/${countryCode}/${competitionId}`}
+          onClick={() => {
+            dispatch({
+              type: "setCompetitionId",
+              payload: { countryCode, competitionId, competitionName },
+            })
+          }}
         >
           Meilleurs passeurs
         </LeaguePagesLink>

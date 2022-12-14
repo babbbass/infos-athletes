@@ -1,6 +1,5 @@
-import React, { useContext } from "react"
+import React from "react"
 import { Menu } from "utils/style/GlobalStyle"
-import { ThemeContext } from "utils/Context/Context"
 import {
   DualOpponents,
   DualOpponentHome,
@@ -14,15 +13,17 @@ import { GamesContainer, TeamName } from "components/Games/style"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import GameStatisticsTable from "../TableStastistics/TableGameStatistics"
+import { useSelector } from "react-redux"
 
 export default function GameStatistic({ statistics }) {
-  const { activeMenu } = useContext(ThemeContext)
+  const activeMenu = useSelector((state) => state.activeMenu)
   return (
     <>
       <ToggleButton />
       <Menu active={activeMenu}>
-        <LeaguePagesLink to={`/`}>Accueil</LeaguePagesLink>
+        <LeaguePagesLink to={`/`}>Infos Athletes</LeaguePagesLink>
         <LeaguePagesLink to={`/nba/matchs`}>Matchs du jour</LeaguePagesLink>
+        <LeaguePagesLink to={`/nba`}>Équipes Nba</LeaguePagesLink>
       </Menu>
       <GamesContainer active={activeMenu}>
         <DualOpponents>

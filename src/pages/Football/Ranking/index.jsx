@@ -46,7 +46,6 @@ const LeagueRankingTab = styled(RankingTab)`
   }
 `
 const fetchRankingLeague = async (competitionId, yearCompetitionId) => {
-  console.log(competitionId, yearCompetitionId)
   //const id = parseInt(competitionId)
   const response = await fetch(
     `${baseUrl}/standings?league=${competitionId}&season=${yearCompetitionId}`,

@@ -1,36 +1,19 @@
-import React, { useContext } from "react"
+import React from "react"
 import { useParams } from "react-router-dom"
 import { foot } from "utils/config/config"
 import {
   CardImgContainer,
   CardContainer,
   Card,
-  CardNameTeamOrPlayer,
   StyledLinkCard,
 } from "components/Card/globalStyleCard"
-import { StyledImg, colors } from "utils/style/GlobalStyle"
-import styled from "styled-components"
-import { ThemeContext } from "utils/Context/Context"
+import { StyledImg } from "utils/style/GlobalStyle"
+import { H1Container, NameCardPlayer } from "./styleCardPlayer"
+import { useSelector } from "react-redux"
 
-const NameCardPlayer = styled(CardNameTeamOrPlayer)`
-  height: 20%;
-  margin-bottom: 5px;
-  align-self: center;
-  font-size: 0.8rem;
-`
-const H1Container = styled.div`
-  width: 90%;
-  font-size: 2rem;
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-  margin: 10px auto;
-  border-bottom: 1px solid ${colors.primary};
-  color: ${colors.primary};
-`
 export default function CardPlayer({ players }) {
   const { teamName } = useParams("teamName")
-  const { activeMenu } = useContext(ThemeContext)
+  const activeMenu = useSelector((state) => state.activeMenu)
   return (
     <>
       <CardContainer active={activeMenu}>

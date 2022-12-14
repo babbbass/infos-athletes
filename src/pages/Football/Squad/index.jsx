@@ -38,7 +38,7 @@ export default function Squad() {
   const competitionId = useSelector((state) => state.competitionId)
   const competitionName = useSelector((state) => state.competitionName)
 
-  const { activeMenu } = useContext(ThemeContext)
+  const activeMenu = useSelector((state) => state.activeMenu)
 
   const { isLoading, isError, data, error } = useQuery([teamId], () =>
     fetchTeamPlayers(teamId)

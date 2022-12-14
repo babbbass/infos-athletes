@@ -21,6 +21,7 @@ import { Menu } from "utils/style/GlobalStyle"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import Loader from "components/Loader"
 import Error from "components/Error"
+import { useSelector } from "react-redux"
 
 const fetchTeamPlayers = async (teamId) => {
   const response = await fetch(
@@ -33,8 +34,11 @@ const fetchTeamPlayers = async (teamId) => {
 
 export default function Squad() {
   const { teamId } = useParams()
-  const { competitionId, competitionName, countryCode, activeMenu } =
-    useContext(ThemeContext)
+  const countryCode = useSelector((state) => state.countryCode)
+  const competitionId = useSelector((state) => state.competitionId)
+  const competitionName = useSelector((state) => state.competitionName)
+
+  const { activeMenu } = useContext(ThemeContext)
 
   const { isLoading, isError, data, error } = useQuery([teamId], () =>
     fetchTeamPlayers(teamId)
@@ -79,7 +83,9 @@ export default function Squad() {
         <LeaguePagesLink to={`/leagues/${countryCode}/${competitionId}`}>
           {competitionName}
         </LeaguePagesLink>
-        <LeaguePagesLink>Palmarès</LeaguePagesLink>
+        <LeaguePagesLink to={`/classement/${countryCode}/${competitionId}`}>
+          Classement
+        </LeaguePagesLink>
       </Menu>
 
       <CardContainer active={activeMenu}>

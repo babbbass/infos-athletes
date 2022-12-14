@@ -18,6 +18,9 @@ import Layout from "components/Layout"
 import Football from "pages/Football"
 import NbaGames from "pages/Nba/NbaGames"
 import GameStatistics from "pages/Nba/GameStatistics"
+import { Provider } from "react-redux"
+// on importe le store
+import { store } from "utils/store.js"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 const queryClient = new QueryClient({
@@ -82,13 +85,15 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <QueryClientProvider client={queryClient}>
-      <ThemeContextProvider>
-        <Layout>
-          <RouterProvider router={router} />
-        </Layout>
-      </ThemeContextProvider>
-    </QueryClientProvider>
+    <Provider store={store}>
+      <GlobalStyle />
+      <QueryClientProvider client={queryClient}>
+        <ThemeContextProvider>
+          <Layout>
+            <RouterProvider router={router} />
+          </Layout>
+        </ThemeContextProvider>
+      </QueryClientProvider>
+    </Provider>
   </React.StrictMode>
 )

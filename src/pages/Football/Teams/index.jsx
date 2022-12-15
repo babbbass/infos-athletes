@@ -32,12 +32,16 @@ const fetchCompetition = async (competitionId) => {
   return await response.json()
 }
 
-export default function Teams() {
+export function findNameCompetition(competitionTab, countryCode) {
+  return competitionTab.find(
+    (competition) => competition.id === countryCode.toUpperCase()
+  )
+}
+
+export function Teams() {
   const { countryCode, competitionId } = useParams()
   const dispatch = useDispatch()
-  const { competitionName } = competitions.find(
-    (competition) => competition.id === countryCode
-  )
+  const { competitionName } = findNameCompetition(competitions, countryCode)
   const activeMenu = useSelector((state) => state.activeMenu)
   // query
   const { isLoading, isError, data, error } = useQuery([competitionId], () =>

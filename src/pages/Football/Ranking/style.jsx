@@ -6,6 +6,7 @@ import { colors } from "utils/style/GlobalStyle"
 export const StyledSelect = styled(Select)`
   width: 50%;
   margin: 20px auto;
+  display: block;
 `
 export const RankingWrapper = styled.div`
   text-align: center;
@@ -49,13 +50,8 @@ export const RankingRowPlayerStats = styled.div`
   border-top: solid 1px #d9d9d9;
 `
 export const RankingRow = styled.div`
-  // background: green;
   margin: 5px 10px;
-  // width: 15%;
   align-self: top;
-  @media (max-width: 424px) {
-    // width: 13%;
-  }
 `
 export const RankingNameTeam = styled.div`
   color: #000;
@@ -112,5 +108,23 @@ export const LeaguePagesLink = styled(StyledLinkCard)`
   color: #000;
   &:hover {
     color: #bbb;
+  }
+`
+
+export const LeagueRankingNamePlayer = styled(RankingNamePlayer)`
+  font-size: 0.9rem;
+`
+export const LeagueRankingTabBodyData = styled(RankingTabBodyData)`
+  font-size: 0.9rem;
+`
+export const LeagueRankingTab = styled(RankingTab)`
+  @media (min-width: 500px) {
+    width: 80%;
+    margin: auto;
+  }
+
+  @media (min-width: 900px) {
+    width: 60%;
+    margin: auto;
   }
 `

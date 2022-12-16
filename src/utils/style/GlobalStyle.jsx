@@ -50,7 +50,6 @@ export const Menu = styled.nav`
     `};
   } ;
 `
-
 export const H1Style = styled.h1`
   font-family: Lato, Roboto, Sans-Serif;
   font-size: ${sizesFont.h1};

@@ -2,16 +2,13 @@ import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
 import { baseUrl, requestOptions, foot } from "utils/config/config"
 import { useQuery } from "react-query"
-import styled from "styled-components"
 import { ranking } from "utils/datas/Ranking"
 import { useParams, Link } from "react-router-dom"
 import {
   StyledSelect,
   RankingWrapper,
   RankingContainer,
-  RankingNamePlayer,
   SpanColor,
-  RankingTab,
   RankingTabHead,
   RankingTabHeadRow,
   RankingTabHeadTitle,
@@ -20,31 +17,18 @@ import {
   RankingTabBodyData,
   HeaderBody,
   RankingPosition,
-} from "utils/style/Rankings"
+  LeagueRankingNamePlayer,
+  LeagueRankingTabBodyData,
+  LeagueRankingTab,
+} from "./style"
 import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
 import { stepsUrl } from "utils/config/variablesConfig"
 import Loader from "components/Loader"
 import Error from "components/Error"
+import { Header } from "components/Ranking/Header/Header"
 
-const LeagueRankingNamePlayer = styled(RankingNamePlayer)`
-  font-size: 0.9rem;
-`
-const LeagueRankingTabBodyData = styled(RankingTabBodyData)`
-  font-size: 0.9rem;
-`
-const LeagueRankingTab = styled(RankingTab)`
-  @media (min-width: 500px) {
-    width: 80%;
-    margin: auto;
-  }
-
-  @media (min-width: 900px) {
-    width: 60%;
-    margin: auto;
-  }
-`
 const fetchRankingLeague = async (competitionId, yearCompetitionId) => {
   //const id = parseInt(competitionId)
   const response = await fetch(
@@ -82,7 +66,7 @@ const Ranking = () => {
   const previousStep1 = stepsUrl.leagues
   const previousStep2 = countryCode
   const previousStep3 = idCompetition
-  const previousLinkName = competitionName
+  const previousLinkName = "Equipes"
 
   const nextUrlStep1 = stepsUrl.topScorers
   const nextUrlStep2 = countryCode
@@ -90,6 +74,11 @@ const Ranking = () => {
   const nextLinkName = "meilleurs buteurs"
   return (
     <>
+      <Header
+        flagCompetition={ranking[0].flag}
+        competitionName={competitionName}
+        rankingType='Classement'
+      />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{
@@ -107,7 +96,6 @@ const Ranking = () => {
             nextLinkName,
           }}
         />
-        {/* <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} /> */}
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

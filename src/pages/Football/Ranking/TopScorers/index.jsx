@@ -20,13 +20,13 @@ import {
   RankingTabBodyData,
   HeaderBody,
   RankingPosition,
-} from "utils/style/Rankings"
+} from "../style"
 import { selectOptions } from "utils/Context/Context"
-import NavLink from "components/NavLink"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
 import Loader from "components/Loader"
 import Error from "components/Error"
+import { Header } from "components/Ranking/Header/Header"
 
 const fetchTopScorers = async (yearSelected, idCompetition) => {
   const response = await fetch(
@@ -67,10 +67,15 @@ const TopScorers = () => {
 
   const topScorers = data !== undefined ? data.response : []
   const competitionName = topScorers[0].statistics[0].league.name
-  const previousLinkName = competitionName
+  const previousLinkName = "Equipes"
 
   return (
     <>
+      <Header
+        flagCompetition={topScorers[0].statistics[0].league.logo}
+        competitionName={competitionName}
+        rankingType='Top buteurs'
+      />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{
@@ -88,7 +93,6 @@ const TopScorers = () => {
             nextLinkName,
           }}
         />
-        {/* <NavLink competitionDatas={{countryCode, idCompetition, competitionName, theBestOfLeague}} /> */}
       </HeaderBody>
       <RankingWrapper>
         <StyledSelect

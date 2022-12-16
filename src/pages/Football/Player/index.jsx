@@ -12,7 +12,7 @@ import {
   H1Container,
 } from "components/Card/CardPlayer/styleCardPlayer"
 import PreviousLink from "components/NavLink/Previous"
-import { HeaderBody } from "utils/style/Rankings"
+import { HeaderBody } from "pages/Football/Ranking/style"
 import Button from "components/Button"
 import Loader from "components/Loader"
 import Error from "components/Error"

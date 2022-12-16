@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
 import { baseUrl, foot, requestOptions } from "utils/config/config"
 import { useQuery } from "react-query"
-import Header from "components/Header"
 import { topAssists } from "utils/datas/TopAssists"
 import { useParams, Link } from "react-router-dom"
 import {
@@ -21,15 +20,15 @@ import {
   RankingTabBodyData,
   HeaderBody,
   RankingPosition,
-} from "utils/style/Rankings"
+} from "../style"
 import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
 import Loader from "components/Loader"
 import Error from "components/Error"
+import { Header } from "components/Ranking/Header/Header"
 
 const fetchTopAssists = async (yearSelected, idCompetition) => {
-  //console.log(yearSelected, idCompetition)
   const response = await fetch(
     `${baseUrl}/players/topassists?season=${yearSelected}&league=${idCompetition}`,
     requestOptions
@@ -63,7 +62,7 @@ const TopAssits = () => {
   const previousStep1 = "leagues"
   const previousStep2 = countryCode
   const previousStep3 = idCompetition
-  const previousLinkName = competitionName
+  const previousLinkName = "Equipes"
 
   const nextUrlStep1 = "meilleurs-buteurs"
   const nextUrlStep2 = countryCode
@@ -72,6 +71,11 @@ const TopAssits = () => {
 
   return (
     <>
+      <Header
+        flagCompetition={topAssists[0].statistics[0].league.logo}
+        competitionName={competitionName}
+        rankingType='Top passeurs'
+      />
       <HeaderBody>
         <PreviousLink
           previousPageDatas={{

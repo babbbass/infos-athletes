@@ -75,7 +75,7 @@ const Ranking = () => {
   return (
     <>
       <Header
-        flagCompetition={ranking[0].flag}
+        flagCompetition={league[0].league.flag}
         competitionName={competitionName}
         rankingType='Classement'
       />

@@ -1,7 +1,7 @@
 import { useQuery } from "react-query"
 import { useParams } from "react-router-dom"
 import { teams } from "utils/datas/Teams"
-import { baseUrl, requestOptions, competitions } from "utils/config/config"
+import { competitions } from "utils/config/config"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
 import {
   LeaguePagesLink,
@@ -22,21 +22,8 @@ import Loader from "components/Loader"
 import Error from "components/Error"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
-
-const fetchCompetition = async (competitionId) => {
-  const response = await fetch(
-    `${baseUrl}/teams?league=${competitionId}&season=2022`,
-    requestOptions
-  )
-
-  return await response.json()
-}
-
-export function findNameCompetition(competitionTab, countryCode) {
-  return competitionTab.find(
-    (competition) => competition.id === countryCode.toUpperCase()
-  )
-}
+import { escapeData, findNameCompetition } from "utils/functions"
+import { fetchCompetition } from "utils/Queries/functions"
 
 export function Teams() {
   const { countryCode, competitionId } = useParams()
@@ -119,7 +106,8 @@ export function Teams() {
                   <SpanVenueTeam>{team.venue.name}</SpanVenueTeam>
                 </TeamHistoryStadium>
                 <TeamHistoryStadium>
-                  <SpanVenueTeam>Ville:</SpanVenueTeam> {team.venue.city}
+                  <SpanVenueTeam>Ville:</SpanVenueTeam>{" "}
+                  {escapeData(team.venue.city)}
                 </TeamHistoryStadium>
               </AdditionnalDataContainer>
             </StyledLinkCard>

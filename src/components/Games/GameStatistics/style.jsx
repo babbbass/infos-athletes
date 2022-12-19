@@ -30,6 +30,8 @@ export const DualOpponentScore = styled.div`
 `
 export const LogoTeamContainer = styled.div`
   min-height: 125px;
+  display: flex;
+  align-items: center;
 `
 export const ImgTeamGameStatistics = styled(StyledImg)`
   width: 80px;

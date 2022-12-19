@@ -1,14 +1,14 @@
 import styled from "styled-components"
 import { H1Container } from "components/Card/CardPlayer/styleCardPlayer"
 
-export const H1StatsPlayer = styled(H1Container)`
+export const TitleCompetitionStatsPlayer = styled(H1Container)`
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
   font-weight: bold;
-  talign: center;
-  height: 30px;
+  text-align: center;
+  height: 10vh;
   margin: 20px auto;
 `
 

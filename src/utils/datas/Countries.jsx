@@ -1,7 +1,7 @@
-import france from "./france.png"
-import england from "./england.png"
-import spain from "./spain.png"
-import germany from "./germany.png"
+import france from "./pictures/france.png"
+import england from "./pictures/england.png"
+import spain from "./pictures/spain.png"
+import germany from "./pictures/germany.png"
 
 export const countries = [
   {

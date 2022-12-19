@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react"
 import { ThemeContext } from "utils/Context/Context"
-import { requestOptions, baseUrl } from "utils/config/config"
 import { useQuery } from "react-query"
 import { selectOptions } from "utils/Context/Context"
 import { CardRow, PlayerCardBody } from "components/Card/globalStyleCard"
@@ -8,19 +7,12 @@ import {
   PlayerStatisticContainer,
   StyledSelect,
 } from "components/Card/CardPlayer/styleCardPlayer"
-import { ImgContainer, Img, H1StatsPlayer } from "./style.jsx"
+import { ImgContainer, Img, TitleCompetitionStatsPlayer } from "./style.jsx"
 import Button from "components/Button"
 import Loader from "components/Loader"
 import Error from "components/Error"
-
-const fetchPlayerDatas = async (playerId, yearSeason) => {
-  const response = await fetch(
-    `${baseUrl}/players?id=${playerId}&season=${yearSeason}`,
-    requestOptions
-  )
-
-  return await response.json()
-}
+import { fetchPlayerDatas } from "utils/Queries/functions"
+import { escapeData } from "utils/functions"
 
 export default function PlayerStatistics({ linkButton, playerStatistic }) {
   const { yearSelected } = useContext(ThemeContext)
@@ -56,7 +48,9 @@ export default function PlayerStatistics({ linkButton, playerStatistic }) {
       <PlayerStatisticContainer>
         {playerStatistics[0]?.statistics.map((competitionStats, index) => (
           <PlayerCardBody key={`${playerStatistics[0].player.id}-${index}`}>
-            <H1StatsPlayer>{`${competitionStats.league.name}`}</H1StatsPlayer>
+            <TitleCompetitionStatsPlayer>
+              {escapeData(competitionStats.league.name)}
+            </TitleCompetitionStatsPlayer>
             <ImgContainer>
               <Img
                 src={competitionStats.team.logo}

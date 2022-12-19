@@ -1,5 +1,3 @@
-import { useQuery } from "react-query"
-import { baseUrl, requestOptions } from "utils/config/config"
 import {
   Title,
   Wrapper,
@@ -19,11 +17,6 @@ import {
   WrapperBodyImg,
 } from "./HomeStyle"
 import Flag from "components/Flag"
-
-const fetchCountries = async () => {
-  const response = await fetch(`${baseUrl}/countries`, requestOptions)
-  return await response.json()
-}
 
 function Home() {
   const nbaLink = "nba"

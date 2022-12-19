@@ -2,7 +2,9 @@ import styled, { keyframes } from "styled-components"
 import { sizesFont, StyledImg, colors } from "utils/style/GlobalStyle"
 import { Link } from "react-router-dom"
 
-export const Wrapper = styled.section``
+export const Wrapper = styled.section`
+  padding: 20px 20px;
+`
 
 export const WrapperHeader = styled.div`
   min-height: 300px;
@@ -22,7 +24,6 @@ export const TitleBloc = styled.div`
   display: flex;
   flex-direction: column;
   text-align: left;
-  padding-left: 20px;
 `
 export const Title = styled.h1`
   font-size: ${sizesFont.h1};

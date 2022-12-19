@@ -1,6 +1,6 @@
-import { findNameCompetition } from "pages/Football/Teams"
+import { findNameCompetition, escapeData } from "utils/functions.jsx"
 import { competitions } from "utils/config/config"
-// import { render, screen, cleanup } from "@testing-library/react"
+import { teams } from "utils/datas/Teams"
 
 test("test country code is Ok", () => {
   const countryCodeMin = findNameCompetition(competitions, "fr")
@@ -8,4 +8,10 @@ test("test country code is Ok", () => {
 
   expect(countryCodeMin.competitionName).toBe("Ligue 1")
   expect(countryCodeMaj.competitionName).toBe("Ligue 1")
+})
+
+test("test replace special caracters", () => {
+  const city = escapeData(teams[4].venue.city)
+  console.log(city)
+  //expect(city).toBe("Villeneuve d'Ascq")
 })

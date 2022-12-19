@@ -1,6 +1,9 @@
 import styled from "styled-components"
-import { CardContainer } from "components/Card/globalStyleCard"
-import { StyledLink, colors } from "utils/style/GlobalStyle"
+import {
+  CardContainer,
+  AdditionnalDataContainer,
+} from "components/Card/globalStyleCard"
+import { StyledLink, colors, StyledImg } from "utils/style/GlobalStyle"
 
 export const LeaguePagesLink = styled(StyledLink)`
   margin: 10px 10px;
@@ -20,11 +23,21 @@ export const CardContainerTeam = styled(CardContainer)`
       `}
   }
 `
+export const NbaTeamLogo = styled(StyledImg)`
+  @media (max-width: 486px) {
+    width: 90px;
+  }
+`
+
+export const NbaAdditionnalDataContainer = styled(AdditionnalDataContainer)`
+  margin-top: 30px;
+`
 export const TeamHistory = styled.div`
   text-align: center;
   margin-bottom: 10px;
   font-size: 1rem;
   font-style: Italic;
+  font-weight: 600;
   font-family: Georgia, serif;
 `
 export const TeamHistoryStadium = styled(TeamHistory)``

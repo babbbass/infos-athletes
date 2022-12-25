@@ -11,29 +11,22 @@ import {
   TeamName,
   WinnerTeam,
   GameLink,
+  H1Games,
+  StyledImgNbaLogo,
+  H1NbaContainer,
 } from "./style"
 import { Menu } from "utils/style/GlobalStyle"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 import { useSelector } from "react-redux"
-
-const linescores = (linescore) => {
-  let [qt1, qt2, qt3, qt4] = linescore
-  const displayLinescore = `${qt1}  ${qt2}  ${qt3}  ${qt4}`
-  return displayLinescore
-}
-
-const isWinner = (homePts, visitorPts, homeTeam, visitorTeam) => {
-  if (homePts > visitorPts) {
-    return true
-  }
-  return false
-}
+import { formatDate, linescores, isWinner } from "utils/functions"
+import nbaLogo from "utils/assets/nba-logo.svg"
 
 const isFinished = "Finished"
 const noData = "Match non terminé"
 
 export default function Games({ games, date }) {
   const activeMenu = useSelector((state) => state.activeMenu)
+  console.log(games)
   return (
     <>
       <ToggleButton />
@@ -42,6 +35,10 @@ export default function Games({ games, date }) {
         <LeaguePagesLink to={`/nba`}>Équipes</LeaguePagesLink>
       </Menu>
       <GamesContainer active={activeMenu}>
+        <H1NbaContainer>
+          <StyledImgNbaLogo src={nbaLogo} />
+          <H1Games> {formatDate(date)}</H1Games>
+        </H1NbaContainer>
         {games.map((game) => (
           <GameLink
             key={game.id}

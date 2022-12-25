@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { StyledLink, colors } from "utils/style/GlobalStyle"
 import { Card, CardNameTeamOrPlayer } from "components/Card/globalStyleCard"
 import Select from "react-select"
+import { H1NbaGames } from "components/Card/CardTeams/cardTeamStyle"
 
 export const CardPagePlayer = styled(Card)`
   width: 90%;
@@ -14,16 +15,9 @@ export const CardPagePlayer = styled(Card)`
   ${({ openModalPalmaresPlayer }) =>
     openModalPalmaresPlayer && `transform: rotateY(180deg)`}
 `
-// export const H1Container = styled.div`
-//   width: 90%;
-//   font-size: 2rem;
-//   font-style: italic;
-//   font-weight: bold;
-//   text-align: center;
-//   margin: 10px auto;
-//   text-transform: uppercase;
-//   color: ${colors.primary};
-// `
+export const H1NbaSquad = styled(H1NbaGames)`
+  font-weight: bold;
+`
 export const H1Container = styled.div`
   width: 90%;
   font-size: 2rem;

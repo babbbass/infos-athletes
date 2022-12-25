@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { useParams } from "react-router"
-import { requestOptions, baseNbaUrl } from "utils/config/config"
+import { fetchNbaSquad } from "utils/Queries/functions"
 import { useQuery } from "react-query"
 import { players } from "utils/datas/Nba/players"
 import { ThemeContext } from "utils/Context/Context"
@@ -11,15 +11,6 @@ import Error from "components/Error"
 import { Menu } from "utils/style/GlobalStyle"
 import { LeaguePagesLink } from "components/Card/CardTeams/cardTeamStyle"
 import { useSelector } from "react-redux"
-
-const fetchNbaSquad = async (teamId, yearSelected) => {
-  const response = await fetch(
-    `${baseNbaUrl}/players?team=${teamId}&season=${yearSelected}`,
-    requestOptions
-  )
-
-  return await response.json()
-}
 
 export default function Squad() {
   const { teamId } = useParams()

@@ -1,5 +1,5 @@
 import React from "react"
-import { baseNbaUrl, requestOptions } from "utils/config/config"
+import { fetchNbaTeams } from "utils/Queries/functions"
 import { useQuery } from "react-query"
 import { teams } from "utils/datas/Nba/teams"
 import ToggleButton from "components/NavLink/ToogleButton/ToggleButton"
@@ -9,12 +9,6 @@ import { Menu } from "utils/style/GlobalStyle"
 import Loader from "components/Loader"
 import Error from "components/Error"
 import { useSelector } from "react-redux"
-
-const fetchNbaTeams = async () => {
-  const response = await fetch(`${baseNbaUrl}/teams`, requestOptions)
-
-  return await response.json()
-}
 
 export default function Nba() {
   const activeMenu = useSelector((state) => state.activeMenu)

@@ -10,10 +10,7 @@ export function Header({ flagCompetition, competitionName, rankingType }) {
   return (
     <>
       <H1RankingContainer>
-        <StyledImgLogoRanking
-          //src={rankingTypeData[0].statistics[0].league.logo}
-          src={flagCompetition}
-        />
+        <StyledImgLogoRanking src={flagCompetition} />
         <H1Ranking>
           {competitionName} <br />
           <RankingType>{rankingType}</RankingType>

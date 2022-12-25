@@ -3,7 +3,7 @@ import {
   CardContainer,
   AdditionnalDataContainer,
 } from "components/Card/globalStyleCard"
-import { StyledLink, colors, StyledImg } from "utils/style/GlobalStyle"
+import { StyledLink, colors, StyledImg, H1Style } from "utils/style/GlobalStyle"
 
 export const LeaguePagesLink = styled(StyledLink)`
   margin: 10px 10px;
@@ -43,4 +43,26 @@ export const TeamHistory = styled.div`
 export const TeamHistoryStadium = styled(TeamHistory)``
 export const SpanVenueTeam = styled.span`
   font-weight: bold;
+`
+export const StyledImgNbaLogo = styled.img`
+  width: 5vw;
+  margin-right: 10px;
+  @media (max-width: 420px) {
+    width: 8vw;
+  }
+`
+export const H1NbaContainer = styled.div`
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  @media (max-width: 420px) {
+    justify-content: center;
+    padding-left: 0;
+  }
+`
+export const H1NbaGames = styled(H1Style)`
+  font-size: 1.3rem;
+  font-weight: 500;
 `

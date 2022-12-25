@@ -1,6 +1,5 @@
 import React from "react"
 import { useParams } from "react-router-dom"
-import { foot } from "utils/config/config"
 import {
   CardImgContainer,
   CardContainer,
@@ -8,8 +7,13 @@ import {
   StyledLinkCard,
 } from "components/Card/globalStyleCard"
 import { StyledImg } from "utils/style/GlobalStyle"
-import { H1Container, NameCardPlayer } from "./styleCardPlayer"
+import { NameCardPlayer, H1NbaSquad } from "./styleCardPlayer"
 import { useSelector } from "react-redux"
+import {
+  StyledImgNbaLogo,
+  H1NbaContainer,
+} from "components/Card/CardTeams/cardTeamStyle"
+import nbaLogo from "utils/assets/nba-logo.svg"
 
 export default function CardPlayer({ players }) {
   const { teamName } = useParams("teamName")
@@ -17,7 +21,10 @@ export default function CardPlayer({ players }) {
   return (
     <>
       <CardContainer active={activeMenu}>
-        <H1Container>{teamName}</H1Container>
+        <H1NbaContainer>
+          <StyledImgNbaLogo src={nbaLogo} />
+          <H1NbaSquad>{teamName}</H1NbaSquad>
+        </H1NbaContainer>
         {players.map((player, index) => (
           <Card key={`${player.id}-${index}`}>
             <StyledLinkCard to={`/basket/player/${player.id}`}>

@@ -4,6 +4,9 @@ import {
   TeamHistory,
   NbaTeamLogo,
   NbaAdditionnalDataContainer,
+  StyledImgNbaLogo,
+  H1NbaContainer,
+  H1NbaGames,
 } from "./cardTeamStyle"
 import {
   Card,
@@ -11,11 +14,16 @@ import {
   CardNameTeamOrPlayer,
   CardImgContainer,
 } from "components/Card/globalStyleCard"
+import nbaLogo from "utils/assets/nba-logo.svg"
 
 export default function CardTeams({ active, teams }) {
   return (
     <>
       <CardContainerTeam active={active}>
+        <H1NbaContainer>
+          <StyledImgNbaLogo src={nbaLogo} />
+          <H1NbaGames>Équipes</H1NbaGames>
+        </H1NbaContainer>
         {teams.map(
           (team) =>
             team.nbaFranchise !== false && (

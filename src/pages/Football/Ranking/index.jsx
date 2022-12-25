@@ -24,7 +24,7 @@ import {
 import { selectOptions } from "utils/Context/Context"
 import PreviousLink from "components/NavLink/Previous"
 import NextLink from "components/NavLink/Next"
-import { stepsUrl } from "utils/config/variablesConfig"
+import { stepsUrl } from "utils/config/variables"
 import Loader from "components/Loader"
 import Error from "components/Error"
 import { Header } from "components/Ranking/Header/Header"

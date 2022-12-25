@@ -4,7 +4,13 @@ import {
   StyledLink,
   colors,
   sizesFont,
+  H1Style,
 } from "utils/style/GlobalStyle"
+
+export const H1Games = styled(H1Style)`
+  font-size: 1rem;
+  font-weight: 500;
+`
 
 export const GamesContainer = styled.div`
   display: flex;
@@ -68,4 +74,22 @@ export const GameLineScore = styled.span`
 `
 export const WinnerTeam = styled.span`
   font-weight: bold;
+`
+export const StyledImgNbaLogo = styled.img`
+  width: 5vw;
+  margin-right: 10px;
+  @media (max-width: 420px) {
+    width: 8vw;
+  }
+`
+export const H1NbaContainer = styled.div`
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  @media (max-width: 420px) {
+    justify-content: center;
+    padding-left: 0;
+  }
 `
